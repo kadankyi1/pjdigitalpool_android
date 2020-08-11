@@ -1,9 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#B42E23CD</color>
+    <color name="colorPrimary">#D06891FA</color>
     <color name="colorPrimary2">#A32518DF</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#FFFFFF</color>
     <color name="colorAccentOpp">#000000</color>
+    <color name="colorTransparent">#00000000</color>
     <color name="colorYellowButton">#FFC107</color>
+    <color name="colorDotInactive">#F4F4F4</color>
+    <color name="colorDotActive">#B5B5B5</color>
 </resources>

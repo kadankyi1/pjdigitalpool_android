@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">PJDigitalPool</string>
     <string name="empty_string" />
+    <string name="next">Next</string>
+    <string name="the_glorious_church">The Glorious Church</string>
+    <string name="welcome_to">Welcome To</string>
 </resources>
