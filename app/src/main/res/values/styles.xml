@@ -15,4 +15,19 @@
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
     </style>
+
+
+    <style name="loginActivityHintStyle" parent="TextAppearance.AppCompat">
+        <!-- Hint color and label color in FALSE state -->
+        <item name="android:textColorHint">@android:color/darker_gray</item>
+        <item name="android:textSize">20sp</item>
+        <item name="textInputStyle">@style/Widget.Design.TextInputLayout</item>
+        <!-- Label color in TRUE state and bar color FALSE and TRUE State -->
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="colorControlNormal">@color/colorPrimaryDark</item>
+        <item name="colorControlActivated">@color/colorPrimaryDark</item>
+        <item name="android:textColorHighlight">@color/colorYellowButton</item>
+        <item name="android:textColorLink">@color/colorPrimaryDark</item>
+    </style>
+
 </resources>
