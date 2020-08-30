@@ -46,6 +46,7 @@
         android:layout_height="0dp"
         android:src="@drawable/pjphoto"
         android:contentDescription="@string/empty_string"
+        android:elevation="2dp"
         app:layout_constraintBottom_toTopOf="@+id/slideritem1_guideline_horizontal_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -61,17 +62,6 @@
         app:layout_constraintEnd_toEndOf="parent"/>
 
 
-    <ImageView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:contentDescription="@string/empty_string"
-        android:src="@drawable/logo"
-        android:padding="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/slideritem1_guideline_horizontal_1"
-        app:layout_constraintEnd_toStartOf="@+id/slideritem1_guideline_vertical_2"
-        app:layout_constraintStart_toEndOf="@+id/slideritem1_guideline_vertical_1"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <TextView
         android:id="@+id/slideritem1_textview_bibleverse"
         android:layout_width="match_parent"
@@ -82,8 +72,10 @@
         android:gravity="center"
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
-        android:textSize="16sp"
-        android:text="That He might presend to Himself a Glorious Church, not having spot, or wrinkle, or any such thing; But that it should be holy and without blemish \n - Ephesians 5: 27"
+        android:lineSpacingExtra="3dp"
+        android:textSize="14sp"
+        android:fontFamily="@font/minionpro_regular"
+        android:text="THAT HE MIGHT PRESENT TO HIMSELF A GLORIOUS CHURCH, NOT HAVING SPORT, OR WRINKLE, OR ANY SUCH THING; BUT THAT IT SHOULD BE HOLY AND WITHOUT BLEMISH \n - EPHESIANS 5: 27"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
