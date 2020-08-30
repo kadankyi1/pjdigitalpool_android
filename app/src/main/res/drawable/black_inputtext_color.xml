@@ -16,5 +16,5 @@
         android:color="@color/colorPrimaryDark" />
 
     <!-- Default color -->
-    <item android:color="@color/colorYellowButton" />
+    <item android:color="@color/colorPrimaryDark" />
 </selector>
