@@ -15,18 +15,27 @@ import androidx.fragment.app.FragmentTransaction;
 public class Util {
 
     public static Boolean ALLOW_LOGGING = true;
-    public static String LINK_PROTOCOL = "https://";
-    public static String LINK_DOMAIN = "www.fishpott.com";
+    public static String LINK_PROTOCOL = "http://";
+    //public static String LINK_DOMAIN = "pjdigitalpool.fishpott.com";
+    public static String LINK_DOMAIN = "144.202.76.74";
 
     // API LINKS
-    public static String LINK_SIGNUP = LINK_PROTOCOL + LINK_DOMAIN + "/pjdigitalpool/v1/signup";
-    public static String LINK_LOGIN = LINK_PROTOCOL + LINK_DOMAIN + "/pjdigitalpool/v1/login";
+    //public static String LINK_SIGNUP = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/member/regis";
+    public static String LINK_SIGNUP = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/member/register/";
+    public static String LINK_LOGIN = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/member/login";
     public static String LINK_SEND_RESET_CODE = LINK_PROTOCOL + LINK_DOMAIN + "/pjdigitalpool/v1/send-code";
     public static String LINK_RESET_PASSWORD = LINK_PROTOCOL + LINK_DOMAIN + "/pjdigitalpool/v1/reset-password";
 
 
     //SHARES PREFERENCES
     public static String SHARED_PREF_KEY_USER_TOKEN = "SHARED_PREF_KEY_USER_TOKEN";
+    public static String SHARED_PREF_KEY_USER_ID = "SHARED_PREF_KEY_USER_ID";
+    public static String SHARED_PREF_KEY_USER_FIRST_NAME = "SHARED_PREF_KEY_USER_FIRST_NAME";
+    public static String SHARED_PREF_KEY_USER_LAST_NAME = "SHARED_PREF_KEY_USER_LAST_NAME";
+    public static String SHARED_PREF_KEY_USER_COUNTRY = "SHARED_PREF_KEY_USER_COUNTRY";
+    public static String SHARED_PREF_KEY_USER_PHONE = "SHARED_PREF_KEY_USER_PHONE";
+    public static String SHARED_PREF_KEY_USER_EMAIL= "SHARED_PREF_KEY_USER_EMAIL";
+    public static String SHARED_PREF_KEY_USER_FLAGGED= "SHARED_PREF_KEY_USER_FLAGGED";
 
     public static void show_log_in_console(String title, String description){
         if(ALLOW_LOGGING){

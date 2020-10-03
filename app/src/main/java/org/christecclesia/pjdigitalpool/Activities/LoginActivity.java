@@ -14,16 +14,22 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.StringRequestListener;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
 
 import org.christecclesia.pjdigitalpool.Inc.Util;
 import org.christecclesia.pjdigitalpool.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -67,7 +73,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         }
     }
 
-    private void call_sign_in_api(String phone_number, String password){
+    private void call_sign_in_api(final String phone_number, final String password){
 
         if(!this.isFinishing() && getApplicationContext() != null){
             new Handler(Looper.getMainLooper()).post(new Runnable() {
@@ -78,74 +84,92 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 }
             });
 
-            Util.show_log_in_console("SignupActivity", "\n phone_number: " + phone_number
+            Util.show_log_in_console("SignupActivity",
+                    "\n phone_number: " + phone_number
                     + "\n password: " + password);
 
-            AndroidNetworking.post(Util.LINK_LOGIN)
-                    .addBodyParameter("phone_number", phone_number)
-                    .addBodyParameter("password", password)
-                    .setTag("signup_request")
-                    .setPriority(Priority.HIGH)
-                    .build().getAsString(new StringRequestListener() {
-                @Override
-                public void onResponse(final String response) {
-                    if(!LoginActivity.this.isFinishing() && getApplicationContext() != null){
-                        new Handler(Looper.getMainLooper()).post(new Runnable() {
-                            @Override
-                            public void run() {
 
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, Util.LINK_LOGIN,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            Util.show_log_in_console("SignupActivity", "response: " +  response);
+                            if(!LoginActivity.this.isFinishing()){
+                                //if(MyLifecycleHandler.isApplicationVisible() || MyLifecycleHandler.isApplicationInForeground()){
                                 try {
-                                    JSONObject jsonObject = new JSONObject(response);
-                                    JSONArray array = jsonObject.getJSONArray("data_returned");
+                                    JSONObject response_json_object = new JSONObject(response);
 
-                                    final JSONObject o = array.getJSONObject(0);
-                                    int myStatus = o.getInt("1");
-                                    final String statusMsg = o.getString("2");
+                                    //Toast.makeText(getApplicationContext(), response_json_object.getString("message"), Toast.LENGTH_LONG).show();
+                                    if(response_json_object.getInt("status") == 1){
+                                        JSONObject user_json_object = response_json_object.getJSONObject("user");
+                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_TOKEN, response_json_object.getString("access_token"));
+                                        Util.setSharedPreferenceInt(getApplicationContext(), Util.SHARED_PREF_KEY_USER_ID, user_json_object.getInt("user_id"));
+                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_FIRST_NAME, user_json_object.getString("user_firstname"));
+                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_LAST_NAME, user_json_object.getString("user_surname"));
+                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_COUNTRY, user_json_object.getString("user_country"));
+                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_PHONE, user_json_object.getString("user_phone_number"));
+                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_EMAIL, user_json_object.getString("user_email"));
+                                        Util.setSharedPreferenceInt(getApplicationContext(), Util.SHARED_PREF_KEY_USER_FLAGGED, user_json_object.getInt("user_flagged"));
 
-                                    // GENERAL ERROR
-                                    if(myStatus != 1){
-                                        Toast.makeText(getApplicationContext(), statusMsg, Toast.LENGTH_LONG).show();
-                                        m_loggingin_contentloadingprogressbar.setVisibility(View.INVISIBLE);
-                                        m_formholder_scrollview.setVisibility(View.VISIBLE);
-                                        return;
-                                    } else {
-
-                                        //STORING THE USER DATA
-                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_TOKEN, o.getString("3"));
+                                        Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
                                         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
                                         startActivity(intent);
                                         finish();
+                                    } else {
+                                        m_loggingin_contentloadingprogressbar.setVisibility(View.INVISIBLE);
+                                        m_formholder_scrollview.setVisibility(View.VISIBLE);
+                                        Toast.makeText(getApplicationContext(), response_json_object.getString("message"), Toast.LENGTH_LONG).show();
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();
-                                    new Handler(Looper.getMainLooper()).post(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            Toast.makeText(getApplicationContext(), "An error occurred. Try again later", Toast.LENGTH_LONG).show();
-                                            m_loggingin_contentloadingprogressbar.setVisibility(View.INVISIBLE);
-                                            m_formholder_scrollview.setVisibility(View.VISIBLE);
-                                        }
-                                    });
+                                    Toast.makeText(getApplicationContext(), "An unexpected error occurred.", Toast.LENGTH_LONG).show();
+                                    m_loggingin_contentloadingprogressbar.setVisibility(View.INVISIBLE);
+                                    m_formholder_scrollview.setVisibility(View.VISIBLE);
                                 }
+
+                                //}
                             }
-                        });
-                    }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            //Util.show_log_in_console("SignupActivity", "error: " + error.toString());
+                            Toast.makeText(getApplicationContext(), "Check your internet connection and try again", Toast.LENGTH_LONG).show();
+                            m_loggingin_contentloadingprogressbar.setVisibility(View.INVISIBLE);
+                            m_formholder_scrollview.setVisibility(View.VISIBLE);
+                        }
+                    }) {
+
+                /*
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> headers = new HashMap<>();
+                    headers.put("Accept", "application/json");
+                    //headers.put("ContentType","multipart/form-data");
+                    //headers.put("ContentType", "application/json");
+                    return headers;
                 }
+                 */
 
                 @Override
-                public void onError(ANError anError) {
-                    if(!LoginActivity.this.isFinishing() && getApplicationContext() != null){
-                        new Handler(Looper.getMainLooper()).post(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(getApplicationContext(), "Check your internet connection and try again", Toast.LENGTH_LONG).show();
-                                m_loggingin_contentloadingprogressbar.setVisibility(View.INVISIBLE);
-                                m_formholder_scrollview.setVisibility(View.VISIBLE);
-                            }
-                        });
-                    }
+                protected Map<String, String> getParams() {
+                    Map<String, String> map = new HashMap<>();
+                    map.put("user_phone_number", phone_number);
+                    map.put("password", password);
+                    Util.show_log_in_console("LoginActivity", "Map: " +  map.toString());
+                    return map;
                 }
-            });
+            };
+            stringRequest.setShouldCache(false);
+            stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                    DefaultRetryPolicy.DEFAULT_TIMEOUT_MS * 2,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+            requestQueue.add(stringRequest);
         }
     }
 

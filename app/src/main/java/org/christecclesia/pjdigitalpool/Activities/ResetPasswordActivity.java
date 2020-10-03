@@ -15,10 +15,6 @@ import android.widget.ScrollView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
-import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.StringRequestListener;
 
 import org.christecclesia.pjdigitalpool.Inc.Util;
 import org.christecclesia.pjdigitalpool.R;
@@ -85,6 +81,7 @@ public class ResetPasswordActivity extends AppCompatActivity implements View.OnC
 
             Util.show_log_in_console("SignupActivity", "\n phone_number: " + phone_number);
 
+            /*
             AndroidNetworking.post(Util.LINK_SEND_RESET_CODE)
                     .addBodyParameter("phone_number", phone_number)
                     .setTag("send_resetcode_request")
@@ -149,6 +146,7 @@ public class ResetPasswordActivity extends AppCompatActivity implements View.OnC
                     }
                 }
             });
+            */
         }
     }
 
@@ -169,6 +167,7 @@ public class ResetPasswordActivity extends AppCompatActivity implements View.OnC
                     "\n phone_number: " + phone_number +
                     "\npassword: " + password);
 
+            /*
             AndroidNetworking.post(Util.LINK_SEND_RESET_CODE)
                     .addBodyParameter("reset_code", reset_code)
                     .addBodyParameter("phone_number", phone_number)
@@ -237,6 +236,7 @@ public class ResetPasswordActivity extends AppCompatActivity implements View.OnC
                     }
                 }
             });
+            */
         }
     }
 
