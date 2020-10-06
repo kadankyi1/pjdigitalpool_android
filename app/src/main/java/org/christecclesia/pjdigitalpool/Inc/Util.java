@@ -23,8 +23,8 @@ public class Util {
     //public static String LINK_SIGNUP = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/member/regis";
     public static String LINK_SIGNUP = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/member/register/";
     public static String LINK_LOGIN = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/member/login";
-    public static String LINK_SEND_RESET_CODE = LINK_PROTOCOL + LINK_DOMAIN + "/pjdigitalpool/v1/send-code";
-    public static String LINK_RESET_PASSWORD = LINK_PROTOCOL + LINK_DOMAIN + "/pjdigitalpool/v1/reset-password";
+    public static String LINK_SEND_RESET_CODE = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/member/forgot";
+    public static String LINK_RESET_PASSWORD = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/member/reset";
 
 
     //SHARES PREFERENCES
@@ -43,9 +43,8 @@ public class Util {
         }
     }
 
-
     // OPENING A FRAGMENT
-    public static void openFragment(FragmentManager fragmentManager, int fragmentContainerId, Fragment newFragment, String fragmentName, int includeAnimation){
+    public static void open_fragment(FragmentManager fragmentManager, int fragmentContainerId, Fragment newFragment, String fragmentName, int includeAnimation){
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         if(includeAnimation == 1){
             transaction.setCustomAnimations(R.anim.slide_in_right, R.anim.slide_out_right, R.anim.slide_in_right, R.anim.slide_out_right);
@@ -57,7 +56,6 @@ public class Util {
         transaction.addToBackStack(fragmentName);
         transaction.add(fragmentContainerId, newFragment, fragmentName).commit();
     }
-
     // GET SHARED PREFERENCE STRING
     public static String getSharedPreferenceString(Context context, String key) {
 

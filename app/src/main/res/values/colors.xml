@@ -5,6 +5,7 @@
     <color name="colorAccent">#FFFFFF</color>
     <color name="colorAccentOpp">#000000</color>
     <color name="colorGray">#CE787676</color>
+    <color name="colorGrayBackground">#F1F1F1</color>
     <color name="colorTransparent">#00000000</color>
     <color name="colorYellowButton">#fbae17</color>
     <color name="colorYellowLight">#94E1BA6D</color>

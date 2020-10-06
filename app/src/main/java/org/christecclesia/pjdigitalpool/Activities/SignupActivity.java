@@ -226,7 +226,18 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                         @Override
                         public void onErrorResponse(VolleyError error) {
                             //Util.show_log_in_console("SignupActivity", "error: " + error.toString());
-                            Toast.makeText(getApplicationContext(), "Check your internet connection and try again", Toast.LENGTH_LONG).show();
+
+                            if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                                Toast.makeText(getApplicationContext(), "Check your internet connection and try again", Toast.LENGTH_LONG).show();
+                            } else if (error instanceof AuthFailureError) {
+                                Toast.makeText(getApplicationContext(), "We failed to recognize your account. Please re-sign-in and try again", Toast.LENGTH_LONG).show();
+                            } else if (error instanceof ServerError) {
+                                Toast.makeText(getApplicationContext(), "Registration failed. Account may already exist or incorrect form information. Try again later", Toast.LENGTH_LONG).show();
+                            } else if (error instanceof NetworkError) {
+                                Toast.makeText(getApplicationContext(), "Check your internet connection and try again", Toast.LENGTH_LONG).show();
+                            } else if (error instanceof ParseError) {
+                                Toast.makeText(getApplicationContext(), "An unexpected error occurred.", Toast.LENGTH_LONG).show();
+                            }
                             m_signingup_contentloadingprogressBar.setVisibility(View.INVISIBLE);
                             m_formholder_scrollview.setVisibility(View.VISIBLE);
                         }

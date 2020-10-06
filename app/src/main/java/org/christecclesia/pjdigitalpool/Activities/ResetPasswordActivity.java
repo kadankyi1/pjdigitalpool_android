@@ -16,11 +16,28 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
+import com.android.volley.NetworkError;
+import com.android.volley.NoConnectionError;
+import com.android.volley.ParseError;
+import com.android.volley.Request;
+import com.android.volley.RequestQueue;
+import com.android.volley.Response;
+import com.android.volley.ServerError;
+import com.android.volley.TimeoutError;
+import com.android.volley.VolleyError;
+import com.android.volley.toolbox.StringRequest;
+import com.android.volley.toolbox.Volley;
+
 import org.christecclesia.pjdigitalpool.Inc.Util;
 import org.christecclesia.pjdigitalpool.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ResetPasswordActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -67,7 +84,7 @@ public class ResetPasswordActivity extends AppCompatActivity implements View.OnC
     }
 
 
-    private void call_send_reset_code_api(String phone_number){
+    private void call_send_reset_code_api(final String phone_number){
 
         if(!this.isFinishing() && getApplicationContext() != null){
             new Handler(Looper.getMainLooper()).post(new Runnable() {
@@ -79,79 +96,97 @@ public class ResetPasswordActivity extends AppCompatActivity implements View.OnC
                 }
             });
 
-            Util.show_log_in_console("SignupActivity", "\n phone_number: " + phone_number);
+            Util.show_log_in_console("MyNetworkRequest", "\n phone_number: " + phone_number);
 
-            /*
-            AndroidNetworking.post(Util.LINK_SEND_RESET_CODE)
-                    .addBodyParameter("phone_number", phone_number)
-                    .setTag("send_resetcode_request")
-                    .setPriority(Priority.HIGH)
-                    .build().getAsString(new StringRequestListener() {
-                @Override
-                public void onResponse(final String response) {
-                    if(!ResetPasswordActivity.this.isFinishing() && getApplicationContext() != null){
-                        new Handler(Looper.getMainLooper()).post(new Runnable() {
+                StringRequest stringRequest = new StringRequest(Request.Method.POST, Util.LINK_SEND_RESET_CODE,
+                        new Response.Listener<String>() {
                             @Override
-                            public void run() {
+                            public void onResponse(String response) {
+                                Util.show_log_in_console("MyNetworkRequest", "response: " +  response);
+                                if(!ResetPasswordActivity.this.isFinishing()){
+                                    //if(MyLifecycleHandler.isApplicationVisible() || MyLifecycleHandler.isApplicationInForeground()){
+                                    try {
+                                        JSONObject response_json_object = new JSONObject(response);
 
-                                try {
-                                    JSONObject jsonObject = new JSONObject(response);
-                                    JSONArray array = jsonObject.getJSONArray("data_returned");
+                                        //Toast.makeText(getApplicationContext(), response_json_object.getString("message"), Toast.LENGTH_LONG).show();
+                                        if(response_json_object.getInt("status") == 1){
+                                            Toast.makeText(getApplicationContext(), "Reset code sent.", Toast.LENGTH_LONG).show();
+                                            m_loading_contentloadingprogressbar.setVisibility(View.INVISIBLE);
+                                            m_sendcodeform_constraintlayout.setVisibility(View.INVISIBLE);
+                                            m_resetform_constraintlayout.setVisibility(View.VISIBLE);
 
-                                    final JSONObject o = array.getJSONObject(0);
-                                    int myStatus = o.getInt("1");
-                                    final String statusMsg = o.getString("2");
-
-                                    // GENERAL ERROR
-                                    if(myStatus != 1){
-                                        Toast.makeText(getApplicationContext(), statusMsg, Toast.LENGTH_LONG).show();
-                                        m_loading_contentloadingprogressbar.setVisibility(View.INVISIBLE);
-                                        m_resetform_constraintlayout.setVisibility(View.INVISIBLE);
-                                        m_sendcodeform_constraintlayout.setVisibility(View.VISIBLE);
-                                        return;
-                                    } else {
-                                        m_loading_contentloadingprogressbar.setVisibility(View.INVISIBLE);
-                                        m_sendcodeform_constraintlayout.setVisibility(View.INVISIBLE);
-                                        m_resetform_constraintlayout.setVisibility(View.VISIBLE);
-                                    }
-                                } catch (JSONException e) {
-                                    e.printStackTrace();
-                                    new Handler(Looper.getMainLooper()).post(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            Toast.makeText(getApplicationContext(), "An error occurred. Try again later", Toast.LENGTH_LONG).show();
+                                        } else {
+                                            Toast.makeText(getApplicationContext(), response_json_object.getString("message"), Toast.LENGTH_LONG).show();
                                             m_loading_contentloadingprogressbar.setVisibility(View.INVISIBLE);
                                             m_resetform_constraintlayout.setVisibility(View.INVISIBLE);
                                             m_sendcodeform_constraintlayout.setVisibility(View.VISIBLE);
                                         }
-                                    });
+                                    } catch (JSONException e) {
+                                        e.printStackTrace();
+                                        Toast.makeText(getApplicationContext(), "An unexpected error occurred.", Toast.LENGTH_LONG).show();
+                                        m_loading_contentloadingprogressbar.setVisibility(View.INVISIBLE);
+                                        m_resetform_constraintlayout.setVisibility(View.INVISIBLE);
+                                        m_sendcodeform_constraintlayout.setVisibility(View.VISIBLE);
+                                    }
+
+                                    //}
                                 }
                             }
-                        });
-                    }
-                }
-
-                @Override
-                public void onError(ANError anError) {
-                    if(!ResetPasswordActivity.this.isFinishing() && getApplicationContext() != null){
-                        new Handler(Looper.getMainLooper()).post(new Runnable() {
+                        },
+                        new Response.ErrorListener() {
                             @Override
-                            public void run() {
-                                Toast.makeText(getApplicationContext(), "Check your internet connection and try again", Toast.LENGTH_LONG).show();
+                            public void onErrorResponse(VolleyError error) {
+                                //Util.show_log_in_console("SignupActivity", "error: " + error.toString());
+
+                                if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                                    Toast.makeText(getApplicationContext(), "Check your internet connection and try again", Toast.LENGTH_LONG).show();
+                                } else if (error instanceof AuthFailureError) {
+                                    Toast.makeText(getApplicationContext(), "We failed to recognize your account. Please re-sign-in and try again", Toast.LENGTH_LONG).show();
+                                } else if (error instanceof ServerError) {
+                                    Toast.makeText(getApplicationContext(), "Operation failed. Try again later or report if this continues", Toast.LENGTH_LONG).show();
+                                } else if (error instanceof NetworkError) {
+                                    Toast.makeText(getApplicationContext(), "Check your internet connection and try again", Toast.LENGTH_LONG).show();
+                                } else if (error instanceof ParseError) {
+                                    Toast.makeText(getApplicationContext(), "An unexpected error occurred.", Toast.LENGTH_LONG).show();
+                                }
                                 m_loading_contentloadingprogressbar.setVisibility(View.INVISIBLE);
                                 m_resetform_constraintlayout.setVisibility(View.INVISIBLE);
                                 m_sendcodeform_constraintlayout.setVisibility(View.VISIBLE);
                             }
-                        });
-                    }
+                        }) {
+
+                /*
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> headers = new HashMap<>();
+                    headers.put("Accept", "application/json");
+                    //headers.put("ContentType","multipart/form-data");
+                    //headers.put("ContentType", "application/json");
+                    return headers;
                 }
-            });
-            */
+                 */
+
+                    @Override
+                    protected Map<String, String> getParams() {
+                        Map<String, String> map = new HashMap<>();
+                        map.put("user_phone_number", phone_number);
+                        Util.show_log_in_console("MyNetworkRequest", "Map: " +  map.toString());
+                        return map;
+                    }
+                };
+                stringRequest.setShouldCache(false);
+                stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                        DefaultRetryPolicy.DEFAULT_TIMEOUT_MS * 2,
+                        DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                        DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+                RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+                requestQueue.add(stringRequest);
         }
     }
 
 
-    private void call_reset_password_api(String reset_code, String phone_number, String password){
+    private void call_reset_password_api(final String reset_code, final String phone_number, final String password){
 
         if(!this.isFinishing() && getApplicationContext() != null){
             new Handler(Looper.getMainLooper()).post(new Runnable() {
@@ -163,80 +198,97 @@ public class ResetPasswordActivity extends AppCompatActivity implements View.OnC
                 }
             });
 
-            Util.show_log_in_console("SignupActivity", "\n reset_code: " + reset_code +
+            Util.show_log_in_console("MyNetworkRequest", "\n reset_code: " + reset_code +
                     "\n phone_number: " + phone_number +
                     "\npassword: " + password);
 
-            /*
-            AndroidNetworking.post(Util.LINK_SEND_RESET_CODE)
-                    .addBodyParameter("reset_code", reset_code)
-                    .addBodyParameter("phone_number", phone_number)
-                    .addBodyParameter("password", password)
-                    .setTag("reset_passwor_request")
-                    .setPriority(Priority.HIGH)
-                    .build().getAsString(new StringRequestListener() {
-                @Override
-                public void onResponse(final String response) {
-                    if(!ResetPasswordActivity.this.isFinishing() && getApplicationContext() != null){
-                        new Handler(Looper.getMainLooper()).post(new Runnable() {
-                            @Override
-                            public void run() {
 
+            Util.show_log_in_console("MyNetworkRequest", "\n phone_number: " + phone_number);
+
+            StringRequest stringRequest = new StringRequest(Request.Method.POST, Util.LINK_RESET_PASSWORD,
+                    new Response.Listener<String>() {
+                        @Override
+                        public void onResponse(String response) {
+                            Util.show_log_in_console("MyNetworkRequest", "response: " +  response);
+                            if(!ResetPasswordActivity.this.isFinishing()){
+                                //if(MyLifecycleHandler.isApplicationVisible() || MyLifecycleHandler.isApplicationInForeground()){
                                 try {
-                                    JSONObject jsonObject = new JSONObject(response);
-                                    JSONArray array = jsonObject.getJSONArray("data_returned");
+                                    JSONObject response_json_object = new JSONObject(response);
 
-                                    final JSONObject o = array.getJSONObject(0);
-                                    int myStatus = o.getInt("1");
-                                    final String statusMsg = o.getString("2");
-
-                                    // GENERAL ERROR
-                                    if(myStatus != 1){
-                                        Toast.makeText(getApplicationContext(), statusMsg, Toast.LENGTH_LONG).show();
+                                    //Toast.makeText(getApplicationContext(), response_json_object.getString("message"), Toast.LENGTH_LONG).show();
+                                    if(response_json_object.getInt("status") == 1){
+                                        Toast.makeText(getApplicationContext(), "Password changed successfully.", Toast.LENGTH_LONG).show();
+                                        finish();
+                                    } else {
+                                        Toast.makeText(getApplicationContext(), response_json_object.getString("message"), Toast.LENGTH_LONG).show();
                                         m_loading_contentloadingprogressbar.setVisibility(View.INVISIBLE);
                                         m_sendcodeform_constraintlayout.setVisibility(View.INVISIBLE);
                                         m_resetform_constraintlayout.setVisibility(View.VISIBLE);
-                                        return;
-                                    } else {
-                                        //STORING THE USER DATA
-                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_TOKEN, o.getString("3"));
-                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                        startActivity(intent);
-                                        finish();
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();
-                                    new Handler(Looper.getMainLooper()).post(new Runnable() {
-                                        @Override
-                                        public void run() {
-                                            Toast.makeText(getApplicationContext(), "An error occurred. Try again later", Toast.LENGTH_LONG).show();
-                                            m_loading_contentloadingprogressbar.setVisibility(View.INVISIBLE);
-                                            m_sendcodeform_constraintlayout.setVisibility(View.INVISIBLE);
-                                            m_resetform_constraintlayout.setVisibility(View.VISIBLE);
-                                        }
-                                    });
+                                    Toast.makeText(getApplicationContext(), "An unexpected error occurred.", Toast.LENGTH_LONG).show();
+                                    m_loading_contentloadingprogressbar.setVisibility(View.INVISIBLE);
+                                    m_sendcodeform_constraintlayout.setVisibility(View.INVISIBLE);
+                                    m_resetform_constraintlayout.setVisibility(View.VISIBLE);
                                 }
+
+                                //}
                             }
-                        });
-                    }
+                        }
+                    },
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            //Util.show_log_in_console("SignupActivity", "error: " + error.toString());
+
+                            if (error instanceof TimeoutError || error instanceof NoConnectionError) {
+                                Toast.makeText(getApplicationContext(), "Check your internet connection and try again", Toast.LENGTH_LONG).show();
+                            } else if (error instanceof AuthFailureError) {
+                                Toast.makeText(getApplicationContext(), "We failed to recognize your account. Please re-sign-in and try again", Toast.LENGTH_LONG).show();
+                            } else if (error instanceof ServerError) {
+                                Toast.makeText(getApplicationContext(), "Operation failed. Try again later or report if this continues", Toast.LENGTH_LONG).show();
+                            } else if (error instanceof NetworkError) {
+                                Toast.makeText(getApplicationContext(), "Check your internet connection and try again", Toast.LENGTH_LONG).show();
+                            } else if (error instanceof ParseError) {
+                                Toast.makeText(getApplicationContext(), "An unexpected error occurred.", Toast.LENGTH_LONG).show();
+                            }
+                            m_loading_contentloadingprogressbar.setVisibility(View.INVISIBLE);
+                            m_sendcodeform_constraintlayout.setVisibility(View.INVISIBLE);
+                            m_resetform_constraintlayout.setVisibility(View.VISIBLE);
+                        }
+                    }) {
+
+                /*
+                @Override
+                public Map<String, String> getHeaders() throws AuthFailureError {
+                    Map<String, String> headers = new HashMap<>();
+                    headers.put("Accept", "application/json");
+                    //headers.put("ContentType","multipart/form-data");
+                    //headers.put("ContentType", "application/json");
+                    return headers;
                 }
+                 */
 
                 @Override
-                public void onError(ANError anError) {
-                    if(!ResetPasswordActivity.this.isFinishing() && getApplicationContext() != null){
-                        new Handler(Looper.getMainLooper()).post(new Runnable() {
-                            @Override
-                            public void run() {
-                                Toast.makeText(getApplicationContext(), "Check your internet connection and try again", Toast.LENGTH_LONG).show();
-                                m_loading_contentloadingprogressbar.setVisibility(View.INVISIBLE);
-                                m_sendcodeform_constraintlayout.setVisibility(View.INVISIBLE);
-                                m_resetform_constraintlayout.setVisibility(View.VISIBLE);
-                            }
-                        });
-                    }
+                protected Map<String, String> getParams() {
+                    Map<String, String> map = new HashMap<>();
+                    map.put("user_phone_number", phone_number);
+                    map.put("resetcode", reset_code);
+                    map.put("password", password);
+                    map.put("password_confirmation", password);
+                    Util.show_log_in_console("MyNetworkRequest", "Map: " +  map.toString());
+                    return map;
                 }
-            });
-            */
+            };
+            stringRequest.setShouldCache(false);
+            stringRequest.setRetryPolicy(new DefaultRetryPolicy(
+                    DefaultRetryPolicy.DEFAULT_TIMEOUT_MS * 2,
+                    DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                    DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+
+            RequestQueue requestQueue = Volley.newRequestQueue(getApplicationContext());
+            requestQueue.add(stringRequest);
         }
     }
 

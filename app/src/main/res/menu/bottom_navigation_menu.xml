@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_today"
+        android:icon="@drawable/common_google_signin_btn_icon_dark"
+        android:title="Today" />
+    <item
+        android:id="@+id/navigation_library"
+        android:icon="@drawable/common_google_signin_btn_icon_dark"
+        android:title="Library" />
+    <item
+        android:id="@+id/navigation_read"
+        android:icon="@drawable/common_google_signin_btn_icon_dark"
+        android:title="Read"/>
+    <item
+        android:id="@+id/navigation_live"
+        android:icon="@drawable/common_google_signin_btn_icon_dark"
+        android:title="Live" />
+    <item
+        android:id="@+id/navigation_witness"
+        android:icon="@drawable/common_google_signin_btn_icon_dark"
+        android:title="Witness" />
+</menu>

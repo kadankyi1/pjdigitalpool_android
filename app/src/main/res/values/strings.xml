@@ -1,4 +1,12 @@
 <resources>
+    <string name="app_name">PJDigitalPool</string>
+    <string name="empty_string" />
+
+
+    <string name="next">Next</string>
+    <string name="glorious_church">GLORIOUS CHURCH</string>
+    <string name="welcome_to_the">Welcome to the</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string-array name="country_codes_array">
         <item></item>
         <item>+233</item>
@@ -243,6 +251,8 @@
         <item>+260</item>
         <item>+263</item>
     </string-array>
+
+    <!-- TODO: Remove or change this placeholder text -->
     <string-array name="countries_array_starting_with_choose_country">
         <item>Choose Country</item>
         <item>Ghana</item>
@@ -487,11 +497,4 @@
         <item>Zambia</item>
         <item>Zimbabwe</item>
     </string-array>
-
-
-    <string name="app_name">PJDigitalPool</string>
-    <string name="empty_string" />
-    <string name="next">Next</string>
-    <string name="glorious_church">GLORIOUS CHURCH</string>
-    <string name="welcome_to_the">Welcome to the</string>
 </resources>
