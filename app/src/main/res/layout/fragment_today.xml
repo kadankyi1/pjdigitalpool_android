@@ -1,14 +1,393 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/colorGrayBackground"
     tools:context=".Fragments.TodayFragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent">
 
-</FrameLayout>
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/fragment_today_vertical_guideline_1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.05" />
+
+                <androidx.constraintlayout.widget.Guideline
+                    android:id="@+id/fragment_today_vertical_guideline_2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    app:layout_constraintGuide_percent="0.95" />
+
+                <ImageView
+                    android:id="@+id/fragment_today_menu_icon_imageview"
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:layout_marginTop="10dp"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintEnd_toStartOf="@+id/fragment_today_vertical_guideline_2"
+                    android:tint="@color/colorPrimary"
+                    android:src="@drawable/ic_menu_icon"
+                    />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintEnd_toStartOf="@+id/fragment_today_menu_icon_imageview"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    android:text="Welcome Francis"
+                    android:textStyle="bold"
+                    android:textColor="@color/colorPrimary"
+                    android:textSize="20sp"
+                    app:layout_constraintStart_toEndOf="@+id/fragment_today_vertical_guideline_1"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/fragment_today_newsinfoslider_viewpager"
+                    android:layout_width="0dp"
+                    android:layout_height="160dp"
+                    android:elevation="2dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/rounded_four_corners"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_today_menu_icon_imageview"
+                    app:layout_constraintStart_toEndOf="@+id/fragment_today_vertical_guideline_1"
+                    app:layout_constraintEnd_toStartOf="@+id/fragment_today_vertical_guideline_2"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/fragment_today_newsinfosliderdotsholder_linearlayout"
+                    android:layout_width="0dp"
+                    android:layout_height="20dp"
+                    android:orientation="horizontal"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_today_newsinfoslider_viewpager"
+                    app:layout_constraintStart_toEndOf="@+id/fragment_today_vertical_guideline_1"
+                    app:layout_constraintEnd_toStartOf="@+id/fragment_today_vertical_guideline_2"
+                    >
+
+                </LinearLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/fragment_today_heraldofgloryholder_constraintlayout"
+                    android:layout_width="0dp"
+                    android:layout_height="130dp"
+                    android:elevation="2dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/rounded_four_corners"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_today_newsinfosliderdotsholder_linearlayout"
+                    app:layout_constraintStart_toEndOf="@+id/fragment_today_vertical_guideline_1"
+                    app:layout_constraintEnd_toStartOf="@+id/fragment_today_vertical_guideline_2">
+
+                    <org.christecclesia.pjdigitalpool.Views.RoundedCornerImageView
+                        android:id="@+id/fragment_today_heraldofgloryimage_roundedcornerimageview"
+                        android:layout_width="115dp"
+                        android:layout_height="115dp"
+                        android:layout_margin="10dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:src="@drawable/testimg"
+                        />
+
+                    <TextView
+                        android:id="@+id/fragment_today_heraldofglorytitle_textview"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="15dp"
+                        android:text="HERALD OF GLORY"
+                        android:textStyle="bold"
+                        android:textColor="@color/colorPrimary"
+                        android:textSize="20sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_today_heraldofgloryimage_roundedcornerimageview"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/fragment_today_heraldofglorybody_textview"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:text="Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet Lorem ipsum dolor sit amet "
+                        android:textColor="@color/colorGray"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_today_heraldofgloryimage_roundedcornerimageview"
+                        app:layout_constraintTop_toBottomOf="@+id/fragment_today_heraldofglorytitle_textview"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <ImageView
+                        android:id="@+id/fragment_today_heraldofgloryplayicon_imageview"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginEnd="2dp"
+                        android:src="@drawable/ic_play_circle_icon"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_today_heraldofgloryimage_roundedcornerimageview"
+                        app:layout_constraintTop_toBottomOf="@+id/fragment_today_heraldofglorybody_textview" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="15dp"
+                        android:orientation="horizontal"
+                        android:background="@drawable/rounded_four_corners_gold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/fragment_today_heraldofgloryplayicon_imageview"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_today_heraldofgloryimage_roundedcornerimageview"
+                        app:layout_constraintTop_toBottomOf="@+id/fragment_today_heraldofglorybody_textview">
+
+                        <TextView
+                            android:id="@+id/fragment_today_heraldofglorylabel_textview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:text="LISTEN TO AUDIO"
+                            android:textColor="@color/colorAccentOpp"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:layout_margin="2dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/fragment_today_audio1holder_constraintlayout"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:elevation="2dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/rounded_four_corners"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_today_heraldofgloryholder_constraintlayout"
+                    app:layout_constraintStart_toEndOf="@+id/fragment_today_vertical_guideline_1"
+                    app:layout_constraintEnd_toStartOf="@+id/fragment_today_vertical_guideline_2"
+                    >
+
+                    <org.christecclesia.pjdigitalpool.Views.CircleImageView
+                        android:id="@+id/fragment_today_audio1image_roundedcornerimageview"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_margin="10dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:src="@drawable/testimg"
+                        />
+
+                    <TextView
+                        android:id="@+id/fragment_today_audio1title_textview"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginEnd="5dp"
+                        android:text="VIDEO TITLE"
+                        android:textColor="@color/colorAccentOpp"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio1image_roundedcornerimageview"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/fragment_today_audio1body_textview"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginEnd="5dp"
+                        android:text="1:35:40"
+                        android:textColor="@color/colorGray"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio1image_roundedcornerimageview"
+                        app:layout_constraintTop_toBottomOf="@+id/fragment_today_audio1title_textview"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <ImageView
+                        android:id="@+id/fragment_today_audio1playicon_imageview"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginEnd="2dp"
+                        android:src="@drawable/ic_play_circle_icon"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio1image_roundedcornerimageview"
+                        app:layout_constraintTop_toBottomOf="@+id/fragment_today_audio1body_textview" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginStart="25dp"
+                        android:background="@drawable/rounded_four_corners_gold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/fragment_today_audio1playicon_imageview"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio1image_roundedcornerimageview"
+                        app:layout_constraintTop_toBottomOf="@+id/fragment_today_audio1body_textview">
+
+                        <TextView
+                            android:id="@+id/fragment_today_audio1label_textview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:text="LATEST MESSAGE"
+                            android:textColor="@color/colorAccentOpp"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:layout_margin="2dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/fragment_today_audio2holder_constraintlayout"
+                    android:layout_width="0dp"
+                    android:layout_height="90dp"
+                    android:elevation="2dp"
+                    android:layout_marginBottom="20dp"
+                    android:layout_marginTop="20dp"
+                    android:background="@drawable/rounded_four_corners"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/fragment_today_audio1holder_constraintlayout"
+                    app:layout_constraintStart_toEndOf="@+id/fragment_today_vertical_guideline_1"
+                    app:layout_constraintEnd_toStartOf="@+id/fragment_today_vertical_guideline_2">
+
+                    <org.christecclesia.pjdigitalpool.Views.CircleImageView
+                        android:id="@+id/fragment_today_audio2image_roundedcornerimageview"
+                        android:layout_width="75dp"
+                        android:layout_height="75dp"
+                        android:layout_margin="10dp"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        android:src="@drawable/testimg"
+                        />
+
+                    <TextView
+                        android:id="@+id/fragment_today_audio2title_textview"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="5dp"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginEnd="5dp"
+                        android:text="VIDEO TITLE"
+                        android:textColor="@color/colorAccentOpp"
+                        android:textSize="18sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio2image_roundedcornerimageview"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/fragment_today_audio2body_textview"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="25dp"
+                        android:layout_marginEnd="5dp"
+                        android:text="1:35:40"
+                        android:textColor="@color/colorGray"
+                        android:textSize="14sp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio2image_roundedcornerimageview"
+                        app:layout_constraintTop_toBottomOf="@+id/fragment_today_audio2title_textview"
+                        app:layout_constraintVertical_bias="0.0" />
+
+                    <ImageView
+                        android:id="@+id/fragment_today_audio2playicon_imageview"
+                        android:layout_width="35dp"
+                        android:layout_height="35dp"
+                        android:layout_marginBottom="5dp"
+                        android:layout_marginEnd="2dp"
+                        android:src="@drawable/ic_play_circle_icon"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintHorizontal_bias="1.0"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio2image_roundedcornerimageview"
+                        app:layout_constraintTop_toBottomOf="@+id/fragment_today_audio2body_textview" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:layout_marginStart="25dp"
+                        android:background="@drawable/rounded_four_corners_gold"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toStartOf="@+id/fragment_today_audio2playicon_imageview"
+                        app:layout_constraintHorizontal_bias="0.0"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio2image_roundedcornerimageview"
+                        app:layout_constraintTop_toBottomOf="@+id/fragment_today_audio2body_textview">
+
+                        <TextView
+                            android:id="@+id/fragment_today_audio2label_textview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp"
+                            android:text="LATEST MESSAGE"
+                            android:textColor="@color/colorAccentOpp"
+                            android:textSize="12sp"
+                            android:textStyle="bold"
+                            android:layout_margin="2dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"/>
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+
+
+    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

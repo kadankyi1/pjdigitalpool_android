@@ -37,6 +37,14 @@ public class Util {
     public static String SHARED_PREF_KEY_USER_EMAIL= "SHARED_PREF_KEY_USER_EMAIL";
     public static String SHARED_PREF_KEY_USER_FLAGGED= "SHARED_PREF_KEY_USER_FLAGGED";
 
+    //MENU ITEMS
+    public static int TODAY_FRAMENT = 0;
+    public static int LIBRARY_FRAMENT = 1;
+    public static int READ_FRAMENT = 2;
+    public static int LIVE_FRAMENT = 3;
+    public static int WITNESS_FRAMENT = 4;
+
+
     public static void show_log_in_console(String title, String description){
         if(ALLOW_LOGGING){
             Log.e(title, description);
