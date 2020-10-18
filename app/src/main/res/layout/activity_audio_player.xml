@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.AudioPlayerActivity"
+    android:background="@color/colorGrayBackground">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/activity_audioplayer_v_guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/activity_audioplayer_v_guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/activity_audioplayer_v_guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.20194647" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/activity_audioplayer_v_guideline4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.80" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/activity_audioplayer_v_guideline5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.1" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/activity_audioplayer_v_guideline6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/activity_audioplayer_h_guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/activity_audioplayer_h_guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/activity_audioplayer_h_guideline3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.6"/>
+
+
+    <ImageView
+        android:id="@+id/activity_audioplayer_backimage_imageview"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="32dp"
+        android:elevation="2dp"
+        android:contentDescription="@string/empty_string"
+        android:src="@drawable/ic_back_arrow_icon"
+        app:layout_constraintStart_toEndOf="@+id/activity_audioplayer_v_guideline1"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+
+    <CheckBox
+        android:id="@+id/activity_audioplayer_favoriteimage_imageview"
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="32dp"
+        android:elevation="2dp"
+        android:background="@drawable/favorite_toggle_drawable"
+        android:button="@null"
+        android:checked="false"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/activity_audioplayer_v_guideline2"
+        app:layout_constraintTop_toTopOf="parent"  />
+
+
+    <org.christecclesia.pjdigitalpool.Views.RoundedCornerImageView
+        android:id="@+id/activity_audioplayer_audioimage_roundedcornerimageview"
+        android:layout_width="250dp"
+        android:layout_height="250dp"
+        android:elevation="3dp"
+        android:src="@drawable/testimg"
+        app:layout_constraintTop_toBottomOf="@+id/activity_audioplayer_h_guideline1"
+        app:layout_constraintBottom_toTopOf="@+id/activity_audioplayer_h_guideline3"
+        app:layout_constraintStart_toEndOf="@+id/activity_audioplayer_v_guideline3"
+        app:layout_constraintEnd_toStartOf="@+id/activity_audioplayer_v_guideline4"/>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/colorPrimary"
+        app:layout_constraintTop_toBottomOf="@+id/activity_audioplayer_h_guideline2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/activity_audioplayer_title_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="AUDIO TITLE"
+        app:layout_constraintTop_toBottomOf="@+id/activity_audioplayer_audioimage_roundedcornerimageview"
+        app:layout_constraintStart_toEndOf="@+id/activity_audioplayer_v_guideline1"
+        app:layout_constraintEnd_toStartOf="@+id/activity_audioplayer_v_guideline2"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/cawOriginalGold"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/activity_audioplayer_uploadtime_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:text="Uploaded 2hr ago"
+        app:layout_constraintTop_toBottomOf="@+id/activity_audioplayer_title_textview"
+        app:layout_constraintStart_toEndOf="@+id/activity_audioplayer_v_guideline1"
+        app:layout_constraintEnd_toStartOf="@+id/activity_audioplayer_v_guideline2"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/cawOriginalGold"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        />
+
+    <TextView
+        android:id="@+id/activity_audioplayer_scrubber_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:text="Audio Player Scrubber Comes Here"
+        app:layout_constraintTop_toBottomOf="@+id/activity_audioplayer_uploadtime_textview"
+        app:layout_constraintStart_toEndOf="@+id/activity_audioplayer_v_guideline1"
+        app:layout_constraintEnd_toStartOf="@+id/activity_audioplayer_v_guideline2"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="@color/colorAccentOpp"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        />
+
+
+    <ImageView
+        android:id="@+id/activity_audioplayer_rewindicon_imageview"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="70dp"
+        android:src="@drawable/ic_rewind_icon"
+        app:layout_constraintTop_toBottomOf="@+id/activity_audioplayer_scrubber_textview"
+        app:layout_constraintStart_toEndOf="@+id/activity_audioplayer_v_guideline5"
+        app:layout_constraintEnd_toStartOf="@+id/activity_audioplayer_playicon_imageview" />
+
+    <CheckBox
+        android:id="@+id/activity_audioplayer_playicon_imageview"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/play_pause_toggle"
+        android:button="@null"
+        android:checked="false"
+        app:layout_constraintTop_toBottomOf="@+id/activity_audioplayer_scrubber_textview"
+        app:layout_constraintStart_toEndOf="@+id/activity_audioplayer_rewindicon_imageview"
+        app:layout_constraintEnd_toStartOf="@+id/activity_audioplayer_forwardicon_imageview" />
+
+
+    <ImageView
+        android:id="@+id/activity_audioplayer_forwardicon_imageview"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="70dp"
+        android:src="@drawable/ic_forward_icon"
+        app:layout_constraintTop_toBottomOf="@+id/activity_audioplayer_scrubber_textview"
+        app:layout_constraintStart_toEndOf="@+id/activity_audioplayer_playicon_imageview"
+        app:layout_constraintEnd_toStartOf="@+id/activity_audioplayer_v_guideline6" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

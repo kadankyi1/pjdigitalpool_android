@@ -1,16 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorGrayBackground"
     tools:context=".Fragments.LibraryFragment">
 
-    <TextView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:text="LIBRARY FRAGMENT" />
+        android:layout_height="wrap_content">
 
-</FrameLayout>
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/fragment_library_v_guideline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.05" />
+
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/fragment_library_v_guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.95" />
+
+        <org.christecclesia.pjdigitalpool.Views.RoundedCornerImageView
+            android:id="@+id/fragment_library_audios_roundedcornerimageview"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="40dp"
+            android:background="@drawable/rounded_four_corners"
+            android:contentDescription="@string/empty_string"
+            android:scaleType="centerCrop"
+            android:src="@drawable/library_audios_option_background"
+            app:layout_constraintStart_toEndOf="@+id/fragment_library_v_guideline1"
+            app:layout_constraintEnd_toEndOf="@+id/fragment_library_v_guideline2"
+            app:layout_constraintTop_toTopOf="parent"
+            />
+
+        <org.christecclesia.pjdigitalpool.Views.RoundedCornerImageView
+            android:id="@+id/fragment_library_videos_roundedcornerimageview"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="40dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/empty_string"
+            android:src="@drawable/library_videos_option_background"
+            app:layout_constraintStart_toEndOf="@+id/fragment_library_v_guideline1"
+            app:layout_constraintEnd_toEndOf="@+id/fragment_library_v_guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_library_audios_roundedcornerimageview"
+            />
+
+        <org.christecclesia.pjdigitalpool.Views.RoundedCornerImageView
+            android:id="@+id/fragment_library_favorites_constraintlayout"
+            android:layout_width="0dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="40dp"
+            android:layout_marginBottom="40dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="@string/empty_string"
+            android:src="@drawable/library_favorites_option_background"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/fragment_library_v_guideline1"
+            app:layout_constraintEnd_toEndOf="@+id/fragment_library_v_guideline2"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_library_videos_roundedcornerimageview"
+            />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

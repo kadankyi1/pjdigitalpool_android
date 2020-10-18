@@ -6,18 +6,18 @@
         android:title="Today" />
     <item
         android:id="@+id/navigation_library"
-        android:icon="@drawable/ic_today_icon"
+        android:icon="@drawable/ic_library_icon"
         android:title="Library" />
     <item
         android:id="@+id/navigation_read"
-        android:icon="@drawable/ic_today_icon"
+        android:icon="@drawable/ic_read_icon"
         android:title="Read"/>
     <item
         android:id="@+id/navigation_live"
-        android:icon="@drawable/ic_today_icon"
+        android:icon="@drawable/ic_live_icon"
         android:title="Live" />
     <item
         android:id="@+id/navigation_witness"
-        android:icon="@drawable/ic_today_icon"
+        android:icon="@drawable/ic_witness_icon"
         android:title="Witness" />
 </menu>

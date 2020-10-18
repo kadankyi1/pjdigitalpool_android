@@ -12,4 +12,9 @@
     <color name="cawOriginalGold">#ff9600</color>
     <color name="colorDotInactive">#7F0495</color>
     <color name="colorDotActive">#440150</color>
+
+    <color name="colorArticleHeraldOfGlory">#fbae17</color>
+    <color name="colorArticleSpecialArticles">#137AB1</color>
+    <color name="colorArticleGloryNews">#4BB325</color>
+    <color name="colorArticleBibleReadingPlan">#FA2546</color>
 </resources>

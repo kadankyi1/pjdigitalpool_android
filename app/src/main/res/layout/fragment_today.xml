@@ -103,9 +103,10 @@
 
                     <org.christecclesia.pjdigitalpool.Views.RoundedCornerImageView
                         android:id="@+id/fragment_today_heraldofgloryimage_roundedcornerimageview"
-                        android:layout_width="115dp"
-                        android:layout_height="115dp"
+                        android:layout_width="110dp"
+                        android:layout_height="110dp"
                         android:layout_margin="10dp"
+                        android:scaleType="centerCrop"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintBottom_toBottomOf="parent"
@@ -198,16 +199,29 @@
                     app:layout_constraintEnd_toStartOf="@+id/fragment_today_vertical_guideline_2"
                     >
 
-                    <org.christecclesia.pjdigitalpool.Views.CircleImageView
-                        android:id="@+id/fragment_today_audio1image_roundedcornerimageview"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fragment_today_audio1imageholder_constraintlayout"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_margin="10dp"
+                        android:background="@drawable/circle_gold_orange_background"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:src="@drawable/testimg"
-                        />
+                        app:layout_constraintBottom_toBottomOf="parent">
+
+                        <org.christecclesia.pjdigitalpool.Views.CircleImageView
+                            android:id="@+id/fragment_today_audio1image_roundedcornerimageview"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
+                            android:scaleType="centerCrop"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:src="@drawable/testimg"
+                            />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
                         android:id="@+id/fragment_today_audio1title_textview"
@@ -220,7 +234,7 @@
                         android:textColor="@color/colorAccentOpp"
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio1image_roundedcornerimageview"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio1imageholder_constraintlayout"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -236,7 +250,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio1image_roundedcornerimageview"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio1imageholder_constraintlayout"
                         app:layout_constraintTop_toBottomOf="@+id/fragment_today_audio1title_textview"
                         app:layout_constraintVertical_bias="0.0" />
 
@@ -250,7 +264,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio1image_roundedcornerimageview"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio1imageholder_constraintlayout"
                         app:layout_constraintTop_toBottomOf="@+id/fragment_today_audio1body_textview" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -262,7 +276,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/fragment_today_audio1playicon_imageview"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio1image_roundedcornerimageview"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio1imageholder_constraintlayout"
                         app:layout_constraintTop_toBottomOf="@+id/fragment_today_audio1body_textview">
 
                         <TextView
@@ -298,17 +312,29 @@
                     app:layout_constraintStart_toEndOf="@+id/fragment_today_vertical_guideline_1"
                     app:layout_constraintEnd_toStartOf="@+id/fragment_today_vertical_guideline_2">
 
-                    <org.christecclesia.pjdigitalpool.Views.CircleImageView
-                        android:id="@+id/fragment_today_audio2image_roundedcornerimageview"
-                        android:layout_width="75dp"
-                        android:layout_height="75dp"
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/fragment_today_audio2imageholder_constraintlayout"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_margin="10dp"
+                        android:background="@drawable/circle_gold_orange_background"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        android:src="@drawable/testimg"
-                        />
+                        app:layout_constraintBottom_toBottomOf="parent">
 
+                        <org.christecclesia.pjdigitalpool.Views.CircleImageView
+                            android:id="@+id/fragment_today_audio2image_roundedcornerimageview"
+                            android:layout_width="72dp"
+                            android:layout_height="72dp"
+                            android:scaleType="centerCrop"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            android:src="@drawable/testimg"
+                            />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
                     <TextView
                         android:id="@+id/fragment_today_audio2title_textview"
                         android:layout_width="0dp"
@@ -320,7 +346,7 @@
                         android:textColor="@color/colorAccentOpp"
                         android:textSize="18sp"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio2image_roundedcornerimageview"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio2imageholder_constraintlayout"
                         app:layout_constraintHorizontal_bias="0.0"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -336,7 +362,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio2image_roundedcornerimageview"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio2imageholder_constraintlayout"
                         app:layout_constraintTop_toBottomOf="@+id/fragment_today_audio2title_textview"
                         app:layout_constraintVertical_bias="0.0" />
 
@@ -350,7 +376,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="1.0"
-                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio2image_roundedcornerimageview"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio2imageholder_constraintlayout"
                         app:layout_constraintTop_toBottomOf="@+id/fragment_today_audio2body_textview" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -362,7 +388,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toStartOf="@+id/fragment_today_audio2playicon_imageview"
                         app:layout_constraintHorizontal_bias="0.0"
-                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio2image_roundedcornerimageview"
+                        app:layout_constraintStart_toEndOf="@+id/fragment_today_audio2imageholder_constraintlayout"
                         app:layout_constraintTop_toBottomOf="@+id/fragment_today_audio2body_textview">
 
                         <TextView
