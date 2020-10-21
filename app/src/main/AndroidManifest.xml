@@ -9,7 +9,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.AudioPlayerActivity"></activity>
+        <activity android:name=".Activities.VideoPlayerActivity"></activity>
+        <activity android:name=".Activities.AudioPlayerActivity" />
         <activity android:name=".Activities.VideosListActivity" />
         <activity android:name=".Activities.AudiosListActivity" />
         <activity android:name=".Activities.ImageArticleActivity" />

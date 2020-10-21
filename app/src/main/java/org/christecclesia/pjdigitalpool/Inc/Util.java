@@ -2,12 +2,23 @@ package org.christecclesia.pjdigitalpool.Inc;
 
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.graphics.drawable.Drawable;
 import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.ProgressBar;
 
+
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 
 import org.christecclesia.pjdigitalpool.R;
 
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -36,6 +47,21 @@ public class Util {
     public static String SHARED_PREF_KEY_USER_PHONE = "SHARED_PREF_KEY_USER_PHONE";
     public static String SHARED_PREF_KEY_USER_EMAIL= "SHARED_PREF_KEY_USER_EMAIL";
     public static String SHARED_PREF_KEY_USER_FLAGGED= "SHARED_PREF_KEY_USER_FLAGGED";
+
+    // RESOURCES
+    public static String SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG_URL = "SHARED_PREF_KEY_TODAY_BANNER_IMG_URL";
+    public static String SHARED_PREF_KEY_TODAY_AUDIO_TRACK_URL = "SHARED_PREF_KEY_TODAY_AUDIO_TRACK_URL";
+    public static String SHARED_PREF_KEY_TODAY_AUDIO_IMG_URL = "SHARED_PREF_KEY_TODAY_AUDIO_IMG_URL";
+    public static String SHARED_PREF_KEY_TODAY_AUDIO_TITLE = "SHARED_PREF_KEY_TODAY_AUDIO_TITLE";
+    public static String SHARED_PREF_KEY_TODAY_AUDIO_BODY = "SHARED_PREF_KEY_TODAY_AUDIO_BODY";
+    public static String SHARED_PREF_KEY_TODAY_VIDEO1_URL = "SHARED_PREF_KEY_TODAY_VIDEO1_URL";
+    public static String SHARED_PREF_KEY_TODAY_VIDEO1_IMG_URL = "SHARED_PREF_KEY_TODAY_VIDEO1_IMG_URL";
+    public static String SHARED_PREF_KEY_TODAY_VIDEO1_TITLE = "SHARED_PREF_KEY_TODAY_VIDEO1_TITLE";
+    public static String SHARED_PREF_KEY_TODAY_VIDEO1_LENGTH = "SHARED_PREF_KEY_TODAY_VIDEO1_LENGTH";
+    public static String SHARED_PREF_KEY_TODAY_VIDEO2_URL = "SHARED_PREF_KEY_TODAY_VIDEO2_URL";
+    public static String SHARED_PREF_KEY_TODAY_VIDEO2_IMG_URL = "SHARED_PREF_KEY_TODAY_VIDEO2_IMG_URL";
+    public static String SHARED_PREF_KEY_TODAY_VIDEO2_TITLE = "SHARED_PREF_KEY_TODAY_VIDEO2_TITLE";
+    public static String SHARED_PREF_KEY_TODAY_VIDEO2_LENGTH = "SHARED_PREF_KEY_TODAY_VIDEO2_LENGTH";
 
     //MENU ITEMS
     public static int TODAY_FRAMENT = 0;
@@ -146,6 +172,36 @@ public class Util {
         editor.commit();
         context = null;
     }
+
+    public static void loadImageView(Context context, String url, ImageView imageView, final ProgressBar progressBar){
+
+        if(context != null && imageView != null){
+            Util.show_log_in_console("loadImageView", "url: " + url);
+            Glide.with(context)
+                    .load(url)
+                    .listener(new RequestListener<Drawable>() {
+                        @Override
+                        public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+                            if(progressBar != null){
+                                progressBar.setVisibility(View.GONE);
+                            }
+                            Util.show_log_in_console("loadImageView", "onLoadFailed: " + e.toString());
+                            return false;
+                        }
+                        @Override
+                        public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                            if(progressBar != null){
+                                progressBar.setVisibility(View.GONE);
+                            }
+                            Util.show_log_in_console("loadImageView", "onResourceReady");
+                            return false;
+                        }
+                    })
+                    .into(imageView);
+            Util.show_log_in_console("loadImageView", "COMPLETED");
+        }
+    }
+
 
 
 

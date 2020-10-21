@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import org.christecclesia.pjdigitalpool.R;
 
-public class AudiosListActivity extends AppCompatActivity {
+public class VideoPlayerActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_audios_list);
+        setContentView(R.layout.activity_video_player);
     }
 }

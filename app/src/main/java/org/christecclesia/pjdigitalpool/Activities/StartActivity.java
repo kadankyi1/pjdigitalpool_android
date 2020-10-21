@@ -53,7 +53,6 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
 
         startActivitySliderAdapter = new StartActivitySliderAdapter(this);
         mSlideViewPager.setAdapter(startActivitySliderAdapter);
-
         mSlideViewPager.setOffscreenPageLimit(0);
 
         mNextBtn.setOnClickListener(this);

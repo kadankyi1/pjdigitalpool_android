@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+import org.christecclesia.pjdigitalpool.R;
+
 public class VideosListActivity extends AppCompatActivity {
 
     @Override

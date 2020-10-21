@@ -33,7 +33,7 @@
 
     <style name="ProgressBarYellow" parent="@style/Widget.AppCompat.ProgressBar">
         <item name="android:backgroundTint">@color/colorAccent</item>
-        <item name="android:indeterminateTint">@color/colorYellowButton</item>
+        <item name="android:indeterminateTint">@color/cawOriginalGold</item>
         <item name="android:minWidth">200dp</item>
     </style>
 
