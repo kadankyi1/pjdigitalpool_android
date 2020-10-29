@@ -1,5 +1,6 @@
 package org.christecclesia.pjdigitalpool.Fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -11,12 +12,15 @@ import android.view.ViewGroup;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import org.christecclesia.pjdigitalpool.Activities.AudioPlayerActivity;
+import org.christecclesia.pjdigitalpool.Activities.MainActivity;
+import org.christecclesia.pjdigitalpool.Activities.VideoPlayerActivity;
 import org.christecclesia.pjdigitalpool.Inc.Util;
 import org.christecclesia.pjdigitalpool.R;
 import org.christecclesia.pjdigitalpool.Views.CircleImageView;
 import org.christecclesia.pjdigitalpool.Views.RoundedCornerImageView;
 
-public class TodayFragment extends Fragment {
+public class TodayFragment extends Fragment implements View.OnClickListener {
 
     private RoundedCornerImageView m_todaybanner_roundedcornerimageview, m_todayaudio_roundedcornerimageview;
     private CircleImageView m_todayvideo1_image_circleimageview, m_todayvideo2_image_circleimageview;
@@ -71,18 +75,33 @@ public class TodayFragment extends Fragment {
         m_todayvideo2_title_textview = view.findViewById(R.id.fragment_today_audio2title_textview);
         m_todayvideo2_length_textview = view.findViewById(R.id.fragment_today_audio2body_textview);
 
+        m_todayaudio_holder_constraintlayout.setOnClickListener(this);
+        m_todayaudio_roundedcornerimageview.setOnClickListener(this);
+        m_todayaudio_title_textview.setOnClickListener(this);
+        m_todayaudio_body_textview.setOnClickListener(this);
+        m_todayvideo1_holder_constraintlayout.setOnClickListener(this);
+        m_todayvideo1_image_circleimageview.setOnClickListener(this);
+        m_todayvideo1_title_textview.setOnClickListener(this);
+        m_todayvideo1_length_textview.setOnClickListener(this);
+        m_todayvideo2_holder_constraintlayout.setOnClickListener(this);
+        m_todayvideo2_image_circleimageview.setOnClickListener(this);
+        m_todayvideo2_title_textview.setOnClickListener(this);
+        m_todayvideo2_length_textview.setOnClickListener(this);
+
         m_welcome_textview.append(" " + Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_USER_FIRST_NAME));
 
-        if(!getActivity().isFinishing()){
+        if(!getActivity().isFinishing() && !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG_URL).equalsIgnoreCase("")){
             Util.loadImageView(getActivity().getApplicationContext(), Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG_URL), m_todaybanner_roundedcornerimageview, m_todaybanner_progressbar);
         }
 
         if(
-                !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_IMG_URL).isEmpty()
+                !getActivity().isFinishing()
+                        && !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_IMG_URL).isEmpty()
                         && !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_IMG_URL).isEmpty()
                         && !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TITLE).isEmpty()
                         && !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_BODY).isEmpty()
         ){
+
             Util.loadImageView(getActivity().getApplicationContext(), Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_IMG_URL), m_todayaudio_roundedcornerimageview, null);
             m_todayaudio_title_textview.setText(Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TITLE));
             m_todayaudio_body_textview.setText(Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_BODY));
@@ -91,7 +110,8 @@ public class TodayFragment extends Fragment {
         }
 
         if(
-                !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO1_URL).isEmpty()
+                !getActivity().isFinishing()
+                        && !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO1_URL).isEmpty()
                         && !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO1_IMG_URL).isEmpty()
                         && !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO1_TITLE).isEmpty()
                         && !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO1_LENGTH).isEmpty()
@@ -104,7 +124,8 @@ public class TodayFragment extends Fragment {
         }
 
         if(
-                !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_URL).isEmpty()
+                !getActivity().isFinishing()
+                        && !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_URL).isEmpty()
                         && !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_IMG_URL).isEmpty()
                         && !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_TITLE).isEmpty()
                         && !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_LENGTH).isEmpty()
@@ -119,5 +140,51 @@ public class TodayFragment extends Fragment {
 
 
         return view;
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(
+                view.getId() == R.id.fragment_today_heraldofgloryholder_constraintlayout
+                        || view.getId() == R.id.fragment_today_heraldofgloryimage_roundedcornerimageview
+                        || view.getId() == R.id.fragment_today_heraldofglorytitle_textview
+                        || view.getId() == R.id.fragment_today_heraldofglorylabel_textview
+                        || view.getId() == R.id.fragment_today_heraldofglorybody_textview
+                        || view.getId() == R.id.fragment_today_heraldofgloryplayicon_imageview){
+            Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_IMG_URL, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_IMG_URL));
+            Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_AUDIO_URL, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TRACK_URL));
+            Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_TITLE, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TITLE));
+            Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_UPLOAD_TIME, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_UPLOAD_TIME));
+            Intent intent = new Intent(getActivity().getApplicationContext(), AudioPlayerActivity.class);
+            startActivity(intent);
+        } else if(
+                view.getId() == R.id.fragment_today_audio1holder_constraintlayout
+                        || view.getId() == R.id.fragment_today_audio1image_roundedcornerimageview
+                        || view.getId() == R.id.fragment_today_audio1title_textview
+                        || view.getId() == R.id.fragment_today_audio1label_textview
+                        || view.getId() == R.id.fragment_today_audio1playicon_imageview
+                        || view.getId() == R.id.fragment_today_audio1playicon_imageview){
+            Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_IMG_URL, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO1_IMG_URL));
+            Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_VIDEO_URL, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO1_URL));
+            Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_TITLE, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO1_TITLE));
+            Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_UPLOAD_TIME, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO1_UPLOAD_TIME));
+            Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_BODY, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO1_BODY));
+            Intent intent = new Intent(getActivity().getApplicationContext(), VideoPlayerActivity.class);
+            startActivity(intent);
+        } else if(
+                view.getId() == R.id.fragment_today_audio2holder_constraintlayout
+                        || view.getId() == R.id.fragment_today_audio2image_roundedcornerimageview
+                        || view.getId() == R.id.fragment_today_audio2title_textview
+                        || view.getId() == R.id.fragment_today_audio2label_textview
+                        || view.getId() == R.id.fragment_today_audio2playicon_imageview
+                        || view.getId() == R.id.fragment_today_audio2playicon_imageview){
+            Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_IMG_URL, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_IMG_URL));
+            Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_VIDEO_URL, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_URL));
+            Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_TITLE, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_TITLE));
+            Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_UPLOAD_TIME, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_UPLOAD_TIME));
+            Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_BODY, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_BODY));
+            Intent intent = new Intent(getActivity().getApplicationContext(), VideoPlayerActivity.class);
+            startActivity(intent);
+        }
     }
 }
