@@ -13,11 +13,14 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.jean.jcplayer.model.JcAudio;
+import com.example.jean.jcplayer.view.JcPlayerView;
 import org.christecclesia.pjdigitalpool.Inc.Util;
 import org.christecclesia.pjdigitalpool.R;
 import org.christecclesia.pjdigitalpool.Views.RoundedCornerImageView;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
 public class AudioPlayerActivity extends AppCompatActivity implements View.OnClickListener {
@@ -30,6 +33,7 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
     private static int oTime =0, sTime =0, eTime =0, fTime = 5000, bTime = 5000;
     private MediaPlayer mPlayer = null;
     private Handler hdlr = new Handler();
+    private JcPlayerView jcplayerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +51,7 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
         m_audio_scruber_seekbar =  findViewById(R.id.activity_audioplayer_scrubber_textview);
         m_start_time_textview =  findViewById(R.id.activity_audioplayer_playtime_textview);
         m_end_time_textview =  findViewById(R.id.activity_audioplayer_endtime_textview);
-
+        jcplayerView = findViewById(R.id.jcplayer);
 
         m_audio_title_textview.setText(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_TITLE));
         m_uploadtime_textview.setText(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_UPLOAD_TIME));
@@ -56,13 +60,21 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
             Util.loadImageView(getApplicationContext(), Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_IMG_URL), m_audio_image_imageview, null);
         }
 
+        if(!this.isFinishing() && !Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_TITLE).equalsIgnoreCase("")){
+            ArrayList<JcAudio> jcAudios = new ArrayList<>();
+            jcAudios.add(JcAudio.createFromURL(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_TITLE),Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_AUDIO_URL)));
+            jcplayerView.initPlaylist(jcAudios, null);
+        } else {
+            Toast.makeText(getApplicationContext(), "Audio not found", Toast.LENGTH_LONG).show();
+        }
+
+
         m_back_imageview.setOnClickListener(this);
         m_favorite_icon.setOnClickListener(this);
         m_audio_image_imageview.setOnClickListener(this);
         m_rewind_icon_imageview.setOnClickListener(this);
         m_play_icon_checkbox.setOnClickListener(this);
         m_forward_icon_imageview.setOnClickListener(this);
-
 
     }
 
