@@ -51,11 +51,12 @@ public class MainActivity extends AppCompatActivity {
 
         /******************************************************************************************************
          *
-         * START PRE-POPULATING THE APP WITH VALUES THAT WILL COME FROM THE SERVER WHEN THE SERVER SIDE IS DONE
+         * BACKGROUND SYNC ITEM FROM SERVER
          *
          ******************************************************************************************************/
         Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG_URL, "https://images.unsplash.com/photo-1499081589563-7c400fcd94e8?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80");
 
+        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TRACK_ID, "100");
         Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TRACK_URL, "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3");
         Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_IMG_URL, "https://images.unsplash.com/photo-1492176273113-2d51f47b23b0?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1000&q=80");
         Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TITLE, "FAITH & HOPE");
@@ -78,7 +79,7 @@ public class MainActivity extends AppCompatActivity {
 
         /******************************************************************************************************
          *
-         * END PRE-POPULATING THE APP WITH VALUES THAT WILL COME FROM THE SERVER WHEN THE SERVER SIDE IS DONE
+         * --- END BACKGROUND SYNC ITEM FROM SERVER
          *
          ******************************************************************************************************/
 

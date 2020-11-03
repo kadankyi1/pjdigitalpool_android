@@ -18,6 +18,10 @@ import com.bumptech.glide.request.target.Target;
 
 import org.christecclesia.pjdigitalpool.R;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -49,6 +53,7 @@ public class Util {
     public static String SHARED_PREF_KEY_USER_FLAGGED= "SHARED_PREF_KEY_USER_FLAGGED";
 
     // AUDIO PLAYER
+    public static String SHARED_PREF_KEY_TODAY_AUDIO_TRACK_ID=  "SHARED_PREF_KEY_TODAY_AUDIO_TRACK_ID";
     public static String SHARED_PREF_KEY_AUDIO_PLAYER_IMG_URL=  "SHARED_PREF_KEY_AUDIO_PLAYER_IMG_URL";
     public static String SHARED_PREF_KEY_AUDIO_PLAYER_AUDIO_URL=  "SHARED_PREF_KEY_AUDIO_PLAYER_AUDIO_URL";
     public static String SHARED_PREF_KEY_AUDIO_PLAYER_TITLE =  "SHARED_PREF_KEY_AUDIO_PLAYER_TITLE";
@@ -90,6 +95,9 @@ public class Util {
     public static int READ_FRAMENT = 2;
     public static int LIVE_FRAMENT = 3;
     public static int WITNESS_FRAMENT = 4;
+
+    //MISCELLNEOUS
+    public static String SHARED_PREF_KEY_FAVORITE_AUDIOS = "SHARED_PREF_KEY_FAVORITE_AUDIOS";
 
 
     public static void show_log_in_console(String title, String description){
@@ -184,6 +192,30 @@ public class Util {
         context = null;
         editor.apply();
     }
+
+    // GET SHARED PREFERENCE STRING
+    public static ArrayList<String> getSharedPreferenceStringSet(Context context, String key) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        Set<String> set = preferences.getStringSet(key, null);
+        if(set == null){
+            return null;
+        }
+        ArrayList<String> array_list=new ArrayList<String>(set);
+        context = null;
+        return array_list;
+    }
+
+    // EDIT SHARED PREFERENCE STRING
+    public static void setSharedPreferenceStringSet(Context context, String key, ArrayList<String> array_list) {
+        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = preferences.edit();
+        Set<String> set = new HashSet<String>();
+        set.addAll(array_list);
+        editor.putStringSet(key, set);
+        editor.apply();
+        context = null;
+    }
+
 
     // CLEAR ALL SHARED PREFERENCE
     public static void deleteAllDataInSharedPreference(Context context){

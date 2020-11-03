@@ -10,13 +10,24 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.VideoPlayerActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"/>
-        <activity android:name=".Activities.AudioPlayerActivity" />
-        <activity android:name=".Activities.VideosListActivity" />
-        <activity android:name=".Activities.AudiosListActivity" />
-        <activity android:name=".Activities.ImageArticleActivity" />
-        <activity android:name=".Activities.SettingsActivity" />
+        <activity
+            android:name=".Activities.VideoPlayerActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode" />
+        <activity android:name=".Activities.AudioPlayerActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+        <activity android:name=".Activities.VideosListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+        <activity android:name=".Activities.AudiosListActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+        <activity android:name=".Activities.ImageArticleActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+        <activity android:name=".Activities.SettingsActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
             android:name=".Activities.MainActivity"
             android:screenOrientation="portrait"
@@ -52,6 +63,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.VIBRATE" />
+
     <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
 </manifest>

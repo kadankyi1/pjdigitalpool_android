@@ -16,6 +16,10 @@
         <item name="android:windowContentOverlay">@null</item>
     </style>
 
+    <style name="myDialog" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
 
     <style name="loginActivityHintStyle" parent="TextAppearance.AppCompat">
         <!-- Hint color and label color in FALSE state -->
