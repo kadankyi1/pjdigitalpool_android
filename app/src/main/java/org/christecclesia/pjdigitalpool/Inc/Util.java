@@ -40,6 +40,7 @@ public class Util {
     public static String LINK_LOGIN = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/member/login";
     public static String LINK_SEND_RESET_CODE = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/member/forgot";
     public static String LINK_RESET_PASSWORD = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/member/reset";
+    public static String LINK_AUDIO_LIST = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/admin/audios/list";
 
 
     //SHARES PREFERENCES
