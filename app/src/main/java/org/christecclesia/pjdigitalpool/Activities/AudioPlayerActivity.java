@@ -58,8 +58,10 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
         m_uploadtime_textview.setText(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_UPLOAD_TIME));
 
         ArrayList<String> favorites = Util.getSharedPreferenceStringSet(getApplicationContext(), Util.SHARED_PREF_KEY_FAVORITE_AUDIOS);
-        if(favorites.contains(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TRACK_ID))){
-            m_favorite_icon.setChecked(true);
+        if(favorites != null){
+            if(favorites.contains(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TRACK_ID))){
+                m_favorite_icon.setChecked(true);
+            }
         }
 
         if(!this.isFinishing() && !Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_IMG_URL).equalsIgnoreCase("")){
@@ -220,7 +222,7 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
     @Override
     public void onBackPressed() {
         if(mPlayer != null){
-            if(mPlayer.isPlaying()){
+            //if(mPlayer.isPlaying()){
                 new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.myDialog))
                         .setTitle("Stop Audio")
                         .setMessage("Use the home if you want to leave the app without stopping audio. Going back will stop the audio track. Continue?")
@@ -238,7 +240,9 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
                         .setNegativeButton(android.R.string.no, null)
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .show();
-            }
+            //}   else {
+                //super.onBackPressed();
+            //}
         } else {
             super.onBackPressed();
         }

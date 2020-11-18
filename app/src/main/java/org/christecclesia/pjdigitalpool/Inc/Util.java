@@ -41,6 +41,9 @@ public class Util {
     public static String LINK_SEND_RESET_CODE = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/member/forgot";
     public static String LINK_RESET_PASSWORD = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/member/reset";
     public static String LINK_AUDIO_LIST = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/admin/audios/list";
+    public static String LINK_VIDEOS_LIST = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/admin/videos/list";
+    public static String LINK_FAVORITES_LIST = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/admin/favorites/list";
+    public static String LINK_ARTICLES_LIST = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/admin/articles/list";
 
 
     //SHARES PREFERENCES
@@ -67,6 +70,12 @@ public class Util {
     public static String SHARED_PREF_KEY_VIDEO_PLAYER_UPLOAD_TIME =  "SHARED_PREF_KEY_VIDEO_PLAYER_UPLOAD_TIME";
     public static String SHARED_PREF_KEY_VIDEO_PLAYER_BODY =  "SHARED_PREF_KEY_VIDEO_PLAYER_BODY";
 
+    // IMAGE ARTICLE
+    public static String SHARED_PREF_KEY_IMAGE_ARTICLE_IMG_URL=  "SHARED_PREF_KEY_IMAGE_ARTICLE_IMG_URL";
+    public static String SHARED_PREF_KEY_IMAGE_ARTICLE_TAG_TEXT=  "SHARED_PREF_KEY_IMAGE_ARTICLE_TAG_TEXT";
+    public static String SHARED_PREF_KEY_IMAGE_ARTICLE_UPLOAD_TIME=  "SHARED_PREF_KEY_IMAGE_ARTICLE_UPLOAD_TIME";
+    public static String SHARED_PREF_KEY_IMAGE_ARTICLE_ARTICLE_TITLE =  "SHARED_PREF_KEY_IMAGE_ARTICLE_ARTICLE_TITLE";
+    public static String SHARED_PREF_KEY_IMAGE_ARTICLE_ARTICLE_BODY =  "SHARED_PREF_KEY_IMAGE_ARTICLE_ARTICLE_BODY";
 
     // RESOURCES
     public static String SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG_URL = "SHARED_PREF_KEY_TODAY_BANNER_IMG_URL";

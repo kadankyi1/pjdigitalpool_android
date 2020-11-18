@@ -4,6 +4,108 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg2"
     tools:context=".Activities.FavoritesListActivity">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/activity_audioslist_guideline_v_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.025" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/activity_audioslist_guideline_v_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.975" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/activity_audioslist_guideline_h_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.01" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/activity_audioslist_guideline_h_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.08" />
+
+        <ImageView
+            android:id="@+id/activity_audioslist_back_imageView"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="16dp"
+            android:tint="@color/colorPrimary"
+            android:src="@drawable/ic_back_arrow_icon"
+            app:layout_constraintBottom_toTopOf="@+id/activity_audioslist_guideline_h_2"
+            app:layout_constraintStart_toEndOf="@+id/activity_audioslist_guideline_v_1"
+            app:layout_constraintTop_toTopOf="@id/activity_audioslist_guideline_h_1" />
+
+        <TextView
+            android:id="@+id/activity_audioslist_title_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="FAVORITES"
+            android:textColor="@color/colorPrimary"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/activity_audioslist_guideline_h_2"
+            app:layout_constraintEnd_toStartOf="@+id/activity_audioslist_guideline_v_2"
+            app:layout_constraintHorizontal_bias="0.4"
+            app:layout_constraintStart_toEndOf="@+id/activity_audioslist_back_imageView"
+            app:layout_constraintTop_toBottomOf="@+id/activity_audioslist_guideline_h_1" />
+
+
+        <androidx.core.widget.ContentLoadingProgressBar
+            android:id="@+id/activity_audioslist_contentloading_progressbar"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            style="@style/ProgressBarYellow"
+            app:layout_constraintTop_toBottomOf="@+id/activity_audioslist_guideline_h_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/activity_audioslist_guideline_v_1"
+            app:layout_constraintEnd_toStartOf="@id/activity_audioslist_guideline_v_2"
+            />
+
+
+        <ImageView
+            android:id="@+id/activity_audioslist_imageview"
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:visibility="invisible"
+            android:src="@drawable/ic_refresh_icon"
+            app:layout_constraintTop_toBottomOf="@+id/activity_audioslist_guideline_h_2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/activity_audioslist_guideline_v_1"
+            app:layout_constraintEnd_toStartOf="@id/activity_audioslist_guideline_v_2"
+            />
+
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/activity_audioslist_recyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="32dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/activity_audioslist_guideline_v_2"
+            app:layout_constraintStart_toEndOf="@+id/activity_audioslist_guideline_v_1"
+            app:layout_constraintTop_toBottomOf="@+id/activity_audioslist_guideline_h_2" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
