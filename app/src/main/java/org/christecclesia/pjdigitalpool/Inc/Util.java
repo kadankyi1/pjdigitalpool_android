@@ -44,6 +44,7 @@ public class Util {
     public static String LINK_VIDEOS_LIST = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/admin/videos/list";
     public static String LINK_FAVORITES_LIST = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/admin/favorites/list";
     public static String LINK_ARTICLES_LIST = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/admin/articles/list";
+    public static String LINK_CONTACT_LIST = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/admin/messages/add";
 
 
     //SHARES PREFERENCES
@@ -108,7 +109,7 @@ public class Util {
 
     //MISCELLNEOUS
     public static String SHARED_PREF_KEY_FAVORITE_AUDIOS = "SHARED_PREF_KEY_FAVORITE_AUDIOS";
-
+    public static String SHARED_PREF_KEY_CONTACT_TYPE = "SHARED_PREF_KEY_CONTACT_TYPE";
 
     public static void show_log_in_console(String title, String description){
         if(ALLOW_LOGGING){

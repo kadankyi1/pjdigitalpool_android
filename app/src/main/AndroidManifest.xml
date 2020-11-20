@@ -10,7 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.FavoritesListActivity"></activity>
+        <activity android:name=".Activities.PartnershipActivity"></activity>
+        <activity android:name=".Activities.ContactActivity" />
+        <activity android:name=".Activities.FavoritesListActivity" />
         <activity
             android:name=".Activities.VideoPlayerActivity"
             android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode" />

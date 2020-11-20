@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorGrayBackground"
+    tools:context=".Activities.ImageArticleActivity">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/activity_imagearticle_v_guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.05" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/activity_imagearticle_v_guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.95" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/activity_imagearticle_h_guideline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_imagearticle_imageholder_constraintlayout"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:elevation="2dp"
+        app:layout_constraintBottom_toTopOf="@+id/activity_imagearticle_h_guideline1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/activity_imagearticle_image_imageview"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/empty_string"
+            android:elevation="2dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/partnership"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <ImageView
+            android:id="@+id/activity_imagearticle_backimage_imageview"
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="32dp"
+            android:contentDescription="@string/empty_string"
+            android:elevation="2dp"
+            android:src="@drawable/ic_back_arrow_icon"
+            android:tint="@color/colorGrayBackground"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/activity_imagearticle_holder"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_four_corners_gold"
+        android:elevation="2dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/activity_imagearticle_v_guideline2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/activity_imagearticle_v_guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/activity_imagearticle_h_guideline1">
+
+        <TextView
+            android:id="@+id/fragment_today_heraldofglorylabel_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            android:text="Mobile Money"
+            android:textColor="@color/colorAccentOpp"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/activity_imagearticle_title_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Number"
+        android:textColor="@color/colorAccentOpp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/activity_imagearticle_holder"
+        app:layout_constraintEnd_toStartOf="@+id/activity_imagearticle_v_guideline2"
+        app:layout_constraintStart_toEndOf="@+id/activity_imagearticle_v_guideline1" />
+
+    <TextView
+        android:id="@+id/activity_imagearticle_body_textview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="10dp"
+        android:text="0244 528 637"
+        android:textColor="@color/colorGray"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/activity_imagearticle_v_guideline1"
+        app:layout_constraintEnd_toStartOf="@+id/activity_imagearticle_v_guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_imagearticle_title_textview" />
+
+
+
+    <TextView
+        android:id="@+id/activity_imagearticle_title_textview2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Name On Account"
+        android:textColor="@color/colorAccentOpp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/activity_imagearticle_body_textview"
+        app:layout_constraintEnd_toStartOf="@+id/activity_imagearticle_v_guideline2"
+        app:layout_constraintStart_toEndOf="@+id/activity_imagearticle_v_guideline1" />
+
+    <TextView
+        android:id="@+id/activity_imagearticle_body_textview2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="10dp"
+        android:text="CHRIST ECCLESIA WORLDWIDE"
+        android:textColor="@color/colorGray"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/activity_imagearticle_v_guideline1"
+        app:layout_constraintEnd_toStartOf="@+id/activity_imagearticle_v_guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/activity_imagearticle_title_textview2" />
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/tag2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:background="@drawable/rounded_four_corners_gold"
+        android:elevation="2dp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toStartOf="@+id/activity_imagearticle_v_guideline2"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/activity_imagearticle_v_guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/activity_imagearticle_body_textview2">
+
+        <TextView
+            android:id="@+id/fragment_today_heraldofglorylabel_textview2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="4dp"
+            android:paddingEnd="10dp"
+            android:paddingStart="10dp"
+            android:text="Bank Deposit / Transfer"
+            android:textColor="@color/colorAccentOpp"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/info2_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Bank Name"
+        android:textColor="@color/colorAccentOpp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/tag2"
+        app:layout_constraintEnd_toStartOf="@+id/activity_imagearticle_v_guideline2"
+        app:layout_constraintStart_toEndOf="@+id/activity_imagearticle_v_guideline1" />
+
+    <TextView
+        android:id="@+id/info2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="10dp"
+        android:text="CAL BANK"
+        android:textColor="@color/colorGray"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/activity_imagearticle_v_guideline1"
+        app:layout_constraintEnd_toStartOf="@+id/activity_imagearticle_v_guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info2_label" />
+
+    <TextView
+        android:id="@+id/info3_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Bank Branch"
+        android:textColor="@color/colorAccentOpp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/info2"
+        app:layout_constraintEnd_toStartOf="@+id/activity_imagearticle_v_guideline2"
+        app:layout_constraintStart_toEndOf="@+id/activity_imagearticle_v_guideline1" />
+
+    <TextView
+        android:id="@+id/info3"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="10dp"
+        android:text="LEGON"
+        android:textColor="@color/colorGray"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/activity_imagearticle_v_guideline1"
+        app:layout_constraintEnd_toStartOf="@+id/activity_imagearticle_v_guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info3_label" />
+
+    <TextView
+        android:id="@+id/info4_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Account Name"
+        android:textColor="@color/colorAccentOpp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/info3"
+        app:layout_constraintEnd_toStartOf="@+id/activity_imagearticle_v_guideline2"
+        app:layout_constraintStart_toEndOf="@+id/activity_imagearticle_v_guideline1" />
+
+    <TextView
+        android:id="@+id/info4"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="10dp"
+        android:text="CAW PARTNERSHIP"
+        android:textColor="@color/colorGray"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/activity_imagearticle_v_guideline1"
+        app:layout_constraintEnd_toStartOf="@+id/activity_imagearticle_v_guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info4_label" />
+
+
+
+    <TextView
+        android:id="@+id/info5_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="Account Number"
+        android:textColor="@color/colorAccentOpp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/info4"
+        app:layout_constraintEnd_toStartOf="@+id/activity_imagearticle_v_guideline2"
+        app:layout_constraintStart_toEndOf="@+id/activity_imagearticle_v_guideline1" />
+
+    <TextView
+        android:id="@+id/info5"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="10dp"
+        android:text="1400 0033 09063 PARTNERSHIP"
+        android:textColor="@color/colorGray"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@+id/activity_imagearticle_v_guideline1"
+        app:layout_constraintEnd_toStartOf="@+id/activity_imagearticle_v_guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/info5_label" />
+
+
+
+    <TextView
+        android:id="@+id/info6_label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="IBAN / Sort Code"
+        android:textColor="@color/colorAccentOpp"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toBottomOf="@+id/info5"
+        app:layout_constraintEnd_toStartOf="@+id/activity_imagearticle_v_guideline2"
+        app:layout_constraintStart_toEndOf="@+id/activity_imagearticle_v_guideline1" />
+
+    <TextView
+        android:id="@+id/info6"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="5dp"
+        android:layout_marginStart="10dp"
+        android:text="I need this info"
+        android:textColor="@color/colorGray"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/activity_imagearticle_v_guideline2"
+        app:layout_constraintStart_toEndOf="@+id/activity_imagearticle_v_guideline1"
+        app:layout_constraintTop_toBottomOf="@+id/info6_label"
+        app:layout_constraintVertical_bias="0.0" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
