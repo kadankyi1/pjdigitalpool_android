@@ -201,6 +201,51 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                                             Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_EMAIL, user_json_object.getString("user_email"));
                                             Util.setSharedPreferenceInt(getApplicationContext(), Util.SHARED_PREF_KEY_USER_FLAGGED, user_json_object.getInt("user_flagged"));
 
+                                            /******************************************************************************************************
+                                             *
+                                             * BACKGROUND SYNC ITEM FROM SERVER
+                                             *
+                                             ******************************************************************************************************/
+
+                                            JSONArray notice = response_json_object.getJSONObject("data").getJSONArray("data");
+                                            final JSONObject k = notice.getJSONObject(0);
+                                            Util.show_log_in_console("LoginDashboard", "notice_image: " + String.valueOf(k.getString("notice_image")));
+
+                                            Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG_URL, k.getString("notice_image"));
+
+                                            JSONArray audio = response_json_object.getJSONObject("audios").getJSONArray("data");
+                                            final JSONObject a = audio.getJSONObject(0);
+                                            Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TRACK_ID, String.valueOf(a.getInt("audio_id")));
+                                            Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TRACK_URL, a.getString("audio_mp3"));
+                                            Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_IMG_URL, a.getString("audio_image"));
+                                            Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TITLE, a.getString("audio_name"));
+                                            Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_BODY, a.getString("audio_description"));
+                                            Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_UPLOAD_TIME, a.getString("created_at"));
+
+                                            JSONArray videos = response_json_object.getJSONObject("videos").getJSONArray("data");
+                                            final JSONObject v = videos.getJSONObject(0);
+                                            Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO1_URL, v.getString("video_mp4"));
+                                            Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO1_IMG_URL, v.getString("video_image"));
+                                            Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO1_TITLE, v.getString("video_name"));
+                                            Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO1_LENGTH, v.getString("created_at"));
+                                            Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO1_UPLOAD_TIME, v.getString("created_at"));
+                                            Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO1_BODY, v.getString("video_description"));
+
+                                            final JSONObject v2 = videos.getJSONObject(1);
+                                            Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_URL, v2.getString("video_mp4"));
+                                            Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_IMG_URL, v2.getString("video_image"));
+                                            Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_TITLE, v2.getString("video_name"));
+                                            Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_LENGTH, v2.getString("created_at"));
+                                            Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_UPLOAD_TIME, v2.getString("created_at"));
+                                            Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_BODY, v2.getString("video_description"));
+
+                                            /******************************************************************************************************
+                                             *
+                                             * --- END BACKGROUND SYNC ITEM FROM SERVER
+                                             *
+                                             ******************************************************************************************************/
+
+
                                             Toast.makeText(getApplicationContext(), "Registration successful", Toast.LENGTH_LONG).show();
                                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);

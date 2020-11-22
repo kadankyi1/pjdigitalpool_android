@@ -1,19 +1,14 @@
-package org.christecclesia.pjdigitalpool.Activities;
+package org.christecclesia.pjdigitalpool.Services;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.widget.ContentLoadingProgressBar;
-
+import android.app.Service;
 import android.content.Intent;
-import android.os.Bundle;
 import android.os.Handler;
+import android.os.IBinder;
 import android.os.Looper;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ScrollView;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.android.volley.AuthFailureError;
 import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -23,94 +18,107 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 import org.christecclesia.pjdigitalpool.Inc.Util;
-import org.christecclesia.pjdigitalpool.R;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
+import java.util.TimerTask;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+/**
+ * Created by zatana on 1/9/19.
+ */
 
-    private EditText m_phone_edittext, m_password_edittext;
-    private Button m_login_button;
-    private TextView m_signup_textview, m_forgotpassword_textview;
-    private ContentLoadingProgressBar m_loggingin_contentloadingprogressbar;
-    private ScrollView m_formholder_scrollview;
+public class UpdateContent extends Service {
+
+    // constant
+    private static final long NOTIFY_INTERVAL = 5 * 60 * 1000; // 5 minutes
+
+    // run on another Thread to avoid crash
+    // timer handling
+    private Timer mTimer = null;
+    private Thread newsFetchThread = null;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-
-        m_formholder_scrollview = findViewById(R.id.loginactivity_formholder_scrollview);
-        m_phone_edittext = findViewById(R.id.loginactivity_textinputedittext_phone);
-        m_password_edittext = findViewById(R.id.loginactivity_textinputedittext_password);
-        m_login_button = findViewById(R.id.loginactivity_button_login);
-        m_loggingin_contentloadingprogressbar = findViewById(R.id.loginactivity_loader_contentloadingprogressbar);
-        m_signup_textview = findViewById(R.id.loginactivity_textview_signup);
-        m_forgotpassword_textview = findViewById(R.id.loginactivity_textview_forgotpassword);
-
-        m_login_button.setOnClickListener(this);
-        m_signup_textview.setOnClickListener(this);
-        m_forgotpassword_textview.setOnClickListener(this);
+    public IBinder onBind(Intent intent) {
+        return null;
     }
 
     @Override
-    public void onClick(View view) {
-        if(view.getId() == m_login_button.getId()){
-            if(!m_phone_edittext.getText().toString().trim().isEmpty()
-                    && !m_password_edittext.getText().toString().trim().isEmpty()){
-                call_sign_in_api(m_phone_edittext.getText().toString().trim(), m_password_edittext.getText().toString().trim());
-            }
-        } else if(view.getId() == m_signup_textview.getId()){
-            onBackPressed();
-        } else if(view.getId() == m_forgotpassword_textview.getId()){
-            Intent intent = new Intent(getApplicationContext(), ResetPasswordActivity.class);
-            overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            startActivity(intent);
+    public int onStartCommand(Intent intent, int flags, int startId){
+        super.onStartCommand(intent, flags, startId);
+        return START_STICKY;
+    }
+
+
+    @Override
+    public void onCreate() {
+        // cancel if already existed
+        if (mTimer != null) {
+            mTimer.cancel();
+        } else {
+            // recreate new
+            mTimer = new Timer();
         }
+
+        newsFetchThread = new Thread(new Runnable() {
+            @Override
+            public void run () {
+                // schedule task
+                mTimer.scheduleAtFixedRate(new TimeDisplayTimerTask(), 0, NOTIFY_INTERVAL);
+            }
+        });
+
+        newsFetchThread.start();
+
     }
 
-    private void call_sign_in_api(final String phone_number, final String password){
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
 
-        if(!this.isFinishing() && getApplicationContext() != null){
-            new Handler(Looper.getMainLooper()).post(new Runnable() {
+    }
+
+    class TimeDisplayTimerTask extends TimerTask {
+
+        @Override
+        public void run() {
+
+            Util.show_log_in_console("UpdateService", "\n run: ");
+            call_api("Bearer " + Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_TOKEN));
+            /*
+            FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
                 @Override
-                public void run() {
-                    m_formholder_scrollview.setVisibility(View.INVISIBLE);
-                    m_loggingin_contentloadingprogressbar.setVisibility(View.VISIBLE);
+                public void onSuccess(InstanceIdResult instanceIdResult) {
+                    updateUserInfo(getApplicationContext(), instanceIdResult.getToken(), LocaleHelper.getLanguage(getApplicationContext()));
                 }
             });
+            */
 
-            Util.show_log_in_console("SignupActivity",
-                    "\n phone_number: " + phone_number
-                    + "\n password: " + password);
+        }
+
+    }
 
 
-            StringRequest stringRequest = new StringRequest(Request.Method.POST, Util.LINK_LOGIN,
+    private void call_api(final String token){
+
+        if(getApplicationContext() != null){
+
+            Util.show_log_in_console("UpdateService", "\n token: " + token);
+
+
+            StringRequest stringRequest = new StringRequest(Request.Method.GET, Util.LINK_UPDATE_INFO,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            Util.show_log_in_console("SignupActivity", "response: " +  response);
-                            if(!LoginActivity.this.isFinishing()){
-                                //if(MyLifecycleHandler.isApplicationVisible() || MyLifecycleHandler.isApplicationInForeground()){
+                            Util.show_log_in_console("UpdateService", "response: " +  response);
+                            if(getApplicationContext() != null){
                                 try {
                                     JSONObject response_json_object = new JSONObject(response);
 
-                                    //Toast.makeText(getApplicationContext(), response_json_object.getString("message"), Toast.LENGTH_LONG).show();
-                                    if(response_json_object.getInt("status") == 1){
-                                        JSONObject user_json_object = response_json_object.getJSONObject("user");
-                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_TOKEN, response_json_object.getString("access_token"));
-                                        Util.setSharedPreferenceInt(getApplicationContext(), Util.SHARED_PREF_KEY_USER_ID, user_json_object.getInt("user_id"));
-                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_FIRST_NAME, user_json_object.getString("user_firstname"));
-                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_LAST_NAME, user_json_object.getString("user_surname"));
-                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_COUNTRY, user_json_object.getString("user_country"));
-                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_PHONE, user_json_object.getString("user_phone_number"));
-                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_EMAIL, user_json_object.getString("user_email"));
-                                        Util.setSharedPreferenceInt(getApplicationContext(), Util.SHARED_PREF_KEY_USER_FLAGGED, user_json_object.getInt("user_flagged"));
-
+                                    if(response_json_object.getString("status").equalsIgnoreCase("success")){
                                         /******************************************************************************************************
                                          *
                                          * BACKGROUND SYNC ITEM FROM SERVER
@@ -119,7 +127,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
                                         JSONArray notice = response_json_object.getJSONObject("data").getJSONArray("data");
                                         final JSONObject k = notice.getJSONObject(0);
-                                        Util.show_log_in_console("LoginDashboard", "notice_image: " + String.valueOf(k.getString("notice_image")));
+                                        Util.show_log_in_console("UpdateContent", "notice_image: " + String.valueOf(k.getString("notice_image")));
 
                                         Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG_URL, k.getString("notice_image"));
 
@@ -155,48 +163,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                          *
                                          ******************************************************************************************************/
 
-                                        Toast.makeText(getApplicationContext(), "Login successful", Toast.LENGTH_LONG).show();
-                                        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                        overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-                                        startActivity(intent);
-                                        finish();
-                                    } else {
-                                        m_loggingin_contentloadingprogressbar.setVisibility(View.INVISIBLE);
-                                        m_formholder_scrollview.setVisibility(View.VISIBLE);
-                                        Toast.makeText(getApplicationContext(), response_json_object.getString("message"), Toast.LENGTH_LONG).show();
                                     }
                                 } catch (JSONException e) {
                                     e.printStackTrace();
-                                    Toast.makeText(getApplicationContext(), "An unexpected error occurred.", Toast.LENGTH_LONG).show();
-                                    m_loggingin_contentloadingprogressbar.setVisibility(View.INVISIBLE);
-                                    m_formholder_scrollview.setVisibility(View.VISIBLE);
+                                    Util.show_log_in_console("UpdateService", "JSONException error");
                                 }
-
-                                //}
                             }
                         }
                     },
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            //Util.show_log_in_console("SignupActivity", "error: " + error.toString());
-                            Toast.makeText(getApplicationContext(), "Check your internet connection and try again", Toast.LENGTH_LONG).show();
-                            m_loggingin_contentloadingprogressbar.setVisibility(View.INVISIBLE);
-                            m_formholder_scrollview.setVisibility(View.VISIBLE);
+                            Util.show_log_in_console("UpdateService", "onErrorResponse error");
                         }
                     }) {
 
-                /*
                 @Override
                 public Map<String, String> getHeaders() throws AuthFailureError {
                     Map<String, String> headers = new HashMap<>();
                     headers.put("Accept", "application/json");
-                    //headers.put("ContentType","multipart/form-data");
+                    headers.put("Authorization", token);
                     //headers.put("ContentType", "application/json");
                     return headers;
                 }
-                 */
 
+
+                /*
                 @Override
                 protected Map<String, String> getParams() {
                     Map<String, String> map = new HashMap<>();
@@ -205,6 +197,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     Util.show_log_in_console("LoginActivity", "Map: " +  map.toString());
                     return map;
                 }
+                 */
             };
             stringRequest.setShouldCache(false);
             stringRequest.setRetryPolicy(new DefaultRetryPolicy(
@@ -216,5 +209,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
             requestQueue.add(stringRequest);
         }
     }
+
 
 }

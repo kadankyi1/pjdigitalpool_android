@@ -45,6 +45,7 @@ public class Util {
     public static String LINK_FAVORITES_LIST = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/admin/favorites/list";
     public static String LINK_ARTICLES_LIST = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/admin/articles/list";
     public static String LINK_CONTACT_LIST = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/admin/messages/add";
+    public static String LINK_UPDATE_INFO = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/admin/today/dasboard";
 
 
     //SHARES PREFERENCES
@@ -266,47 +267,5 @@ public class Util {
         }
     }
 
-
-
-
-    /*
-    public static void openActivity(Activity thisActivity, Class NewActivity, int includeAnimation, int finishActivity, int addData, String dataIndex, String dataValue) {
-        Intent intent = new Intent(thisActivity, NewActivity);
-        if(addData == 1){
-            intent.putExtra(dataIndex, dataValue);
-        }
-
-        if(finishActivity == 1){
-            thisActivity.startActivity(intent);
-            thisActivity.finish();
-            if(includeAnimation == 1){
-                thisActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            } else if(includeAnimation == 2){
-                thisActivity.overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_down);
-            }
-
-        } else if(finishActivity == 2){
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-            thisActivity.startActivity(intent);
-            thisActivity.finish();
-            if(includeAnimation == 1){
-                thisActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            } else if(includeAnimation == 2){
-                thisActivity.overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_down);
-            }
-
-        } else {
-            thisActivity.startActivity(intent);
-            if(includeAnimation == 1){
-                thisActivity.overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
-            } else if(includeAnimation == 2){
-                thisActivity.overridePendingTransition(R.anim.slide_in_up, R.anim.slide_out_down);
-            }
-
-        }
-        thisActivity = null;
-        Config.freeMemory();
-    }
-    */
 
 }

@@ -14,6 +14,7 @@ import android.widget.TextView;
 import org.christecclesia.pjdigitalpool.Adapters.StartActivitySliderAdapter;
 import org.christecclesia.pjdigitalpool.Inc.Util;
 import org.christecclesia.pjdigitalpool.R;
+import org.christecclesia.pjdigitalpool.Services.UpdateContent;
 
 public class StartActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -25,6 +26,9 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        Intent myIntent = new Intent(getApplicationContext(), UpdateContent.class);
+        getApplicationContext().startService(myIntent);
 
         String access_token = Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_TOKEN);
         int user_id = Util.getSharedPreferenceInt(getApplicationContext(), Util.SHARED_PREF_KEY_USER_ID);
