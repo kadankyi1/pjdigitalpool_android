@@ -109,7 +109,7 @@
         android:textColor="@color/colorAccent"
         android:textStyle="bold"
         android:textSize="14sp"
-        android:lineSpacingExtra="3dp"
+        android:lineSpacingExtra="5dp"
         android:fontFamily="@font/minionpro_regular"
         android:text="THAT HE MIGHT PRESENT TO HIMSELF A GLORIOUS CHURCH, NOT HAVING SPORT, OR WRINKLE, OR ANY SUCH THING; BUT THAT IT SHOULD BE HOLY AND WITHOUT BLEMISH \n - EPHESIANS 5: 27"
         app:layout_constraintBottom_toBottomOf="parent"

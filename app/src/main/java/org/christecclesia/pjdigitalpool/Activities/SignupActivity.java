@@ -249,6 +249,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                                             Toast.makeText(getApplicationContext(), "Registration successful", Toast.LENGTH_LONG).show();
                                             Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                                             overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_left);
+                                            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                                             startActivity(intent);
                                             finish();
                                         } else {

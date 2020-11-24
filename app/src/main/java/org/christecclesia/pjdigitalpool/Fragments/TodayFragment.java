@@ -76,17 +76,17 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
         m_todayvideo2_length_textview = view.findViewById(R.id.fragment_today_audio2body_textview);
 
         m_todayaudio_holder_constraintlayout.setOnClickListener(this);
-        m_todayaudio_roundedcornerimageview.setOnClickListener(this);
-        m_todayaudio_title_textview.setOnClickListener(this);
-        m_todayaudio_body_textview.setOnClickListener(this);
+        //m_todayaudio_roundedcornerimageview.setOnClickListener(this);
+        //m_todayaudio_title_textview.setOnClickListener(this);
+        //m_todayaudio_body_textview.setOnClickListener(this);
         m_todayvideo1_holder_constraintlayout.setOnClickListener(this);
-        m_todayvideo1_image_circleimageview.setOnClickListener(this);
-        m_todayvideo1_title_textview.setOnClickListener(this);
-        m_todayvideo1_length_textview.setOnClickListener(this);
+        //m_todayvideo1_image_circleimageview.setOnClickListener(this);
+        //m_todayvideo1_title_textview.setOnClickListener(this);
+        //m_todayvideo1_length_textview.setOnClickListener(this);
         m_todayvideo2_holder_constraintlayout.setOnClickListener(this);
-        m_todayvideo2_image_circleimageview.setOnClickListener(this);
-        m_todayvideo2_title_textview.setOnClickListener(this);
-        m_todayvideo2_length_textview.setOnClickListener(this);
+        //m_todayvideo2_image_circleimageview.setOnClickListener(this);
+        //m_todayvideo2_title_textview.setOnClickListener(this);
+        //m_todayvideo2_length_textview.setOnClickListener(this);
 
         m_welcome_textview.append(" " + Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_USER_FIRST_NAME));
 
@@ -145,12 +145,7 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
     @Override
     public void onClick(View view) {
         if(
-                view.getId() == R.id.fragment_today_heraldofgloryholder_constraintlayout
-                        || view.getId() == R.id.fragment_today_heraldofgloryimage_roundedcornerimageview
-                        || view.getId() == R.id.fragment_today_heraldofglorytitle_textview
-                        || view.getId() == R.id.fragment_today_heraldofglorylabel_textview
-                        || view.getId() == R.id.fragment_today_heraldofglorybody_textview
-                        || view.getId() == R.id.fragment_today_heraldofgloryplayicon_imageview){
+                view.getId() == R.id.fragment_today_heraldofgloryholder_constraintlayout){
             Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TRACK_ID, Util.getSharedPreferenceString(getActivity().getApplicationContext(), "2"));
             Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_IMG_URL, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_IMG_URL));
             Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_AUDIO_URL, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TRACK_URL));
@@ -159,12 +154,7 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
             Intent intent = new Intent(getActivity().getApplicationContext(), AudioPlayerActivity.class);
             startActivity(intent);
         } else if(
-                view.getId() == R.id.fragment_today_audio1holder_constraintlayout
-                        || view.getId() == R.id.fragment_today_audio1image_roundedcornerimageview
-                        || view.getId() == R.id.fragment_today_audio1title_textview
-                        || view.getId() == R.id.fragment_today_audio1label_textview
-                        || view.getId() == R.id.fragment_today_audio1playicon_imageview
-                        || view.getId() == R.id.fragment_today_audio1playicon_imageview){
+                view.getId() == R.id.fragment_today_audio1holder_constraintlayout){
             Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_IMG_URL, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO1_IMG_URL));
             Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_VIDEO_URL, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO1_URL));
             Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_TITLE, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO1_TITLE));
@@ -173,12 +163,7 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
             Intent intent = new Intent(getActivity().getApplicationContext(), VideoPlayerActivity.class);
             startActivity(intent);
         } else if(
-                view.getId() == R.id.fragment_today_audio2holder_constraintlayout
-                        || view.getId() == R.id.fragment_today_audio2image_roundedcornerimageview
-                        || view.getId() == R.id.fragment_today_audio2title_textview
-                        || view.getId() == R.id.fragment_today_audio2label_textview
-                        || view.getId() == R.id.fragment_today_audio2playicon_imageview
-                        || view.getId() == R.id.fragment_today_audio2playicon_imageview){
+                view.getId() == R.id.fragment_today_audio2holder_constraintlayout){
             Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_IMG_URL, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_IMG_URL));
             Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_VIDEO_URL, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_URL));
             Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_TITLE, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_TITLE));

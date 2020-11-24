@@ -168,7 +168,7 @@ public class ReadFragment extends Fragment implements View.OnClickListener {
 
         public class ArticleViewHolder extends RecyclerView.ViewHolder  {
             private ConstraintLayout m_parent_holder_constraintlayout, m_tag_holder_constraintlayout;
-            private RoundedCornerImageView m_audio_image;
+            private ImageView m_audio_image;
             private TextView m_title_textview, m_body_textview, m_tag_textview;
 
             private View.OnClickListener innerClickListener = new View.OnClickListener() {
@@ -225,21 +225,13 @@ public class ReadFragment extends Fragment implements View.OnClickListener {
             ((ArticleViewHolder) holder).m_tag_textview.setText(ArticleListDataGenerator.getAllData().get(position).getArticle_type());
 
             if(ArticleListDataGenerator.getAllData().get(position).getArticle_type().equalsIgnoreCase("HERALD OF GLORY")){
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    ((ArticleViewHolder) holder).m_tag_holder_constraintlayout.setBackgroundColor(getActivity().getResources().getColor(R.color.colorArticleHeraldOfGlory, null));
-                }
+                ((ArticleViewHolder) holder).m_tag_holder_constraintlayout.setBackground(getActivity().getResources().getDrawable(R.drawable.rounded_four_corners_gold, null));
             } else if(ArticleListDataGenerator.getAllData().get(position).getArticle_type().equalsIgnoreCase("SPECIAL ARTICLE")){
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    ((ArticleViewHolder) holder).m_tag_holder_constraintlayout.setBackgroundColor(getActivity().getResources().getColor(R.color.colorArticleSpecialArticles, null));
-                }
+                ((ArticleViewHolder) holder).m_tag_holder_constraintlayout.setBackground(getActivity().getResources().getDrawable(R.drawable.rounded_corners_specialarticle, null));
             } else if(ArticleListDataGenerator.getAllData().get(position).getArticle_type().equalsIgnoreCase("GLORY NEWS")){
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    ((ArticleViewHolder) holder).m_tag_holder_constraintlayout.setBackgroundColor(getActivity().getResources().getColor(R.color.colorArticleGloryNews, null));
-                }
+                ((ArticleViewHolder) holder).m_tag_holder_constraintlayout.setBackground(getActivity().getResources().getDrawable(R.drawable.rounded_corners_glorynews, null));
             } else if(ArticleListDataGenerator.getAllData().get(position).getArticle_type().equalsIgnoreCase("BIBLE READING PLAN")){
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                    ((ArticleViewHolder) holder).m_tag_holder_constraintlayout.setBackgroundColor(getActivity().getResources().getColor(R.color.colorArticleBibleReadingPlan, null));
-                }
+                ((ArticleViewHolder) holder).m_tag_holder_constraintlayout.setBackground(getActivity().getResources().getDrawable(R.drawable.rounded_corners_bible_reading, null));
             }
 
         }
