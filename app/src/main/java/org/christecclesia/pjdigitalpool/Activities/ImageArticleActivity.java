@@ -31,21 +31,14 @@ public class ImageArticleActivity extends AppCompatActivity implements View.OnCl
         m_article_body =  findViewById(R.id.activity_imagearticle_body_textview);
 
         if(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_IMAGE_ARTICLE_TAG_TEXT).trim().equalsIgnoreCase("HERALD OF GLORY")){
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                m_tag_holder_constraintlayout.setBackgroundColor(getResources().getColor(R.color.colorArticleHeraldOfGlory, null));
-            }
+
+            m_tag_holder_constraintlayout.setBackground(getDrawable(R.drawable.rounded_four_corners_gold));
         } else if(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_IMAGE_ARTICLE_TAG_TEXT).trim().equalsIgnoreCase("SPECIAL ARTICLE")){
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                m_tag_holder_constraintlayout.setBackgroundColor(getResources().getColor(R.color.colorArticleSpecialArticles, null));
-            }
+            m_tag_holder_constraintlayout.setBackground(getDrawable(R.drawable.rounded_corners_specialarticle));
         } else if(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_IMAGE_ARTICLE_TAG_TEXT).trim().equalsIgnoreCase("GLORY NEWS")){
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                m_tag_holder_constraintlayout.setBackgroundColor(getResources().getColor(R.color.colorArticleGloryNews, null));
-            }
+            m_tag_holder_constraintlayout.setBackground(getDrawable(R.drawable.rounded_corners_glorynews));
         } else if(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_IMAGE_ARTICLE_TAG_TEXT).trim().equalsIgnoreCase("BIBLE READING PLAN")){
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-                m_tag_holder_constraintlayout.setBackgroundColor(getResources().getColor(R.color.colorArticleBibleReadingPlan, null));
-            }
+            m_tag_holder_constraintlayout.setBackground(getDrawable(R.drawable.rounded_corners_bible_reading));
         }
         m_article_date.setText(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_IMAGE_ARTICLE_UPLOAD_TIME).trim());
         m_article_title.setText(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_IMAGE_ARTICLE_ARTICLE_TITLE).trim());

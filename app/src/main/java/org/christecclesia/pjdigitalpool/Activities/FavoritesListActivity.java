@@ -72,24 +72,6 @@ public class FavoritesListActivity extends AppCompatActivity  implements View.On
             error = 1;
         }
 
-        if(error == 1){
-            new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.myDialog))
-                    .setTitle("Oops")
-                    .setMessage("You have not set any favorites")
-
-                    // Specifying a listener allows you to take an action before dismissing the dialog.
-                    // The dialog is automatically dismissed when a dialog button is clicked.
-                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            finish();
-                        }
-                    })
-
-                    // A null listener allows the button to dismiss the dialog and take no further action.
-                    .setNegativeButton(android.R.string.no, null)
-                    .setIcon(android.R.drawable.ic_dialog_alert)
-                    .show();
-        }
 
         m_linearlayoutmanager = new LinearLayoutManager(FavoritesListActivity.this);
 
@@ -100,14 +82,35 @@ public class FavoritesListActivity extends AppCompatActivity  implements View.On
         m_recyclerview.setLayoutManager(m_linearlayoutmanager);
         m_recyclerview.setAdapter(new RecyclerViewAdapter());
 
-        network_thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                call_audio_list_api("Bearer " + Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_TOKEN));
-            }
-        });
-        network_thread.start();
+        if(error == 1){
+            AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.myDialog))
+                    .setTitle("Oops")
+                    .setMessage("You have not set any favorites")
 
+                    // Specifying a listener allows you to take an action before dismissing the dialog.
+                    // The dialog is automatically dismissed when a dialog button is clicked.
+                    .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+                    })
+                    // A null listener allows the button to dismiss the dialog and take no further action.
+                    //.setNegativeButton(android.R.string.no, null)
+                    .setIcon(android.R.drawable.ic_dialog_alert)
+                    .setCancelable(false);
+
+            AlertDialog dialog = alertDialogBuilder.show();
+            dialog.setCanceledOnTouchOutside(false);
+        } else {
+            network_thread = new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    call_audio_list_api("Bearer " + Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_TOKEN));
+                }
+            });
+            network_thread.start();
+
+        }
         m_reload_imageview.setOnClickListener(this);
         m_back_imageview.setOnClickListener(this);
     }
