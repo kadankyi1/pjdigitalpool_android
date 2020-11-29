@@ -78,6 +78,7 @@
         android:layout_marginTop="32dp"
         android:elevation="2dp"
         android:contentDescription="@string/empty_string"
+        android:tint="@color/colorBlueInLoggedSpace"
         android:src="@drawable/ic_back_arrow_icon"
         app:layout_constraintStart_toEndOf="@+id/activity_audioplayer_v_guideline1"
         app:layout_constraintTop_toTopOf="parent" />
@@ -103,7 +104,7 @@
         android:id="@+id/activity_audioplayer_audioimage_roundedcornerimageview"
         android:layout_width="220dp"
         android:layout_height="220dp"
-        android:elevation="3dp"
+        android:elevation="6dp"
         android:scaleType="centerCrop"
         android:src="@drawable/audio_icon"
         app:layout_constraintTop_toBottomOf="@+id/activity_audioplayer_h_guideline1"
@@ -114,7 +115,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorBlueInLoggedSpace"
         app:layout_constraintTop_toBottomOf="@+id/activity_audioplayer_h_guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -126,14 +127,14 @@
         android:id="@+id/activity_audioplayer_title_textview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="25dp"
         android:text="AUDIO TITLE"
         app:layout_constraintTop_toBottomOf="@+id/activity_audioplayer_audioimage_roundedcornerimageview"
         app:layout_constraintStart_toEndOf="@+id/activity_audioplayer_v_guideline1"
         app:layout_constraintEnd_toStartOf="@+id/activity_audioplayer_v_guideline2"
         android:gravity="center"
         android:textAlignment="center"
-        android:textColor="@color/cawOriginalGold"
+        android:textColor="@color/colorYellowText"
         android:textSize="20sp"
         android:textStyle="bold"
         />
@@ -149,9 +150,8 @@
         app:layout_constraintEnd_toStartOf="@+id/activity_audioplayer_v_guideline2"
         android:gravity="center"
         android:textAlignment="center"
-        android:textColor="@color/cawOriginalGold"
-        android:textSize="15sp"
-        android:textStyle="bold"
+        android:textColor="@color/colorYellowText"
+        android:textSize="12sp"
         />
 
 
@@ -165,7 +165,7 @@
         app:layout_constraintEnd_toStartOf="@+id/activity_audioplayer_v_guideline3"
         android:gravity="center"
         android:textAlignment="center"
-        android:textColor="@color/cawOriginalGold"
+        android:textColor="@color/colorYellowText"
         android:textSize="15sp"
         android:textStyle="bold"
         />
@@ -176,8 +176,9 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
-        android:outlineSpotShadowColor="@color/cawOriginalGold"
-        android:outlineAmbientShadowColor="@color/cawOriginalGold"
+        android:progressBackgroundTint="@color/colorAccent"
+        android:progressTint="@color/colorYellowButton"
+        android:thumbTint="@color/colorYellowButton"
         app:layout_constraintTop_toBottomOf="@+id/activity_audioplayer_uploadtime_textview"
         app:layout_constraintStart_toEndOf="@+id/activity_audioplayer_v_guideline3"
         app:layout_constraintEnd_toStartOf="@+id/activity_audioplayer_v_guideline4" />
@@ -193,29 +194,28 @@
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center"
         android:textAlignment="center"
-        android:textColor="@color/cawOriginalGold"
-        android:textSize="15sp"
+        android:textColor="@color/colorYellowText"
         android:textStyle="bold"
         />
 
 
     <ImageView
         android:id="@+id/activity_audioplayer_rewindicon_imageview"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="70dp"
-        android:src="@drawable/ic_rewind_icon"
+        android:src="@drawable/ic_audio_rewind_icon"
         app:layout_constraintTop_toBottomOf="@+id/activity_audioplayer_scrubber_textview"
         app:layout_constraintStart_toEndOf="@+id/activity_audioplayer_v_guideline5"
         app:layout_constraintEnd_toStartOf="@+id/activity_audioplayer_playicon_imageview" />
 
     <CheckBox
         android:id="@+id/activity_audioplayer_playicon_imageview"
-        android:layout_width="45dp"
-        android:layout_height="45dp"
+        android:layout_width="65dp"
+        android:layout_height="65dp"
         android:layout_marginEnd="10dp"
-        android:layout_marginTop="65dp"
+        android:layout_marginTop="55dp"
         android:background="@drawable/play_pause_toggle"
         android:button="@null"
         android:checked="false"
@@ -226,11 +226,11 @@
 
     <ImageView
         android:id="@+id/activity_audioplayer_forwardicon_imageview"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
         android:layout_marginEnd="10dp"
         android:layout_marginTop="70dp"
-        android:src="@drawable/ic_forward_icon"
+        android:src="@drawable/ic_audio_forward_icon"
         app:layout_constraintTop_toBottomOf="@+id/activity_audioplayer_scrubber_textview"
         app:layout_constraintStart_toEndOf="@+id/activity_audioplayer_playicon_imageview"
         app:layout_constraintEnd_toStartOf="@+id/activity_audioplayer_v_guideline6" />

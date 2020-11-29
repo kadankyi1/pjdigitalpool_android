@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 
         mFragmentsHolderViewPager = findViewById(R.id.activity_main_viewpager);
         bottomNavigation = findViewById(R.id.bottom_navigation);
+
         bottomNavigation.setOnNavigationItemSelectedListener(navigationItemSelectedListener);
         bottomNavigation.setSelectedItemId(R.id.navigation_today);
 

@@ -46,6 +46,8 @@ public class Util {
     public static String LINK_ARTICLES_LIST = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/admin/articles/list";
     public static String LINK_CONTACT_LIST = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/admin/messages/add";
     public static String LINK_UPDATE_INFO = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/admin/today/dasboard";
+    public static String LINK_GENERATE_TRANSACTION_ID = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/admin/payment/idmaker";
+    public static String LINK_UPDATE_TRANSACTION_STATUS = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/admin/payment/update";
 
 
     //SHARES PREFERENCES

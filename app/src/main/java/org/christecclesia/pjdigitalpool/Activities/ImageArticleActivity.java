@@ -3,7 +3,6 @@ package org.christecclesia.pjdigitalpool.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
-import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
@@ -31,8 +30,7 @@ public class ImageArticleActivity extends AppCompatActivity implements View.OnCl
         m_article_body =  findViewById(R.id.activity_imagearticle_body_textview);
 
         if(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_IMAGE_ARTICLE_TAG_TEXT).trim().equalsIgnoreCase("HERALD OF GLORY")){
-
-            m_tag_holder_constraintlayout.setBackground(getDrawable(R.drawable.rounded_four_corners_gold));
+            m_tag_holder_constraintlayout.setBackground(getDrawable(R.drawable.curved_bottom_left_corners_gold));
         } else if(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_IMAGE_ARTICLE_TAG_TEXT).trim().equalsIgnoreCase("SPECIAL ARTICLE")){
             m_tag_holder_constraintlayout.setBackground(getDrawable(R.drawable.rounded_corners_specialarticle));
         } else if(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_IMAGE_ARTICLE_TAG_TEXT).trim().equalsIgnoreCase("GLORY NEWS")){

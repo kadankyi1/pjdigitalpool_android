@@ -90,7 +90,7 @@
             app:layout_constraintEnd_toStartOf="@+id/activity_videoplayer_v_guideline2"
             android:gravity="start"
             android:textAlignment="textStart"
-            android:textColor="@color/cawOriginalGold"
+            android:textColor="@color/colorYellowText"
             android:textSize="20sp"
             android:textStyle="bold"
             />
@@ -106,7 +106,7 @@
             app:layout_constraintEnd_toStartOf="@+id/activity_videoplayer_v_guideline2"
             android:gravity="start"
             android:textAlignment="textStart"
-            android:textColor="@color/cawOriginalGold"
+            android:textColor="@color/colorYellowText"
             android:textSize="12sp"
             android:textStyle="italic"
             />

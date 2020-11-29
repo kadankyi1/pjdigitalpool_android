@@ -34,6 +34,7 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
     private SeekBar m_audio_scruber_seekbar;
     private static int oTime =0, sTime =0, eTime =0, fTime = 5000, bTime = 5000;
     private MediaPlayer mPlayer = null;
+    private Boolean player_started = false;
     private Handler hdlr = new Handler();
     private Thread audio_thread = null;
 
@@ -153,7 +154,10 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
                             });
                         }
                     } else {
-                        playOnlineAudio(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_AUDIO_URL));
+                        if(player_started  == false){
+                            player_started = true;
+                            playOnlineAudio(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_AUDIO_URL));
+                        }
                     }
                 }
             });
@@ -167,38 +171,42 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
 
     private void playOnlineAudio(String url)
     {
-        mPlayer = new MediaPlayer();
-        mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-        try {
-            mPlayer.setDataSource(url);
-            mPlayer.prepare(); // might take long! (for buffering, etc)
-            mPlayer.start();
-            eTime = mPlayer.getDuration();
-            sTime = mPlayer.getCurrentPosition();
-            if(oTime == 0){
-                m_audio_scruber_seekbar.setMax(eTime);
-                oTime =1;
+        if(mPlayer == null && player_started == false){
+            player_started = true;
+            mPlayer = new MediaPlayer();
+            mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+            try {
+                mPlayer.setDataSource(url);
+                mPlayer.prepare(); // might take long! (for buffering, etc)
+                mPlayer.start();
+                eTime = mPlayer.getDuration();
+                sTime = mPlayer.getCurrentPosition();
+                if(oTime == 0){
+                    m_audio_scruber_seekbar.setMax(eTime);
+                    oTime =1;
+                }
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        m_end_time_textview.setText(String.format("%d:%d", TimeUnit.MILLISECONDS.toMinutes(eTime),
+                                TimeUnit.MILLISECONDS.toSeconds(eTime) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS. toMinutes(eTime))) );
+                        m_start_time_textview.setText(String.format("%d:%d", TimeUnit.MILLISECONDS.toMinutes(sTime),
+                                TimeUnit.MILLISECONDS.toSeconds(sTime) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS. toMinutes(sTime))) );
+                        m_audio_scruber_seekbar.setProgress(sTime);
+                    }
+                });
+                hdlr.postDelayed(UpdateSongTime, 100);
+            } catch (IOException e) {
+                e.printStackTrace();
+                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                    @Override
+                    public void run() {
+                        m_play_icon_checkbox.setChecked(false);
+                        player_started = false;
+                        Toast.makeText(getApplicationContext(), "Audio Player Error", Toast.LENGTH_LONG).show();
+                    }
+                });
             }
-            new Handler(Looper.getMainLooper()).post(new Runnable() {
-                @Override
-                public void run() {
-                    m_end_time_textview.setText(String.format("%d:%d", TimeUnit.MILLISECONDS.toMinutes(eTime),
-                            TimeUnit.MILLISECONDS.toSeconds(eTime) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS. toMinutes(eTime))) );
-                    m_start_time_textview.setText(String.format("%d:%d", TimeUnit.MILLISECONDS.toMinutes(sTime),
-                            TimeUnit.MILLISECONDS.toSeconds(sTime) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS. toMinutes(sTime))) );
-                    m_audio_scruber_seekbar.setProgress(sTime);
-                }
-            });
-            hdlr.postDelayed(UpdateSongTime, 100);
-        } catch (IOException e) {
-            e.printStackTrace();
-            new Handler(Looper.getMainLooper()).post(new Runnable() {
-                @Override
-                public void run() {
-                    m_play_icon_checkbox.setChecked(false);
-                    Toast.makeText(getApplicationContext(), "Audio Player Error", Toast.LENGTH_LONG).show();
-                }
-            });
         }
     }
 

@@ -1,7 +1,6 @@
 package org.christecclesia.pjdigitalpool.Fragments;
 
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -34,7 +33,6 @@ import org.christecclesia.pjdigitalpool.Inc.Util;
 import org.christecclesia.pjdigitalpool.ListDataGenerators.ArticleListDataGenerator;
 import org.christecclesia.pjdigitalpool.Models.ArticleModel;
 import org.christecclesia.pjdigitalpool.R;
-import org.christecclesia.pjdigitalpool.Views.RoundedCornerImageView;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -216,8 +214,8 @@ public class ReadFragment extends Fragment implements View.OnClickListener {
                 ((ArticleViewHolder) holder).m_title_textview.setText(ArticleListDataGenerator.getAllData().get(position).getArticle_title());
             }
 
-            if(ArticleListDataGenerator.getAllData().get(position).getArticle_body().length() > 80){
-                ((ArticleViewHolder) holder).m_body_textview.setText(ArticleListDataGenerator.getAllData().get(position).getArticle_body().substring(0, 65).trim() + "...");
+            if(ArticleListDataGenerator.getAllData().get(position).getArticle_body().length() > 85){
+                ((ArticleViewHolder) holder).m_body_textview.setText(ArticleListDataGenerator.getAllData().get(position).getArticle_body().substring(0, 84).trim() + "...");
             } else {
                 ((ArticleViewHolder) holder).m_body_textview.setText(ArticleListDataGenerator.getAllData().get(position).getArticle_body());
             }
@@ -225,7 +223,7 @@ public class ReadFragment extends Fragment implements View.OnClickListener {
             ((ArticleViewHolder) holder).m_tag_textview.setText(ArticleListDataGenerator.getAllData().get(position).getArticle_type());
 
             if(ArticleListDataGenerator.getAllData().get(position).getArticle_type().equalsIgnoreCase("HERALD OF GLORY")){
-                ((ArticleViewHolder) holder).m_tag_holder_constraintlayout.setBackground(getActivity().getResources().getDrawable(R.drawable.rounded_four_corners_gold, null));
+                ((ArticleViewHolder) holder).m_tag_holder_constraintlayout.setBackground(getActivity().getResources().getDrawable(R.drawable.curved_bottom_left_corners_gold, null));
             } else if(ArticleListDataGenerator.getAllData().get(position).getArticle_type().equalsIgnoreCase("SPECIAL ARTICLE")){
                 ((ArticleViewHolder) holder).m_tag_holder_constraintlayout.setBackground(getActivity().getResources().getDrawable(R.drawable.rounded_corners_specialarticle, null));
             } else if(ArticleListDataGenerator.getAllData().get(position).getArticle_type().equalsIgnoreCase("GLORY NEWS")){

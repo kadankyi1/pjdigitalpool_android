@@ -29,7 +29,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.2" />
+        app:layout_constraintGuide_percent="0.25" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/activity_imagearticle_imageholder_constraintlayout"
@@ -57,284 +57,106 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ScrollView
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+    <androidx.core.widget.ContentLoadingProgressBar
+        android:id="@+id/contactactivity_contentloading_progressbar"
+        android:layout_width="35dp"
+        android:layout_height="35dp"
+        android:visibility="gone"
+        style="@style/ProgressBarYellow"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/activity_imagearticle_v_guideline2"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/activity_imagearticle_v_guideline1"
-        app:layout_constraintTop_toBottomOf="@+id/activity_imagearticle_h_guideline1">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:id="@+id/second_parent_holder"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/activity_imagearticle_v_guideline2"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/activity_imagearticle_v_guideline1"
+            app:layout_constraintTop_toBottomOf="@+id/activity_imagearticle_h_guideline1">
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/activity_inner1_h_guideline1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.1" />
 
             <TextView
                 android:id="@+id/activity_imagearticle_title_textview"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
-                android:text="Number"
+                android:text="Amount (GHS)"
                 android:textColor="@color/colorAccentOpp"
                 android:textSize="13sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_imagearticle_holder" />
+                app:layout_constraintTop_toBottomOf="@+id/activity_inner1_h_guideline1" />
 
-            <TextView
-                android:id="@+id/activity_imagearticle_body_textview"
+
+            <EditText
+                android:id="@+id/amt_edittext"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_marginStart="10dp"
-                android:text="0244 528 637"
-                android:textColor="@color/colorGray"
-                android:textSize="17sp"
-                android:textStyle="bold"
+                android:hint="Amount"
+                android:digits="0123456789"
+                android:gravity="start|top"
+                android:layout_marginTop="10dp"
+                android:inputType="number"
+                android:textCursorDrawable="@null"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_imagearticle_title_textview" />
+                app:layout_constraintTop_toBottomOf="@+id/activity_imagearticle_title_textview"/>
+
 
             <TextView
-                android:id="@+id/activity_imagearticle_title_textview2"
+                android:id="@+id/msg_textview"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
                 android:layout_marginTop="20dp"
-                android:text="Account Name"
+                android:text="Reason"
                 android:textColor="@color/colorAccentOpp"
                 android:textSize="13sp"
                 android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_imagearticle_body_textview" />
+                app:layout_constraintTop_toBottomOf="@+id/amt_edittext" />
 
-
-            <TextView
-                android:id="@+id/activity_imagearticle_body_textview2"
+            <EditText
+                android:id="@+id/message_edittext"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_marginStart="10dp"
-                android:text="CHRIST ECCLESIA WORLDWIDE"
-                android:textColor="@color/colorGray"
-                android:textSize="15sp"
-                android:textStyle="bold"
+                android:layout_height="100dp"
+                android:hint="Reason (Optional)"
+                android:gravity="start|top"
+                android:layout_marginTop="10dp"
+                android:inputType="text"
+                android:textCursorDrawable="@null"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_imagearticle_title_textview2" />
-
-            <TextView
-                android:id="@+id/info2_label"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:text="Bank Name"
-                android:textColor="@color/colorAccentOpp"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tag2" />
+                app:layout_constraintTop_toBottomOf="@+id/msg_textview"/>
 
 
-            <TextView
-                android:id="@+id/info2"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_marginStart="10dp"
-                android:text="CAL BANK"
-                android:textColor="@color/colorGray"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/info2_label" />
-
-            <TextView
-                android:id="@+id/info3_label"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:text="Bank Branch"
-                android:textColor="@color/colorAccentOpp"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/info2" />
-
-            <TextView
-                android:id="@+id/info3"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_marginStart="10dp"
-                android:text="LEGON"
-                android:textColor="@color/colorGray"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/info3_label" />
-
-            <TextView
-                android:id="@+id/info4_label"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:text="Account Name"
-                android:textColor="@color/colorAccentOpp"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/info3" />
-
-            <TextView
-                android:id="@+id/info4"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_marginStart="10dp"
-                android:text="CAW PARTNERSHIP"
-                android:textColor="@color/colorGray"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/info4_label" />
-
-            <TextView
-                android:id="@+id/info5_label"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:text="Account Number"
-                android:textColor="@color/colorAccentOpp"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/info4" />
-
-            <TextView
-                android:id="@+id/info5"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_marginStart="10dp"
-                android:text="1400 0033 09063"
-                android:textColor="@color/colorGray"
-                android:textSize="15sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/info5_label" />
-
-
-            <TextView
-                android:id="@+id/info6_label"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:text="IBAN / Sort Code"
-                android:textColor="@color/colorAccentOpp"
-                android:textSize="13sp"
-                android:textStyle="bold"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/info5" />
-
-            <TextView
-                android:id="@+id/info6"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="5dp"
-                android:layout_marginStart="10dp"
-                android:text="I need this info"
-                android:textColor="@color/colorGray"
+            <Button
+                android:id="@+id/proceed_button"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:background="@drawable/yellow_button_white_text"
+                android:fontFamily="serif-monospace"
+                android:text="Send"
+                android:textColor="@drawable/yello_button_pressed_reaction"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/info6_label"
-                app:layout_constraintVertical_bias="0.0" />
-
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/activity_imagearticle_holder"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/rounded_four_corners_gold"
-                android:elevation="2dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/fragment_today_heraldofglorylabel_textview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:paddingEnd="10dp"
-                    android:paddingStart="10dp"
-                    android:text="Mobile Money"
-                    android:textColor="@color/colorAccentOpp"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/tag2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginEnd="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginTop="20dp"
-                android:background="@drawable/rounded_four_corners_gold"
-                android:elevation="2dp"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/activity_imagearticle_body_textview2">
-
-                <TextView
-                    android:id="@+id/fragment_today_heraldofglorylabel_textview2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="4dp"
-                    android:paddingEnd="10dp"
-                    android:paddingStart="10dp"
-                    android:text="Bank Deposit / Transfer"
-                    android:textColor="@color/colorAccentOpp"
-                    android:textSize="12sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintTop_toBottomOf="@+id/message_edittext"
+                app:layout_constraintVertical_bias="0.1" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
