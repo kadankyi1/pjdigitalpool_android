@@ -107,6 +107,7 @@ public class PartnershipActivity extends AppCompatActivity {
                                     String this_transaction_id = response_json_object.getString("message");
                                     String apiUser = response_json_object.getString("app_user");
                                     String apiKey = response_json_object.getString("app_key");
+                                    String merchantId = response_json_object.getString("merchant_id");
                                     if(response_json_object.getString("status").equalsIgnoreCase("success")){
                                         new Handler(Looper.getMainLooper()).post(new Runnable() {
                                             @Override
@@ -116,7 +117,7 @@ public class PartnershipActivity extends AppCompatActivity {
                                                         .setEmail(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_EMAIL))
                                                         .setfName(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_FIRST_NAME))
                                                         .setlName(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_LAST_NAME))
-                                                        .setMerchant_id("merchantId")
+                                                        .setMerchant_id(merchantId)
                                                         .setNarration(this_reason)
                                                         .setApiUser(apiUser)
                                                         .setApiKey(apiKey)
@@ -161,14 +162,13 @@ public class PartnershipActivity extends AppCompatActivity {
                     return headers;
                 }
 
-                /*
                 @Override
                 protected Map<String, String> getParams() {
                     Map<String, String> map = new HashMap<>();
-                    //map.put("message_type", Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_CONTACT_TYPE));
+                    map.put("amount", this_amt);
+                    map.put("reason", this_reason);
                     return map;
                 }
-                 */
             };
             stringRequest.setShouldCache(false);
             stringRequest.setRetryPolicy(new DefaultRetryPolicy(
