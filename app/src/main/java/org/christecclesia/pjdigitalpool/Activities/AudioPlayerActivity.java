@@ -75,6 +75,24 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
             Toast.makeText(getApplicationContext(), "Audio not found", Toast.LENGTH_LONG).show();
         }
 
+        m_audio_scruber_seekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                //Toast.makeText(getApplicationContext(), "onStartTrackingTouch seekBar" + seekBar.getProgress(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                //Toast.makeText(getApplicationContext(), "onStopTrackingTouch seekBar" + seekBar.getProgress(), Toast.LENGTH_SHORT).show();
+                mPlayer.seekTo(seekBar.getProgress());
+                m_audio_scruber_seekbar.setProgress(seekBar.getProgress());
+            }
+        });
 
         m_back_imageview.setOnClickListener(this);
         m_favorite_icon.setOnClickListener(this);
@@ -109,13 +127,13 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
                     favorites = new ArrayList<>();
                     favorites.add(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TRACK_ID));
                     Util.setSharedPreferenceStringSet(getApplicationContext(), Util.SHARED_PREF_KEY_FAVORITE_AUDIOS, favorites);
-                    Toast.makeText(getApplicationContext(), "Added from favorites", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Added to favorites", Toast.LENGTH_SHORT).show();
                     return;
                 }
                 if(!favorites.contains(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TRACK_ID))){
                     favorites.add(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TRACK_ID));
                     Util.setSharedPreferenceStringSet(getApplicationContext(), Util.SHARED_PREF_KEY_FAVORITE_AUDIOS, favorites);
-                    Toast.makeText(getApplicationContext(), "Added from favorites", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Added to favorites", Toast.LENGTH_SHORT).show();
                 }
             } else {
                 // REMOVE FROM FAV ARRAY
@@ -132,36 +150,37 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
             rewindOnlinAudio();
         } else if(view.getId() == m_play_icon_checkbox.getId()){
 
-            audio_thread = new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    if(mPlayer != null){
-                        if(mPlayer.isPlaying()){
-                            mPlayer.pause();
-                            new Handler(Looper.getMainLooper()).post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    m_play_icon_checkbox.setChecked(false);
-                                }
-                            });
+            if(player_started == false) {
+                audio_thread = new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        if (mPlayer != null) {
+                            if (mPlayer.isPlaying()) {
+                                mPlayer.pause();
+                                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        m_play_icon_checkbox.setChecked(false);
+                                    }
+                                });
+                            } else {
+                                mPlayer.start();
+                                new Handler(Looper.getMainLooper()).post(new Runnable() {
+                                    @Override
+                                    public void run() {
+                                        m_play_icon_checkbox.setChecked(true);
+                                    }
+                                });
+                            }
                         } else {
-                            mPlayer.start();
-                            new Handler(Looper.getMainLooper()).post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    m_play_icon_checkbox.setChecked(true);
-                                }
-                            });
-                        }
-                    } else {
-                        if(player_started  == false){
-                            player_started = true;
-                            playOnlineAudio(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_AUDIO_URL));
+                            if (player_started == false) {
+                                playOnlineAudio(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_AUDIO_URL));
+                            }
                         }
                     }
-                }
-            });
-            audio_thread.start();
+                });
+                audio_thread.start();
+            }
 
         } else if(view.getId() == m_forward_icon_imageview.getId()){
             forwardOnlineAudio();
@@ -171,8 +190,8 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
 
     private void playOnlineAudio(String url)
     {
-        if(mPlayer == null && player_started == false){
-            player_started = true;
+        if(player_started == false){
+            m_play_icon_checkbox.setClickable(false);
             mPlayer = new MediaPlayer();
             mPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
             try {
@@ -181,10 +200,10 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
                 mPlayer.start();
                 eTime = mPlayer.getDuration();
                 sTime = mPlayer.getCurrentPosition();
-                if(oTime == 0){
+                //if(oTime == 0){
                     m_audio_scruber_seekbar.setMax(eTime);
-                    oTime =1;
-                }
+                    //oTime =1;
+                //}
                 new Handler(Looper.getMainLooper()).post(new Runnable() {
                     @Override
                     public void run() {
@@ -203,10 +222,18 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
                     public void run() {
                         m_play_icon_checkbox.setChecked(false);
                         player_started = false;
+                        //mPlayer = null;
                         Toast.makeText(getApplicationContext(), "Audio Player Error", Toast.LENGTH_LONG).show();
                     }
                 });
             }
+            new Handler(Looper.getMainLooper()).post(new Runnable() {
+                @Override
+                public void run() {
+                    m_play_icon_checkbox.setClickable(true);
+                    player_started = false;
+                }
+            });
         }
     }
 
@@ -240,6 +267,10 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
                         .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
                             public void onClick(DialogInterface dialog, int which) {
                                 mPlayer.stop();
+                                mPlayer = null;
+                                m_audio_scruber_seekbar = null;
+                                hdlr.removeCallbacks(UpdateSongTime);
+                                UpdateSongTime = null;
                                 finish();
                             }
                         })
