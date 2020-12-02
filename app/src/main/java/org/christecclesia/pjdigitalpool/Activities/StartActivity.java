@@ -1,5 +1,6 @@
 package org.christecclesia.pjdigitalpool.Activities;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
@@ -10,6 +11,10 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.messaging.FirebaseMessaging;
 
 import org.christecclesia.pjdigitalpool.Adapters.StartActivitySliderAdapter;
 import org.christecclesia.pjdigitalpool.Inc.Util;
@@ -26,6 +31,18 @@ public class StartActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        FirebaseMessaging.getInstance().subscribeToTopic("ALPHA")
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (!task.isSuccessful()) {
+                            Util.show_log_in_console("FIREBASETEST", "FAILED TO ADD TO TOPIC OF ALL USERS");
+                        } else {
+                            Util.show_log_in_console("FIREBASETEST", "ADDED TO TOPIC OF ALL USERS");
+                        }
+                    }
+                });
 
         Intent myIntent = new Intent(getApplicationContext(), UpdateContent.class);
         getApplicationContext().startService(myIntent);

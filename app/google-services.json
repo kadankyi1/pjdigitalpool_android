@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "24660397254",
+    "firebase_url": "https://glory-hub.firebaseio.com",
+    "project_id": "glory-hub",
+    "storage_bucket": "glory-hub.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:24660397254:android:eb756f5573166ba37b1bc7",
+        "android_client_info": {
+          "package_name": "org.christecclesia.pjdigitalpool"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "24660397254-1qsjuvme62rqel0oj40qt8vnvofa9rs3.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.christecclesia.pjdigitalpool",
+            "certificate_hash": "98f2053cca68c184fa5ca1370115e3604a1eb33f"
+          }
+        },
+        {
+          "client_id": "24660397254-kpdlr83fvrt3eprdmv1pnatsjg7v50ga.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7pwUh8t0Nh0Yrlrm0DgvcXlUTtGeMdSI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "24660397254-kpdlr83fvrt3eprdmv1pnatsjg7v50ga.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
