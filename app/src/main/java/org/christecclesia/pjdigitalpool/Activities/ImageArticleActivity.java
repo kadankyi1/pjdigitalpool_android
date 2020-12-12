@@ -41,6 +41,7 @@ public class ImageArticleActivity extends AppCompatActivity implements View.OnCl
         m_article_date.setText(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_IMAGE_ARTICLE_UPLOAD_TIME).trim());
         m_article_title.setText(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_IMAGE_ARTICLE_ARTICLE_TITLE).trim());
         m_article_body.setText(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_IMAGE_ARTICLE_ARTICLE_BODY).trim());
+        m_tag_textview.setText(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_IMAGE_ARTICLE_TAG_TEXT).trim());
 
         if(
                 !ImageArticleActivity.this.isFinishing()

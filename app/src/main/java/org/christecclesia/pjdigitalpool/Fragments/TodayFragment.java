@@ -9,10 +9,12 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import org.christecclesia.pjdigitalpool.Activities.AudioPlayerActivity;
+import org.christecclesia.pjdigitalpool.Activities.ImageArticleActivity;
 import org.christecclesia.pjdigitalpool.Activities.MainActivity;
 import org.christecclesia.pjdigitalpool.Activities.VideoPlayerActivity;
 import org.christecclesia.pjdigitalpool.Inc.Util;
@@ -20,13 +22,21 @@ import org.christecclesia.pjdigitalpool.R;
 import org.christecclesia.pjdigitalpool.Views.CircleImageView;
 import org.christecclesia.pjdigitalpool.Views.RoundedCornerImageView;
 
+import static org.christecclesia.pjdigitalpool.Inc.Util.SHARED_PREF_KEY_IMAGE_ARTICLE_ARTICLE_BODY;
+import static org.christecclesia.pjdigitalpool.Inc.Util.SHARED_PREF_KEY_IMAGE_ARTICLE_ARTICLE_TITLE;
+import static org.christecclesia.pjdigitalpool.Inc.Util.SHARED_PREF_KEY_IMAGE_ARTICLE_IMG_URL;
+import static org.christecclesia.pjdigitalpool.Inc.Util.SHARED_PREF_KEY_IMAGE_ARTICLE_TAG_TEXT;
+import static org.christecclesia.pjdigitalpool.Inc.Util.SHARED_PREF_KEY_IMAGE_ARTICLE_UPLOAD_TIME;
+import static org.christecclesia.pjdigitalpool.Inc.Util.setSharedPreferenceString;
+
 public class TodayFragment extends Fragment implements View.OnClickListener {
 
     private RoundedCornerImageView m_todaybanner_roundedcornerimageview, m_todayaudio_roundedcornerimageview;
     private CircleImageView m_todayvideo1_image_circleimageview, m_todayvideo2_image_circleimageview;
     private ProgressBar m_todaybanner_progressbar;
+    private ImageView m_todayaudio_play_imageview;
     private TextView m_welcome_textview, m_todayaudio_title_textview, m_todayaudio_body_textview, m_todayvideo1_title_textview, m_todayvideo1_length_textview, m_todayvideo2_title_textview, m_todayvideo2_length_textview;
-    private ConstraintLayout m_todayaudio_holder_constraintlayout, m_todayvideo1_holder_constraintlayout, m_todayvideo2_holder_constraintlayout;
+    private ConstraintLayout m_todayaudio_holder_constraintlayout, m_todayaudio_listen_label_constraintlayout, m_todayvideo1_holder_constraintlayout, m_todayvideo2_holder_constraintlayout;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
 
@@ -66,6 +76,8 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
         m_todayaudio_roundedcornerimageview = view.findViewById(R.id.fragment_today_heraldofgloryimage_roundedcornerimageview);
         m_todayaudio_title_textview = view.findViewById(R.id.fragment_today_heraldofglorytitle_textview);
         m_todayaudio_body_textview = view.findViewById(R.id.fragment_today_heraldofglorybody_textview);
+        m_todayaudio_play_imageview = view.findViewById(R.id.fragment_today_heraldofgloryplayicon_imageview);
+        m_todayaudio_listen_label_constraintlayout = view.findViewById(R.id.fragment_today_today_listen_audio_label_textview);
         m_todayvideo1_holder_constraintlayout = view.findViewById(R.id.fragment_today_audio1holder_constraintlayout);
         m_todayvideo1_image_circleimageview = view.findViewById(R.id.fragment_today_audio1image_roundedcornerimageview);
         m_todayvideo1_title_textview = view.findViewById(R.id.fragment_today_audio1title_textview);
@@ -76,8 +88,8 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
         m_todayvideo2_length_textview = view.findViewById(R.id.fragment_today_audio2body_textview);
 
         m_todayaudio_holder_constraintlayout.setOnClickListener(this);
-        //m_todayaudio_roundedcornerimageview.setOnClickListener(this);
-        //m_todayaudio_title_textview.setOnClickListener(this);
+        m_todayaudio_play_imageview.setOnClickListener(this);
+        m_todayaudio_listen_label_constraintlayout.setOnClickListener(this);
         //m_todayaudio_body_textview.setOnClickListener(this);
         m_todayvideo1_holder_constraintlayout.setOnClickListener(this);
         //m_todayvideo1_image_circleimageview.setOnClickListener(this);
@@ -146,6 +158,25 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
     public void onClick(View view) {
         if(
                 view.getId() == R.id.fragment_today_heraldofgloryholder_constraintlayout){
+            if(
+                    !getActivity().isFinishing()
+                            && !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_IMG_URL).isEmpty()
+                            && !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_IMG_URL).isEmpty()
+                            && !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TITLE).isEmpty()
+                            && !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_BODY).isEmpty()
+            ){
+                setSharedPreferenceString(getActivity().getApplicationContext(), SHARED_PREF_KEY_IMAGE_ARTICLE_IMG_URL, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_IMG_URL));
+                setSharedPreferenceString(getActivity().getApplicationContext(), SHARED_PREF_KEY_IMAGE_ARTICLE_TAG_TEXT, "BIBLE READING PLAN");
+                setSharedPreferenceString(getActivity().getApplicationContext(), SHARED_PREF_KEY_IMAGE_ARTICLE_UPLOAD_TIME, "Recent");
+                setSharedPreferenceString(getActivity().getApplicationContext(), SHARED_PREF_KEY_IMAGE_ARTICLE_ARTICLE_TITLE, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TITLE));
+                setSharedPreferenceString(getActivity().getApplicationContext(), SHARED_PREF_KEY_IMAGE_ARTICLE_ARTICLE_BODY, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_BODY));
+                Intent intent = new Intent(getActivity().getApplicationContext(), ImageArticleActivity.class);
+                startActivity(intent);
+
+            }
+        } else if(
+                view.getId() == R.id.fragment_today_today_listen_audio_label_textview ||
+                        view.getId() == R.id.fragment_today_heraldofgloryplayicon_imageview){
             Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TRACK_ID, Util.getSharedPreferenceString(getActivity().getApplicationContext(), "2"));
             Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_IMG_URL, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_IMG_URL));
             Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_AUDIO_URL, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TRACK_URL));
@@ -153,6 +184,7 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
             Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_UPLOAD_TIME, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_UPLOAD_TIME));
             Intent intent = new Intent(getActivity().getApplicationContext(), AudioPlayerActivity.class);
             startActivity(intent);
+
         } else if(
                 view.getId() == R.id.fragment_today_audio1holder_constraintlayout){
             Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_IMG_URL, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO1_IMG_URL));

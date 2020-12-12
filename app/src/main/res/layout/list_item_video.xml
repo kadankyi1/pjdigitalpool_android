@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/parent_holder"
+    android:id="@+id/listitemvideo_parent_holder"
     android:layout_width="match_parent"
     android:layout_height="80dp"
     android:layout_margin="10dp"
@@ -11,7 +11,7 @@
 
 
     <TextView
-        android:id="@+id/listitemaudio_title_textview"
+        android:id="@+id/listitemvideo_title_textview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -19,15 +19,15 @@
         android:textColor="@color/colorPrimary"
         android:textSize="18sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/listitemaudio_time_textview"
+        app:layout_constraintBottom_toTopOf="@+id/listitemvideo_time_textview"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/listitemaudio_image_constraintlayout"
+        app:layout_constraintStart_toEndOf="@+id/listitemvideo_image_constraintlayout"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="packed" />
 
 
     <TextView
-        android:id="@+id/listitemaudio_author_textview"
+        android:id="@+id/listitemvideo_author_textview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -38,12 +38,12 @@
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/listitemaudio_image_constraintlayout"
-        app:layout_constraintTop_toBottomOf="@+id/listitemaudio_title_textview"
+        app:layout_constraintStart_toEndOf="@+id/listitemvideo_image_constraintlayout"
+        app:layout_constraintTop_toBottomOf="@+id/listitemvideo_title_textview"
         app:layout_constraintVertical_bias="0.0" />
 
     <TextView
-        android:id="@+id/listitemaudio_time_textview"
+        android:id="@+id/listitemvideo_time_textview"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
@@ -52,12 +52,12 @@
         android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/listitemaudio_image_constraintlayout"
-        app:layout_constraintTop_toBottomOf="@+id/listitemaudio_title_textview"
+        app:layout_constraintStart_toEndOf="@+id/listitemvideo_image_constraintlayout"
+        app:layout_constraintTop_toBottomOf="@+id/listitemvideo_title_textview"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/listitemaudio_image_constraintlayout"
+        android:id="@+id/listitemvideo_image_constraintlayout"
         android:layout_width="80dp"
         android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -65,7 +65,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/listitemaudio_audioiconbackgound_constraintlayout"
+            android:id="@+id/listitemvideo_audioiconbackgound_constraintlayout"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_margin="3dp"
@@ -75,7 +75,7 @@
             app:layout_constraintEnd_toEndOf="parent">
 
             <ImageView
-                android:id="@+id/listitemaudio_audioicon_imageview"
+                android:id="@+id/listitemvideo_audioicon_imageview"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:padding="1dp"
@@ -88,7 +88,7 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <org.christecclesia.pjdigitalpool.Views.RoundedCornerImageView
-            android:id="@+id/listitemaudio_image_imageview"
+            android:id="@+id/listitemvideo_image_imageview"
             android:layout_width="80dp"
             android:layout_height="match_parent"
             android:scaleType="centerCrop"

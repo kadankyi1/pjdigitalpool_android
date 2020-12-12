@@ -133,7 +133,7 @@ public class FavoritesListActivity extends AppCompatActivity  implements View.On
 
 
     private void allOnClickHandlers(View v, int position){
-        if(v.getId() == R.id.parent_holder
+        if(v.getId() == R.id.listitemaudio_parent_holder
                 || v.getId() == R.id.listitemaudio_image_constraintlayout
                 || v.getId() == R.id.listitemaudio_image_imageview
                 || v.getId() == R.id.listitemaudio_title_textview
@@ -184,7 +184,7 @@ public class FavoritesListActivity extends AppCompatActivity  implements View.On
 
             public AudioViewHolder(View v) {
                 super(v);
-                m_parent_holder_constraintlayout = v.findViewById(R.id.parent_holder);
+                m_parent_holder_constraintlayout = v.findViewById(R.id.listitemaudio_parent_holder);
                 m_image_holder_constraintlayout = v.findViewById(R.id.listitemaudio_image_constraintlayout);
                 m_audio_image = v.findViewById(R.id.listitemaudio_image_imageview);
                 m_title_textview = v.findViewById(R.id.listitemaudio_title_textview);
