@@ -2,6 +2,14 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
+    signingConfigs {
+        release {
+            storeFile file('/home/zatana/AndroidStudioProjects/PJDigitalPool/pjkey0.jks')
+            storePassword 'g0d6ppr06ch'
+            keyAlias = 'key0'
+            keyPassword 'g0d6ppr06ch'
+        }
+    }
     compileSdkVersion 29
     buildToolsVersion = '28.0.3'
 

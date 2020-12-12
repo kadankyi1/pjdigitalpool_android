@@ -23,6 +23,14 @@
           }
         },
         {
+          "client_id": "24660397254-7s0d43s3ch1rphirf3bb1n50rhq8dsch.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.christecclesia.pjdigitalpool",
+            "certificate_hash": "6fc0159a29f907207c7be2ea6bbdcaa638ffe509"
+          }
+        },
+        {
           "client_id": "24660397254-kpdlr83fvrt3eprdmv1pnatsjg7v50ga.apps.googleusercontent.com",
           "client_type": 3
         }
