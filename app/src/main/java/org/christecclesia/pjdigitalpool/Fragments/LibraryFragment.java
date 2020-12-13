@@ -8,6 +8,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -108,7 +109,8 @@ public class LibraryFragment extends Fragment implements View.OnClickListener {
         m_recyclerview.setDrawingCacheEnabled(true);
         m_recyclerview.setHasFixedSize(true);
         m_recyclerview.setDrawingCacheQuality(View.DRAWING_CACHE_QUALITY_HIGH);
-        m_recyclerview.setLayoutManager(m_linearlayoutmanager);
+        //m_recyclerview.setLayoutManager(m_linearlayoutmanager);
+        m_recyclerview.setLayoutManager(new GridLayoutManager(getActivity(), 2));
         m_recyclerview.setAdapter(new RecyclerViewAdapter());
 
 
@@ -276,7 +278,7 @@ public class LibraryFragment extends Fragment implements View.OnClickListener {
         @Override
         public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             RecyclerView.ViewHolder vh;
-            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_audio, parent, false);
+            View v = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_library_grid, parent, false);
             vh = new AudioViewHolder(v);
 
             return vh;
@@ -285,7 +287,7 @@ public class LibraryFragment extends Fragment implements View.OnClickListener {
 
         public class AudioViewHolder extends RecyclerView.ViewHolder  {
             private ConstraintLayout m_parent_holder_constraintlayout, m_image_holder_constraintlayout;
-            private RoundedCornerImageView m_audio_image;
+            private ImageView m_audio_image;
             private TextView m_title_textview, m_date_textview;
 
             private View.OnClickListener innerClickListener = new View.OnClickListener() {
