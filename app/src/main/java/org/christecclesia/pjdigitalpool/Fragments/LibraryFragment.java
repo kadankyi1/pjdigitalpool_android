@@ -145,6 +145,7 @@ public class LibraryFragment extends Fragment implements View.OnClickListener {
     BottomNavigationView.OnNavigationItemSelectedListener navigationItemSelectedListener =
             new BottomNavigationView.OnNavigationItemSelectedListener() {
                 @Override public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                    ArrayList<String> favorites = Util.getSharedPreferenceStringSet(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_FAVORITE_AUDIOS);
                     switch (item.getItemId()) {
                         case R.id.navigation_audios:
                             current_favorites = "";
@@ -180,7 +181,6 @@ public class LibraryFragment extends Fragment implements View.OnClickListener {
 
                             current_page = "favorites";
                             current_page_url = Util.LINK_FAVORITES_LIST;
-                            ArrayList<String> favorites = Util.getSharedPreferenceStringSet(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_FAVORITE_AUDIOS);
                             if(favorites != null){
                                 if(favorites.isEmpty()){
                                     error = 1;
@@ -208,7 +208,8 @@ public class LibraryFragment extends Fragment implements View.OnClickListener {
                                 AlertDialog dialog = alertDialogBuilder.show();
                                 dialog.setCanceledOnTouchOutside(false);
                             } else {
-                                current_favorites = favorites.toString();
+                                ArrayList<String> real_favorites = Util.getSharedPreferenceStringSet(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_FAVORITE_AUDIOS);
+                                current_favorites = real_favorites.toString();
                                 network_thread = new Thread(new Runnable() {
                                     @Override
                                     public void run() {
@@ -221,6 +222,8 @@ public class LibraryFragment extends Fragment implements View.OnClickListener {
                     }
                     return false;
                 }
+
+
             };
 
 
@@ -263,6 +266,11 @@ public class LibraryFragment extends Fragment implements View.OnClickListener {
         }
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+
+    }
 
     private class RecyclerViewAdapter extends RecyclerView.Adapter {
 
@@ -351,20 +359,26 @@ public class LibraryFragment extends Fragment implements View.OnClickListener {
                 }
             });
 
+            int method = Request.Method.GET;
+            if(fetch_type == "favorites"){
+                method = Request.Method.POST;
+            }
 
             Util.show_log_in_console("AudiosListAct", "\n token: " + token);
+            Util.show_log_in_console("AudiosListAct", "\n data: " + data);
 
 
-            StringRequest stringRequest = new StringRequest(Request.Method.GET, url,
+            StringRequest stringRequest = new StringRequest(method, url,
                     new Response.Listener<String>() {
                         @Override
                         public void onResponse(String response) {
-                            Util.show_log_in_console("AudiosListAct", "response: " +  response);
-                            if(!getActivity().isFinishing() && current_page.trim().equalsIgnoreCase(fetch_type)){
+                            Util.show_log_in_console("AudiosListAct", "response: " + response);
+                            if(getActivity() != null){
+                            if (!getActivity().isFinishing() && current_page.trim().equalsIgnoreCase(fetch_type)) {
                                 try {
                                     JSONObject response_json_object = new JSONObject(response);
 
-                                    if(response_json_object.getString("status").equalsIgnoreCase("success")){
+                                    if (response_json_object.getString("status").equalsIgnoreCase("success")) {
                                         JSONArray linkupsSuggestionsArray = response_json_object.getJSONObject("data").getJSONArray("data");
 
                                         Util.show_log_in_console("AudiosListAct", "linkupsSuggestionsArray: " + linkupsSuggestionsArray.toString());
@@ -380,7 +394,7 @@ public class LibraryFragment extends Fragment implements View.OnClickListener {
                                             for (int i = 0; i < linkupsSuggestionsArray.length(); i++) {
                                                 AudioModel mine1 = new AudioModel();
                                                 final JSONObject k = linkupsSuggestionsArray.getJSONObject(i);
-                                                if(fetch_type == "videos"){
+                                                if (fetch_type == "videos") {
                                                     mine1.setAudio_id(k.getInt("video_id"));
                                                     mine1.setAudio_name(k.getString("video_name"));
                                                     mine1.setAudio_description(k.getString("video_description"));
@@ -437,14 +451,17 @@ public class LibraryFragment extends Fragment implements View.OnClickListener {
                                 }
                             }
                         }
+                        }
                     },
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            Toast.makeText(getActivity().getApplicationContext(), "Check your internet connection and try again", Toast.LENGTH_LONG).show();
-                            m_loading_progressbar.setVisibility(View.INVISIBLE);
-                            m_recyclerview.setVisibility(View.INVISIBLE);
-                            m_reload_imageview.setVisibility(View.VISIBLE);
+                            if(!getActivity().isFinishing()) {
+                                Toast.makeText(getActivity().getApplicationContext(), "Check your internet connection and try again", Toast.LENGTH_LONG).show();
+                                m_loading_progressbar.setVisibility(View.INVISIBLE);
+                                m_recyclerview.setVisibility(View.INVISIBLE);
+                                m_reload_imageview.setVisibility(View.VISIBLE);
+                            }
                         }
                     }) {
 

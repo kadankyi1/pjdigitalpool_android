@@ -154,12 +154,16 @@ public class MainActivity extends AppCompatActivity {
         int count = getSupportFragmentManager().getBackStackEntryCount();
         if(count == 0){
             if(mFragmentsHolderViewPager.getCurrentItem() == 0){
-                super.onBackPressed();
+                //super.onBackPressed();
+                finish();
+                // finishAffinity();
             } else {
                 mFragmentsHolderViewPager.setCurrentItem(0);
             }
         } else {
-            super.onBackPressed();
+            //super.onBackPressed();
+            finish();
+            // finishAffinity();
         }
 
     }

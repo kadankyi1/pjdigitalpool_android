@@ -237,6 +237,8 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
         }
     }
 
+
+
     private void rewindOnlinAudio()
     {
         if((sTime - bTime) > 0) {
@@ -286,4 +288,5 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
             super.onBackPressed();
         }
     }
+
 }

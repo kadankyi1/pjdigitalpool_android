@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import gh.com.payswitch.thetellerandroid.thetellerManager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -113,6 +114,16 @@ public class PartnershipActivity extends AppCompatActivity {
                                             @Override
                                             public void run() {
                                                 m_loading_progressbar.setVisibility(View.INVISIBLE);
+
+                                                /*
+                                                Payment p = new Payment();
+                                                p.setMerchantKey(merchantId);
+                                                            p.setInvoiceId(this_transaction_id);
+                                                p.setAmount(Double.parseDouble(this_amt));
+                                                Bundle bundle = new Bundle();
+                                                bundle.putSerializable("payment", p);
+                                                startActivity(new Intent(PartnershipActivity.this, ipay.gh.com.ipayandroidsdk.PaymentActivity.class).putExtras(bundle));
+                                                 */
                                                 new thetellerManager(PartnershipActivity.this).setAmount(Long.parseLong(this_amt))
                                                         .setEmail(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_EMAIL))
                                                         .setfName(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_FIRST_NAME))

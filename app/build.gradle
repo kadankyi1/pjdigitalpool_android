@@ -78,6 +78,7 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-scalars:2.1.0'
     implementation 'com.scottyab:aescrypt:0.0.1'
     implementation 'com.github.apeatu:theteller-android-sdk:1.0.7'
+    //implementation 'com.github.darelabs:ipay-ghana-android-sdk:v0.1'
 
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'

@@ -110,7 +110,7 @@
         android:hint="Write your testimony here"
         android:gravity="start|top"
         android:layout_marginTop="10dp"
-        android:inputType="textNoSuggestions"
+        android:inputType="textMultiLine"
         android:maxLength="190"
         android:textCursorDrawable="@null"
         android:background="@drawable/edittext_border_and_background"
