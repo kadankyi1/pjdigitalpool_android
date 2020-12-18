@@ -3,9 +3,16 @@ package org.christecclesia.pjdigitalpool.Activities;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Notification;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -17,6 +24,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.christecclesia.pjdigitalpool.BroadcastReceivers.MyNotificationReceiver;
 import org.christecclesia.pjdigitalpool.Inc.Util;
 import org.christecclesia.pjdigitalpool.R;
 import org.christecclesia.pjdigitalpool.Views.RoundedCornerImageView;
@@ -33,15 +41,21 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
     private TextView m_audio_title_textview, m_uploadtime_textview, m_start_time_textview, m_end_time_textview;
     private SeekBar m_audio_scruber_seekbar;
     private static int oTime =0, sTime =0, eTime =0, fTime = 5000, bTime = 5000;
-    private MediaPlayer mPlayer = null;
+    public static MediaPlayer mPlayer = null;
     private Boolean player_started = false;
     private Handler hdlr = new Handler();
     private Thread audio_thread = null;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_audio_player);
+
+        String ns = Context.NOTIFICATION_SERVICE;
+        NotificationManager nMgr = (NotificationManager) getApplicationContext().getSystemService(ns);
+        nMgr.cancelAll();
+
 
         m_back_imageview = findViewById(R.id.activity_audioplayer_backimage_imageview);
         m_favorite_icon = findViewById(R.id.activity_audioplayer_favoriteimage_imageview);
@@ -54,6 +68,21 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
         m_audio_scruber_seekbar =  findViewById(R.id.activity_audioplayer_scrubber_textview);
         m_start_time_textview =  findViewById(R.id.activity_audioplayer_playtime_textview);
         m_end_time_textview =  findViewById(R.id.activity_audioplayer_endtime_textview);
+
+
+        if(mPlayer != null){
+            if(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_AUDIO_URL).equalsIgnoreCase(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_CURRENT_PLAYING_AUDIO))){
+                m_audio_scruber_seekbar.setVisibility(View.INVISIBLE);
+                if(mPlayer.isPlaying()){
+                    m_play_icon_checkbox.setChecked(true);
+                }
+            } else {
+                mPlayer.stop();
+                hdlr.removeCallbacks(UpdateSongTime);
+                hdlr.postDelayed(UpdateSongTime, 100);
+                mPlayer = null;
+            }
+        }
 
         m_audio_title_textview.setText(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_TITLE));
         m_uploadtime_textview.setText(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_UPLOAD_TIME));
@@ -106,11 +135,13 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
     private Runnable UpdateSongTime = new Runnable() {
         @Override
         public void run() {
-            sTime = mPlayer.getCurrentPosition();
-            m_start_time_textview.setText(String.format("%d:%d", TimeUnit.MILLISECONDS.toMinutes(sTime),
-                    TimeUnit.MILLISECONDS.toSeconds(sTime) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(sTime))) );
-            m_audio_scruber_seekbar.setProgress(sTime);
-            hdlr.postDelayed(this, 100);
+            if(mPlayer != null){
+                sTime = mPlayer.getCurrentPosition();
+                m_start_time_textview.setText(String.format("%d:%d", TimeUnit.MILLISECONDS.toMinutes(sTime),
+                        TimeUnit.MILLISECONDS.toSeconds(sTime) - TimeUnit.MINUTES.toSeconds(TimeUnit.MILLISECONDS.toMinutes(sTime))) );
+                m_audio_scruber_seekbar.setProgress(sTime);
+                hdlr.postDelayed(this, 100);
+            }
         }
     };
 
@@ -198,6 +229,7 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
                 mPlayer.setDataSource(url);
                 mPlayer.prepare(); // might take long! (for buffering, etc)
                 mPlayer.start();
+                Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_CURRENT_PLAYING_AUDIO, Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_AUDIO_URL));
                 eTime = mPlayer.getDuration();
                 sTime = mPlayer.getCurrentPosition();
                 //if(oTime == 0){
@@ -260,6 +292,9 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
     public void onBackPressed() {
         if(mPlayer != null){
             //if(mPlayer.isPlaying()){
+            showActionButtonsNotification(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_AUDIO_PLAYER_TITLE));
+            super.onBackPressed();
+            /*
                 new AlertDialog.Builder(new ContextThemeWrapper(this, R.style.myDialog))
                         .setTitle("Stop Audio")
                         .setMessage("Use the home if you want to leave the app without stopping audio. Going back will stop the audio track. Continue?")
@@ -281,12 +316,52 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
                         .setNegativeButton(android.R.string.no, null)
                         .setIcon(android.R.drawable.ic_dialog_alert)
                         .show();
+                */
             //}   else {
                 //super.onBackPressed();
             //}
         } else {
             super.onBackPressed();
         }
+    }
+
+    private void showActionButtonsNotification(String title) {
+
+
+        Notification.Builder notif;
+        NotificationManager nm;
+        notif = new Notification.Builder(getApplicationContext());
+        notif.setSmallIcon(R.drawable.logo_real);
+        notif.setContentTitle("Audio Playing");
+        notif.setContentText(title);
+        //Uri path = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
+        //notif.setSound(path);
+        nm = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+
+        Intent yesReceive = new Intent();
+        yesReceive.setAction(MyNotificationReceiver.RESUME_ACTION);
+        PendingIntent pendingIntentYes = PendingIntent.getBroadcast(this, MyNotificationReceiver.REQUEST_CODE_NOTIFICATION, yesReceive, PendingIntent.FLAG_UPDATE_CURRENT);
+        notif.addAction(R.drawable.ic_audio_play_icon, "resume", pendingIntentYes);
+
+
+        Intent yesReceive2 = new Intent();
+        yesReceive2.setAction(MyNotificationReceiver.STOP_ACTION);
+        PendingIntent pendingIntentYes2 = PendingIntent.getBroadcast(this, MyNotificationReceiver.REQUEST_CODE_NOTIFICATION, yesReceive2, PendingIntent.FLAG_UPDATE_CURRENT);
+        notif.addAction(R.drawable.ic_audio_pause_icon, "pause", pendingIntentYes2);
+
+
+
+
+        Intent maybeReceive2 = new Intent();
+        maybeReceive2.setAction(MyNotificationReceiver.CANCEL_ACTION);
+        PendingIntent pendingIntentMaybe2 = PendingIntent.getBroadcast(this, MyNotificationReceiver.REQUEST_CODE_NOTIFICATION, maybeReceive2, PendingIntent.FLAG_UPDATE_CURRENT);
+        notif.addAction(R.drawable.exo_icon_stop, "stop", pendingIntentMaybe2);
+
+
+        assert nm != null;
+        nm.notify(MyNotificationReceiver.REQUEST_CODE, notif.getNotification());
+
+
     }
 
 }

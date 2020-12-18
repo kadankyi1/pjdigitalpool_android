@@ -214,8 +214,8 @@ public class ReadFragment extends Fragment implements View.OnClickListener {
                 ((ArticleViewHolder) holder).m_title_textview.setText(ArticleListDataGenerator.getAllData().get(position).getArticle_title());
             }
 
-            if(ArticleListDataGenerator.getAllData().get(position).getArticle_body().length() > 85){
-                ((ArticleViewHolder) holder).m_body_textview.setText(ArticleListDataGenerator.getAllData().get(position).getArticle_body().substring(0, 84).trim() + "...");
+            if(ArticleListDataGenerator.getAllData().get(position).getArticle_body().length() > 200){
+                ((ArticleViewHolder) holder).m_body_textview.setText(ArticleListDataGenerator.getAllData().get(position).getArticle_body().substring(0, 199).trim() + "...");
             } else {
                 ((ArticleViewHolder) holder).m_body_textview.setText(ArticleListDataGenerator.getAllData().get(position).getArticle_body());
             }

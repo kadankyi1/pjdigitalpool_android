@@ -565,6 +565,17 @@
                 app:layout_constraintStart_toEndOf="@+id/fragment_today_vertical_guideline_1"
                 app:layout_constraintEnd_toStartOf="@+id/fragment_today_vertical_guideline_2">
 
+
+                <androidx.viewpager.widget.ViewPager
+                    android:id="@+id/fragment_today_newsinfobanner_viewpager"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    />
+                <!--
                 <org.christecclesia.pjdigitalpool.Views.RoundedCornerImageView
                     android:id="@+id/fragment_today_newsinfobanner_roundedcornerimageview"
                     android:layout_width="match_parent"
@@ -594,17 +605,30 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
+                  -->
 
             </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <LinearLayout
+                android:id="@+id/fragment_today_newsinfobannerdots_linearlayout"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:textAlignment="center"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_today_newsinfobanner_constraintlayout"
+                app:layout_constraintStart_toEndOf="@+id/fragment_today_vertical_guideline_1"
+                app:layout_constraintEnd_toStartOf="@+id/fragment_today_vertical_guideline_2"
+                />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/fragment_today_heraldofgloryholder_constraintlayout"
                 android:layout_width="0dp"
                 android:layout_height="160dp"
                 android:elevation="2dp"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="5dp"
                 android:background="@drawable/rounded_corners_white_2"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_today_newsinfobanner_constraintlayout"
+                app:layout_constraintTop_toBottomOf="@+id/fragment_today_newsinfobannerdots_linearlayout"
                 app:layout_constraintStart_toEndOf="@+id/fragment_today_vertical_guideline_1"
                 app:layout_constraintEnd_toStartOf="@+id/fragment_today_vertical_guideline_2">
 
@@ -628,19 +652,6 @@
                         android:src="@drawable/testimg"
                         />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="30dp"
-                        android:layout_height="30dp"
-                        android:layout_margin="2dp"
-                        android:background="@drawable/rounded_four_corners"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toEndOf="parent">
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:tint="@color/colorGray"
-                            android:src="@drawable/ic_library_audio_icon"/>
-                    </androidx.constraintlayout.widget.ConstraintLayout>
 
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -676,17 +687,26 @@
                     app:layout_constraintTop_toBottomOf="@+id/fragment_today_heraldofglorytitle_textview"
                     app:layout_constraintVertical_bias="0.0" />
 
-                <ImageView
+
+                <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/fragment_today_heraldofgloryplayicon_imageview"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="2dp"
+                    android:background="@drawable/rounded_four_corners"
                     android:layout_marginBottom="5dp"
                     android:layout_marginEnd="2dp"
-                    android:src="@drawable/ic_play_circle_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/fragment_today_heraldofgloryimageholder_constraintlayout" />
+                    app:layout_constraintStart_toEndOf="@+id/fragment_today_heraldofgloryimageholder_constraintlayout">
+                    <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:tint="@color/colorGray"
+                        android:src="@drawable/ic_library_audio_icon"/>
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/fragment_today_today_listen_audio_label_textview"

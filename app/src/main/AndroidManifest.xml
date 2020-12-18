@@ -2,27 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="org.christecclesia.pjdigitalpool">
 
-    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.Manifest.permission.READ_PHONE_STATE" />
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <uses-permission android:name="android.permission.VIBRATE" />
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
-
-
     <application
         android:allowBackup="true"
         android:icon="@drawable/logo_real"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/logo_real"
         android:launchMode="singleInstance"
+        android:roundIcon="@drawable/logo_real"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.PartnershipActivity"></activity>
+        <activity android:name=".Activities.PartnershipActivity" />
         <activity android:name=".Activities.ContactActivity" />
         <activity android:name=".Activities.FavoritesListActivity" />
         <activity
@@ -74,15 +63,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <!--
         <activity
             android:name="ipay.gh.com.ipayandroidsdk.PaymentActivity" />
-         -->
-
+        -->
         <service
             android:name=".Services.UpdateContent"
             android:exported="false" />
+
+        <receiver android:name=".BroadcastReceivers.MyNotificationReceiver">
+            <intent-filter>
+                <action android:name="RESUME_ACTION"/>
+                <action android:name="STOP_ACTION"/>
+                <action android:name="CANCEL_ACTION"/>
+
+            </intent-filter>
+        </receiver>
+
     </application>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.Manifest.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
 </manifest>

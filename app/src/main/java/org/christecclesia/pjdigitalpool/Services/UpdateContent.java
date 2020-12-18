@@ -130,6 +130,7 @@ public class UpdateContent extends Service {
                                         Util.show_log_in_console("UpdateContent", "notice_image: " + String.valueOf(k.getString("notice_image")));
 
                                         Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG_URL, k.getString("notice_image"));
+                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG2_URL, k.getString("notice_image2"));
 
                                         JSONArray audio = response_json_object.getJSONObject("audios").getJSONArray("data");
                                         final JSONObject a = audio.getJSONObject(0);

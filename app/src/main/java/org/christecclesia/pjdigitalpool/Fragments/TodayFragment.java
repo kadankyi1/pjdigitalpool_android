@@ -5,11 +5,14 @@ import android.os.Bundle;
 
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
+import androidx.viewpager.widget.ViewPager;
 
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
@@ -17,6 +20,7 @@ import org.christecclesia.pjdigitalpool.Activities.AudioPlayerActivity;
 import org.christecclesia.pjdigitalpool.Activities.ImageArticleActivity;
 import org.christecclesia.pjdigitalpool.Activities.MainActivity;
 import org.christecclesia.pjdigitalpool.Activities.VideoPlayerActivity;
+import org.christecclesia.pjdigitalpool.Adapters.AdBannerSliderAdapter;
 import org.christecclesia.pjdigitalpool.Inc.Util;
 import org.christecclesia.pjdigitalpool.R;
 import org.christecclesia.pjdigitalpool.Views.CircleImageView;
@@ -34,11 +38,14 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
     private RoundedCornerImageView m_todaybanner_roundedcornerimageview, m_todayaudio_roundedcornerimageview;
     private CircleImageView m_todayvideo1_image_circleimageview, m_todayvideo2_image_circleimageview;
     private ProgressBar m_todaybanner_progressbar;
-    private ImageView m_todayaudio_play_imageview;
     private TextView m_welcome_textview, m_todayaudio_title_textview, m_todayaudio_body_textview, m_todayvideo1_title_textview, m_todayvideo1_length_textview, m_todayvideo2_title_textview, m_todayvideo2_length_textview;
-    private ConstraintLayout m_todayaudio_holder_constraintlayout, m_todayaudio_listen_label_constraintlayout, m_todayvideo1_holder_constraintlayout, m_todayvideo2_holder_constraintlayout;
+    private ConstraintLayout m_todayaudio_play_imageview, m_todayaudio_holder_constraintlayout, m_todayaudio_listen_label_constraintlayout, m_todayvideo1_holder_constraintlayout, m_todayvideo2_holder_constraintlayout;
     private static final String ARG_PARAM1 = "param1";
     private static final String ARG_PARAM2 = "param2";
+    private ViewPager mSlideViewPager;
+    private LinearLayout mDotlayout;
+    private TextView[] mDots;
+    private AdBannerSliderAdapter sliderAdapter;
 
     private String mParam1;
     private String mParam2;
@@ -70,8 +77,10 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_today, container, false);
         m_welcome_textview = view.findViewById(R.id.fragment_today_welcome_textview);
-        m_todaybanner_roundedcornerimageview = view.findViewById(R.id.fragment_today_newsinfobanner_roundedcornerimageview);
-        m_todaybanner_progressbar = view.findViewById(R.id.fragment_today_newsinfobannerloader_progressbar);
+        mSlideViewPager = view.findViewById(R.id.fragment_today_newsinfobanner_viewpager);
+        mDotlayout = view.findViewById(R.id.fragment_today_newsinfobannerdots_linearlayout);
+        //m_todaybanner_roundedcornerimageview = view.findViewById(R.id.fragment_today_newsinfobanner_roundedcornerimageview);
+        //m_todaybanner_progressbar = view.findViewById(R.id.fragment_today_newsinfobannerloader_progressbar);
         m_todayaudio_holder_constraintlayout = view.findViewById(R.id.fragment_today_heraldofgloryholder_constraintlayout);
         m_todayaudio_roundedcornerimageview = view.findViewById(R.id.fragment_today_heraldofgloryimage_roundedcornerimageview);
         m_todayaudio_title_textview = view.findViewById(R.id.fragment_today_heraldofglorytitle_textview);
@@ -86,6 +95,12 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
         m_todayvideo2_image_circleimageview = view.findViewById(R.id.fragment_today_audio2image_roundedcornerimageview);
         m_todayvideo2_title_textview = view.findViewById(R.id.fragment_today_audio2title_textview);
         m_todayvideo2_length_textview = view.findViewById(R.id.fragment_today_audio2body_textview);
+
+        sliderAdapter = new AdBannerSliderAdapter(getActivity().getApplicationContext());
+        mSlideViewPager.setAdapter(sliderAdapter);
+        addDotsIndicator(0);
+        mSlideViewPager.addOnPageChangeListener(viewListener);
+        //mSlideViewPager.setOffscreenPageLimit(0);
 
         m_todayaudio_holder_constraintlayout.setOnClickListener(this);
         m_todayaudio_play_imageview.setOnClickListener(this);
@@ -103,7 +118,7 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
         m_welcome_textview.append(" " + Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_USER_FIRST_NAME));
 
         if(!getActivity().isFinishing() && !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG_URL).equalsIgnoreCase("")){
-            Util.loadImageView(getActivity().getApplicationContext(), Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG_URL), m_todaybanner_roundedcornerimageview, m_todaybanner_progressbar);
+            //Util.loadImageView(getActivity().getApplicationContext(), Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG_URL), m_todaybanner_roundedcornerimageview, m_todaybanner_progressbar);
         }
 
         if(
@@ -154,6 +169,35 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
         return view;
     }
 
+    public void addDotsIndicator(int position){
+
+        mDotlayout.removeAllViews();
+        mDots = new TextView[2];
+        for (int i = 0; i < 2; i++ ){
+            mDots[i] = new TextView (getActivity());
+            mDots[i].setText(Html.fromHtml("&#8226;"));
+            mDots[i].setTextSize(25);
+            mDots[i].setTextColor(getResources().getColor(R.color.colorAccent));
+            mDotlayout.addView(mDots[i]);
+        }
+
+        if(mDots.length > 0){
+            mDots[position].setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+        }
+
+    }
+
+    ViewPager.OnPageChangeListener viewListener = new ViewPager.OnPageChangeListener(){
+        @Override
+        public void onPageScrolled(int i, float v, int i1) {}
+
+        @Override
+        public void onPageSelected(int i) {
+            addDotsIndicator(i);
+        }
+        @Override
+        public void onPageScrollStateChanged(int state) {}
+    };
     @Override
     public void onClick(View view) {
         if(
