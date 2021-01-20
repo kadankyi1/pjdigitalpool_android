@@ -209,10 +209,10 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
 
                                             JSONArray notice = response_json_object.getJSONObject("data").getJSONArray("data");
                                             final JSONObject k = notice.getJSONObject(0);
-                                            Util.show_log_in_console("LoginDashboard", "notice_image: " + String.valueOf(k.getString("notice_image")));
+                                            final JSONObject o = notice.getJSONObject(1);
 
                                             Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG_URL, k.getString("notice_image"));
-                                            Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG2_URL, k.getString("notice_image2"));
+                                            Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG2_URL, o.getString("notice_image"));
 
                                             JSONArray audio = response_json_object.getJSONObject("audios").getJSONArray("data");
                                             final JSONObject a = audio.getJSONObject(0);

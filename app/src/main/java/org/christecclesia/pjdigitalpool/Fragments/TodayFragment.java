@@ -7,6 +7,8 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.fragment.app.Fragment;
 import androidx.viewpager.widget.ViewPager;
 
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -164,6 +166,13 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
             m_todayvideo2_holder_constraintlayout.setVisibility(View.GONE);
         }
 
+        final Handler handler = new Handler(Looper.getMainLooper());
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mSlideViewPager.setCurrentItem(1);
+            }
+        }, 1500);
 
 
         return view;
