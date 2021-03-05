@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorGrayBackground"
+    android:background="@color/colorAccent"
     tools:context=".Fragments.WitnessFragment">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -54,54 +54,54 @@
             app:layout_constraintGuide_percent="0.95" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/fragment_witness_top_badge_constraintLayout"
-            android:layout_width="0dp"
-            android:layout_height="30dp"
-            android:layout_marginTop="16dp"
-            android:background="@drawable/rounded_top_corners_gold"
-            app:layout_constraintStart_toStartOf="@+id/fragment_witness_v_guideline1"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/fragment_witness_v_guideline2"/>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/fragment_witness_nameholder_constraintLayout"
             android:layout_width="0dp"
             android:layout_height="45dp"
-            android:elevation="2dp"
-            android:background="@drawable/rounded_four_corners"
-            app:layout_constraintEnd_toStartOf="@+id/fragment_witness_v_guideline4"
-            app:layout_constraintStart_toStartOf="@+id/fragment_witness_v_guideline3"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_witness_top_badge_constraintLayout">
+            android:layout_marginTop="10dp"
+            android:background="@drawable/rounded_corners_gray"
+            app:layout_constraintEnd_toStartOf="@+id/fragment_witness_v_guideline6"
+            app:layout_constraintStart_toStartOf="@+id/fragment_witness_v_guideline5"
+            app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/fragment_witness_membername_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Member Name"
-                android:textSize="20sp"
-                android:textStyle="bold"
-                android:textColor="@color/colorGrayDeep"
+                android:textColor="@color/colorGrayDeep2"
+                android:textSize="15sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.08"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <View
+        android:id="@+id/view1"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
+        android:layout_marginTop="20dp"
+        android:background="@color/colorGrayLighter2"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_witness_v_guideline6"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fragment_witness_v_guideline5"
+        app:layout_constraintTop_toBottomOf="@+id/fragment_witness_nameholder_constraintLayout"
+        app:layout_constraintVertical_bias="0.0" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/fragment_witness_menuholder_constraintLayout"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="40dp"
-            android:layout_marginTop="40dp"
-            android:background="@drawable/rounded_corners_witness"
-            android:elevation="2dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp"
+            android:background="@drawable/rounded_corners_gray"
             app:layout_constraintEnd_toStartOf="@+id/fragment_witness_v_guideline6"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/fragment_witness_v_guideline5"
-            app:layout_constraintTop_toBottomOf="@+id/fragment_witness_nameholder_constraintLayout"
+            app:layout_constraintTop_toBottomOf="@+id/view1"
             app:layout_constraintVertical_bias="0.0">
 
             <View
@@ -125,6 +125,7 @@
                 android:layout_marginStart="30dp"
                 android:layout_marginTop="25dp"
                 android:background="@color/colorGray"
+                android:visibility="gone"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_witness_mynotificationsmenuholder_constraintLayout" />
@@ -133,10 +134,10 @@
                 android:id="@+id/fragment_witness_feedback_view"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginStart="30dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="25dp"
-                android:background="@color/colorGray"
+                android:layout_marginEnd="8dp"
+                android:background="@color/colorGrayLighter2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_witness_prayerrequestmenuholder_constraintLayout" />
@@ -145,10 +146,10 @@
                 android:id="@+id/fragment_testimonies_feedback_view"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginStart="30dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="25dp"
-                android:background="@color/colorGray"
+                android:background="@color/colorGrayLighter2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_feedbackmenuholder_constraintLayout" />
@@ -157,25 +158,13 @@
                 android:id="@+id/fragment_supportcaw_feedback_view"
                 android:layout_width="match_parent"
                 android:layout_height="1dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginStart="30dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginTop="25dp"
-                android:background="@color/colorGray"
+                android:background="@color/colorGrayLighter2"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_testimoniesmenuholder_constraintLayout" />
-
-            <View
-                android:id="@+id/fragment_christwitness_feedback_view"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="25dp"
-                android:background="@color/colorGray"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_supportcawmenuholder_constraintLayout" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/fragment_witness_mynotificationsmenuholder_constraintLayout"
@@ -225,7 +214,7 @@
                     android:id="@+id/fragment_witness_prayerrequestmenuicon_imageview"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:layout_marginStart="40dp"
+                    android:layout_marginStart="8dp"
                     android:src="@drawable/ic_prayerrequest_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintHorizontal_chainStyle="spread"
@@ -237,11 +226,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Prayer Requests"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorGrayDeep2"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.3"
+                    app:layout_constraintHorizontal_bias="0.9"
                     app:layout_constraintStart_toEndOf="@+id/fragment_witness_prayerrequestmenuicon_imageview"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -259,10 +248,9 @@
                     android:id="@+id/fragment_witness_feedbackmenuicon_imageview"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:layout_marginStart="40dp"
+                    android:layout_marginStart="8dp"
                     android:src="@drawable/ic_feedback_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHorizontal_bias="0.49"
                     app:layout_constraintHorizontal_chainStyle="spread"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -272,11 +260,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Feedback"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorGrayDeep2"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.33"
+                    app:layout_constraintHorizontal_bias="0.9"
                     app:layout_constraintStart_toEndOf="@+id/fragment_witness_feedbackmenuicon_imageview"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -294,10 +282,9 @@
                     android:id="@+id/fragment_witness_testimoniesmenuicon_imageview"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:layout_marginStart="40dp"
+                    android:layout_marginStart="8dp"
                     android:src="@drawable/ic_testimonies_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHorizontal_bias="0.49"
                     app:layout_constraintHorizontal_chainStyle="spread"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -307,11 +294,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Testimonies"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    app:layout_constraintHorizontal_bias="0.9"
+                    android:textColor="@color/colorGrayDeep2"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.33"
                     app:layout_constraintStart_toEndOf="@+id/fragment_witness_testimoniesmenuicon_imageview"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
@@ -322,6 +309,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="25dp"
                 android:layout_marginTop="25dp"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/fragment_supportcaw_feedback_view">
@@ -330,10 +318,9 @@
                     android:id="@+id/fragment_witness_supportcawmenuicon_imageview"
                     android:layout_width="35dp"
                     android:layout_height="35dp"
-                    android:layout_marginStart="40dp"
+                    android:layout_marginStart="8dp"
                     android:src="@drawable/ic_supportcaw_icon"
                     app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHorizontal_bias="0.49"
                     app:layout_constraintHorizontal_chainStyle="spread"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -343,151 +330,179 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Partnership"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
+                    android:textSize="15sp"
+                    android:textColor="@color/colorGrayDeep2"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.33"
+                    app:layout_constraintHorizontal_bias="0.9"
                     app:layout_constraintStart_toEndOf="@+id/fragment_witness_supportcawmenuicon_imageview"
                     app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/fragment_christwitness_constraintLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="25dp"
-                android:layout_marginTop="25dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_christwitness_feedback_view">
-
-                <ImageView
-                    android:id="@+id/fragment_witness_christwitnessmenuicon_imageview"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="40dp"
-                    android:src="@drawable/ic_witness"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHorizontal_bias="0.49"
-                    app:layout_constraintHorizontal_chainStyle="spread"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/fragment_witness_christwitnessmenutext_textview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Christ Witness"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.33"
-                    app:layout_constraintStart_toEndOf="@+id/fragment_witness_christwitnessmenuicon_imageview"
-                    app:layout_constraintTop_toTopOf="parent" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+        <View
+            android:id="@+id/view2"
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/colorGrayLighter2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/fragment_witness_v_guideline6"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/fragment_witness_v_guideline5"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_witness_menuholder_constraintLayout"
+            app:layout_constraintVertical_bias="0.0" />
 
-            <View
-                android:id="@+id/fragment_holygen_feedback_view"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="25dp"
-                android:background="@color/colorGray"
-                app:layout_constraintEnd_toEndOf="parent"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/fragment_witness_menuholder_constraintLayout2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/rounded_corners_gray"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/fragment_witness_v_guideline6"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/fragment_witness_v_guideline5"
+        app:layout_constraintTop_toBottomOf="@+id/view2"
+        app:layout_constraintVertical_bias="0.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fragment_christwitness_constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/fragment_witness_christwitnessmenuicon_imageview"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_witness"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_christwitness_constraintLayout" />
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/fragment_holygen_constraintLayout"
-                android:layout_width="match_parent"
+            <TextView
+                android:id="@+id/fragment_witness_christwitnessmenutext_textview"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="25dp"
-                android:layout_marginTop="25dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_holygen_feedback_view">
-
-                <ImageView
-                    android:id="@+id/fragment_witness_holygenmenuicon_imageview"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="40dp"
-                    android:src="@drawable/ic_hydro_power"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHorizontal_bias="0.49"
-                    app:layout_constraintHorizontal_chainStyle="spread"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/fragment_witness_holygenmenutext_textview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Holy Generation"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.33"
-                    app:layout_constraintStart_toEndOf="@+id/fragment_witness_holygenmenuicon_imageview"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <View
-                android:id="@+id/fragment_impacttrain_feedback_view"
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginEnd="30dp"
-                android:layout_marginStart="30dp"
-                android:layout_marginTop="25dp"
-                android:background="@color/colorGray"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_holygen_constraintLayout" />
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/fragment_impacttrain_constraintLayout"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="25dp"
-                android:layout_marginTop="25dp"
+                android:text="Christ Witness"
+                android:textSize="15sp"
+                android:textColor="@color/colorGrayDeep2"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/fragment_impacttrain_feedback_view">
-
-                <ImageView
-                    android:id="@+id/fragment_witness_impacttrain_imageview"
-                    android:layout_width="35dp"
-                    android:layout_height="35dp"
-                    android:layout_marginStart="40dp"
-                    android:src="@drawable/ic_train_icon"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHorizontal_bias="0.49"
-                    app:layout_constraintHorizontal_chainStyle="spread"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/fragment_witness_impacttrainmenutext_textview"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Impact Train"
-                    android:textSize="20sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.33"
-                    app:layout_constraintStart_toEndOf="@+id/fragment_witness_impacttrain_imageview"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintStart_toEndOf="@+id/fragment_witness_christwitnessmenuicon_imageview"
+                app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        <View
+            android:id="@+id/fragment_holygen_feedback_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/colorGray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_christwitness_constraintLayout" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fragment_holygen_constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="25dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_holygen_feedback_view">
+
+            <ImageView
+                android:id="@+id/fragment_witness_holygenmenuicon_imageview"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_holy_ghost"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/fragment_witness_holygenmenutext_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Holy Generation"
+                android:textSize="15sp"
+                android:textColor="@color/colorGrayDeep2"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintStart_toEndOf="@+id/fragment_witness_holygenmenuicon_imageview"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/fragment_impacttrain_feedback_view"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="25dp"
+            android:background="@color/colorGray"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_holygen_constraintLayout" />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/fragment_impacttrain_constraintLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="25dp"
+            android:layout_marginTop="25dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_impacttrain_feedback_view">
+
+            <ImageView
+                android:id="@+id/fragment_witness_impacttrain_imageview"
+                android:layout_width="35dp"
+                android:layout_height="35dp"
+                android:layout_marginStart="8dp"
+                android:src="@drawable/ic_train_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_chainStyle="spread"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/fragment_witness_impacttrainmenutext_textview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Impact Train"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.9"
+                app:layout_constraintStart_toEndOf="@+id/fragment_witness_impacttrain_imageview"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 
-</ScrollView>
+    </ScrollView>
