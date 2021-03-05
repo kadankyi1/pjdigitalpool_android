@@ -111,7 +111,7 @@
         android:textSize="14sp"
         android:lineSpacingExtra="5dp"
         android:fontFamily="@font/minionpro_regular"
-        android:text="THAT HE MIGHT PRESENT TO HIMSELF A GLORIOUS CHURCH, NOT HAVING SPORT, OR WRINKLE, OR ANY SUCH THING; BUT THAT IT SHOULD BE HOLY AND WITHOUT BLEMISH \n - EPHESIANS 5: 27"
+        android:text="THAT HE MIGHT PRESENT TO HIMSELF A GLORIOUS CHURCH, NOT HAVING SPOT, OR WRINKLE, OR ANY SUCH THING; BUT THAT IT SHOULD BE HOLY AND WITHOUT BLEMISH \n - EPHESIANS 5: 27"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

@@ -59,7 +59,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:background="@color/colorPrimary"
+        android:background="@color/colorGrayLighter2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -90,7 +90,7 @@
             app:layout_constraintEnd_toStartOf="@+id/activity_videoplayer_v_guideline2"
             android:gravity="start"
             android:textAlignment="textStart"
-            android:textColor="@color/colorYellowText"
+            android:textColor="@color/colorBlackLighter"
             android:textSize="20sp"
             android:textStyle="bold"
             />
@@ -106,7 +106,7 @@
             app:layout_constraintEnd_toStartOf="@+id/activity_videoplayer_v_guideline2"
             android:gravity="start"
             android:textAlignment="textStart"
-            android:textColor="@color/colorYellowText"
+            android:textColor="@color/colorBlackLighter"
             android:textSize="12sp"
             android:textStyle="italic"
             />
@@ -141,7 +141,7 @@
                 android:text="Video description"
                 android:gravity="start|top"
                 android:textAlignment="textStart"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/colorBlackLighter"
                 android:textSize="14sp"
                 />
         </ScrollView>

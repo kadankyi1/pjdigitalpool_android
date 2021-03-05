@@ -549,7 +549,7 @@
                 app:layout_constraintHorizontal_bias="0.0"
                 android:text="Welcome"
                 android:textStyle="bold|italic"
-                android:textColor="@color/colorPrimary"
+                android:textColor="@color/colorGrayDeep3"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/fragment_today_vertical_guideline_1"
                 app:layout_constraintTop_toTopOf="parent" />

@@ -78,7 +78,7 @@
         android:layout_marginTop="32dp"
         android:elevation="2dp"
         android:contentDescription="@string/empty_string"
-        android:tint="@color/colorBlueInLoggedSpace"
+        android:tint="@color/colorGrayLighter2"
         android:src="@drawable/ic_back_arrow_icon"
         app:layout_constraintStart_toEndOf="@+id/activity_audioplayer_v_guideline1"
         app:layout_constraintTop_toTopOf="parent" />
@@ -92,6 +92,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="32dp"
         android:elevation="2dp"
+        android:tint="@color/colorGray"
         android:background="@drawable/favorite_toggle_drawable"
         android:button="@null"
         android:checked="false"
@@ -115,7 +116,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/colorBlueInLoggedSpace"
+        android:background="@color/colorGrayLighter2"
         app:layout_constraintTop_toBottomOf="@+id/activity_audioplayer_h_guideline2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -134,7 +135,7 @@
         app:layout_constraintEnd_toStartOf="@+id/activity_audioplayer_v_guideline2"
         android:gravity="center"
         android:textAlignment="center"
-        android:textColor="@color/colorYellowText"
+        android:textColor="@color/colorBlackLighter"
         android:textSize="20sp"
         android:textStyle="bold"
         />
@@ -150,7 +151,7 @@
         app:layout_constraintEnd_toStartOf="@+id/activity_audioplayer_v_guideline2"
         android:gravity="center"
         android:textAlignment="center"
-        android:textColor="@color/colorYellowText"
+        android:textColor="@color/colorGrayDeep2"
         android:textSize="12sp"
         />
 
@@ -165,7 +166,7 @@
         app:layout_constraintEnd_toStartOf="@+id/activity_audioplayer_v_guideline3"
         android:gravity="center"
         android:textAlignment="center"
-        android:textColor="@color/colorYellowText"
+        android:textColor="@color/colorBlackLighter"
         android:textSize="15sp"
         android:textStyle="bold"
         />
@@ -177,8 +178,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="7dp"
         android:progressBackgroundTint="@color/colorAccent"
-        android:progressTint="@color/colorYellowButton"
-        android:thumbTint="@color/colorYellowButton"
+        android:progressTint="@color/colorBlackLighter"
+        android:thumbTint="@color/colorBlackLighter"
         app:layout_constraintTop_toBottomOf="@+id/activity_audioplayer_uploadtime_textview"
         app:layout_constraintStart_toEndOf="@+id/activity_audioplayer_v_guideline3"
         app:layout_constraintEnd_toStartOf="@+id/activity_audioplayer_v_guideline4" />

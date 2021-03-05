@@ -30,13 +30,13 @@ public class ImageArticleActivity extends AppCompatActivity implements View.OnCl
         m_article_body =  findViewById(R.id.activity_imagearticle_body_textview);
 
         if(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_IMAGE_ARTICLE_TAG_TEXT).trim().equalsIgnoreCase("HERALD OF GLORY")){
-            m_tag_holder_constraintlayout.setBackground(getDrawable(R.drawable.curved_bottom_left_corners_gold));
+            //m_tag_holder_constraintlayout.setBackground(getDrawable(R.drawable.curved_bottom_left_corners_gold));
         } else if(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_IMAGE_ARTICLE_TAG_TEXT).trim().equalsIgnoreCase("SPECIAL ARTICLE")){
-            m_tag_holder_constraintlayout.setBackground(getDrawable(R.drawable.rounded_corners_specialarticle));
+            //m_tag_holder_constraintlayout.setBackground(getDrawable(R.drawable.rounded_corners_specialarticle));
         } else if(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_IMAGE_ARTICLE_TAG_TEXT).trim().equalsIgnoreCase("GLORY NEWS")){
-            m_tag_holder_constraintlayout.setBackground(getDrawable(R.drawable.rounded_corners_glorynews));
+            //m_tag_holder_constraintlayout.setBackground(getDrawable(R.drawable.rounded_corners_glorynews));
         } else if(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_IMAGE_ARTICLE_TAG_TEXT).trim().equalsIgnoreCase("BIBLE READING PLAN")){
-            m_tag_holder_constraintlayout.setBackground(getDrawable(R.drawable.rounded_corners_bible_reading));
+            //m_tag_holder_constraintlayout.setBackground(getDrawable(R.drawable.rounded_corners_bible_reading));
         }
         m_article_date.setText(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_IMAGE_ARTICLE_UPLOAD_TIME).trim());
         m_article_title.setText(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_IMAGE_ARTICLE_ARTICLE_TITLE).trim());
