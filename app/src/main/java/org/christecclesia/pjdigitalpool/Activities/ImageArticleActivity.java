@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.christecclesia.pjdigitalpool.Inc.Util;
 import org.christecclesia.pjdigitalpool.R;
@@ -53,7 +54,15 @@ public class ImageArticleActivity extends AppCompatActivity implements View.OnCl
         }
 
 
-
+        m_article_title.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if(!Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_ARTICLE_ID).isEmpty()) {
+                    Toast.makeText(getApplicationContext(), String.valueOf(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_ARTICLE_ID)), Toast.LENGTH_SHORT).show();
+                }
+                return true;
+            }
+        });
         m_back_imageview.setOnClickListener(this);
 
     }

@@ -3,6 +3,7 @@ package org.christecclesia.pjdigitalpool.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -35,6 +36,17 @@ public class VideoPlayerActivity extends AppCompatActivity {
         } else {
             Toast.makeText(getApplicationContext(), "Video Not Found", Toast.LENGTH_LONG).show();
         }
+
+        m_video_title_textview.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if(!Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_ARTICLE_ID).isEmpty()) {
+                    Toast.makeText(getApplicationContext(), String.valueOf(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_ARTICLE_ID)), Toast.LENGTH_SHORT).show();
+                }
+                return true;
+            }
+        });
+
     }
 
     @Override

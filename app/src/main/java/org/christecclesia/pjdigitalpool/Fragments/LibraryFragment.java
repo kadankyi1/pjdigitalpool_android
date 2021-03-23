@@ -246,6 +246,7 @@ public class LibraryFragment extends Fragment implements View.OnClickListener {
                 || v.getId() == R.id.listitemaudio_image_imageview
                 || v.getId() == R.id.listitemaudio_title_textview
                 || v.getId() == R.id.listitemaudio_time_textview){
+            Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_ARTICLE_ID, String.valueOf(AudioListDataGenerator.getAllData().get(position).getAudio_id()));
             if(current_page == "videos"){
                 Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_VIDEO_URL, AudioListDataGenerator.getAllData().get(position).getAudio_mp3());
                 Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_IMG_URL, AudioListDataGenerator.getAllData().get(position).getAudio_image());

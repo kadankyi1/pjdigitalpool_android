@@ -130,6 +130,15 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
         m_play_icon_checkbox.setOnClickListener(this);
         m_forward_icon_imageview.setOnClickListener(this);
 
+        m_audio_title_textview.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View v) {
+                if(!Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_ARTICLE_ID).isEmpty()) {
+                    Toast.makeText(getApplicationContext(), String.valueOf(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_ARTICLE_ID)), Toast.LENGTH_SHORT).show();
+                }
+                return true;
+            }
+        });
     }
 
     private Runnable UpdateSongTime = new Runnable() {

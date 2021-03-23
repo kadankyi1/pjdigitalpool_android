@@ -209,6 +209,7 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
     };
     @Override
     public void onClick(View view) {
+        Util.setSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_ARTICLE_ID, "");
         if(
                 view.getId() == R.id.fragment_today_heraldofgloryholder_constraintlayout){
             if(

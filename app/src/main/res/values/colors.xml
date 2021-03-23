@@ -10,25 +10,16 @@
     <color name="colorGray2">#8C8B8B</color>
     <color name="colorGrayLighter">#D8D8D8</color>
     <color name="colorGrayLighter3">#EAEAEA</color>
-    <color name="colorGrayLighter4">#ECE8E8</color>
     <color name="colorGrayDeep">#CE595757</color>
     <color name="colorGrayDeep2">#1C1C1C</color>
     <color name="colorGrayDeep3">#686767</color>
-    <color name="colorDeepblue">#DA425B5B</color>
-    <color name="colorDeepblueDeeper">#2F4141</color>
     <color name="colorGrayBackground">#F1F1F1</color>
     <color name="colorTransparent">#00000000</color>
     <color name="colorYellowButton">#fbae17</color>
     <color name="colorYellowLight">#94E1BA6D</color>
-    <color name="colorDotInactive">#7F0495</color>
-    <color name="colorDotActive">#440150</color>
 
     <color name="colorBlueInLoggedSpace">#1F82AC</color>
     <color name="colorYellowText">#FFA900</color>
     <color name="cawOriginalGold">#FF9900</color>
-    <color name="colorArticleHeraldOfGlory">#CBE18B0F</color>
-    <color name="colorArticleSpecialArticles">#CD186C98</color>
-    <color name="colorArticleGloryNews">#CB469728</color>
-    <color name="colorArticleBibleReadingPlan">#CDD61F3B</color>
     <color name="colorLive">#B5F10529</color>
 </resources>
