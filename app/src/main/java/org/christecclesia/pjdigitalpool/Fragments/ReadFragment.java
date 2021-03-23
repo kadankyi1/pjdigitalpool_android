@@ -209,7 +209,7 @@ public class ReadFragment extends Fragment implements View.OnClickListener {
             }
 
             if(ArticleListDataGenerator.getAllData().get(position).getArticle_title().length() > 20){
-                ((ArticleViewHolder) holder).m_body_textview.setText(ArticleListDataGenerator.getAllData().get(position).getArticle_title().substring(0, 19).trim() + "...");
+                ((ArticleViewHolder) holder).m_title_textview.setText(ArticleListDataGenerator.getAllData().get(position).getArticle_title().substring(0, 19).trim() + "...");
             } else {
                 ((ArticleViewHolder) holder).m_title_textview.setText(ArticleListDataGenerator.getAllData().get(position).getArticle_title());
             }
