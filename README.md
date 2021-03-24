@@ -79,12 +79,12 @@ https://play.google.com/store/apps/details?id=org.christecclesia.pjdigitalpool&h
    <table align="center" border="0" >
   <tr>
     <td>
-      <img width="360" src="1.png"/>
+      <img width="360" src="1.jpg"/>
     <td>
-      <img width="360" src="2.png"/>
+      <img width="360" src="2.jpg"/>
     </td>
     <td> 
-     <img width="360" src="3.png"/>
+     <img width="360" src="3.jpg"/>
     </td>
   </table>
   </div>
@@ -93,13 +93,13 @@ https://play.google.com/store/apps/details?id=org.christecclesia.pjdigitalpool&h
   <table align="center" border="0" >
   <tr>
     <td> 
-     <img width="360" src="4.png"/>
+     <img width="360" src="4.jpg"/>
     </td>
     <td> 
-     <img width="360" src="5.png"/>
+     <img width="360" src="5.jpg"/>
     </td>
     <td> 
-     <img width="360" src="6.png"/>
+     <img width="360" src="6.jpg"/>
     </td>
   </tr>
 </table>
@@ -108,7 +108,7 @@ https://play.google.com/store/apps/details?id=org.christecclesia.pjdigitalpool&h
   <table align="center" border="0" >
   <tr>
     <td> 
-     <img width="360" src="7.png"/>
+     <img width="360" src="7.jpg"/>
     </td>
   </tr>
 </table>
