@@ -1,4 +1,4 @@
-# THE GLORY HUB - AUDIO AND VIDEO STREAMING WITH ARTICLES FOR READING
+# THE GLORY HUB
 **Stream audio and video teachings from the Christ Assembly Worldwide. Read articles that inspire.**
 
 ## Features
