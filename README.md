@@ -19,6 +19,47 @@ https://apps.apple.com/vg/app/the-glory-hub/id1557614523
 https://play.google.com/store/apps/details?id=org.christecclesia.pjdigitalpool&hl=en_AU
 ```
 
+## Android Screenshots
+</br>
+<div align="center">
+   <table align="center" border="0" >
+  <tr>
+    <td>
+      <img width="250" src="1.jpg"/>
+    <td>
+      <img width="250" src="2.jpg"/>
+    </td>
+    <td> 
+     <img width="250" src="3.jpg"/>
+    </td>
+  </table>
+  </div>
+</br>
+<div align="center">
+  <table align="center" border="0" >
+  <tr>
+    <td> 
+     <img width="250" src="4.jpg"/>
+    </td>
+    <td> 
+     <img width="250" src="5.jpg"/>
+    </td>
+    <td> 
+     <img width="250" src="6.jpg"/>
+    </td>
+  </tr>
+</table>
+  </div>
+<div align="center">
+  <table align="center" border="0" >
+  <tr>
+    <td> 
+     <img width="250" src="7.jpg"/>
+    </td>
+  </tr>
+</table>
+  </div>
+  
 ## iOs Screenshots
 </br>
 <div align="center">
@@ -64,46 +105,6 @@ https://play.google.com/store/apps/details?id=org.christecclesia.pjdigitalpool&h
 </table>
   </div>
   
-## Android Screenshots
-</br>
-<div align="center">
-   <table align="center" border="0" >
-  <tr>
-    <td>
-      <img width="250" src="1.jpg"/>
-    <td>
-      <img width="250" src="2.jpg"/>
-    </td>
-    <td> 
-     <img width="250" src="3.jpg"/>
-    </td>
-  </table>
-  </div>
-</br>
-<div align="center">
-  <table align="center" border="0" >
-  <tr>
-    <td> 
-     <img width="250" src="4.jpg"/>
-    </td>
-    <td> 
-     <img width="250" src="5.jpg"/>
-    </td>
-    <td> 
-     <img width="250" src="6.jpg"/>
-    </td>
-  </tr>
-</table>
-  </div>
-<div align="center">
-  <table align="center" border="0" >
-  <tr>
-    <td> 
-     <img width="250" src="7.jpg"/>
-    </td>
-  </tr>
-</table>
-  </div>
 ## Authors
 
 * **Dankyi Anno Kwaku**
