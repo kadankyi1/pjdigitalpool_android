@@ -1,4 +1,4 @@
-# THE GLORY HUB
+# THE GLORY HUB (Android Version)
 **Stream audio and video teachings from the Christ Assembly Worldwide. Read articles that inspire.**
 
 ## Features
