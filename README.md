@@ -25,12 +25,12 @@ https://play.google.com/store/apps/details?id=org.christecclesia.pjdigitalpool&h
    <table align="center" border="0" >
   <tr>
     <td>
-      <img width="360" src="8.png"/>
+      <img width="250" src="8.png"/>
     <td>
-      <img width="360" src="9.png"/>
+      <img width="250" src="9.png"/>
     </td>
     <td> 
-     <img width="360" src="10.png"/>
+     <img width="250" src="10.png"/>
     </td>
   </table>
   </div>
@@ -39,13 +39,13 @@ https://play.google.com/store/apps/details?id=org.christecclesia.pjdigitalpool&h
   <table align="center" border="0" >
   <tr>
     <td> 
-     <img width="360" src="11.png"/>
+     <img width="250" src="11.png"/>
     </td>
     <td> 
-     <img width="360" src="12.png"/>
+     <img width="250" src="12.png"/>
     </td>
     <td> 
-     <img width="360" src="13.png"/>
+     <img width="250" src="13.png"/>
     </td>
   </tr>
 </table>
@@ -55,19 +55,10 @@ https://play.google.com/store/apps/details?id=org.christecclesia.pjdigitalpool&h
   <table align="center" border="0" >
   <tr>
     <td> 
-     <img width="360" src="14.png"/>
+     <img width="250" src="14.png"/>
     </td>
     <td> 
-     <img width="360" src="15.png"/>
-    </td>
-  </tr>
-</table>
-  </div>
-<div align="center">
-  <table align="center" border="0" >
-  <tr>
-    <td> 
-     <img width="360" src="7.png"/>
+     <img width="250" src="15.png"/>
     </td>
   </tr>
 </table>
@@ -79,12 +70,12 @@ https://play.google.com/store/apps/details?id=org.christecclesia.pjdigitalpool&h
    <table align="center" border="0" >
   <tr>
     <td>
-      <img width="360" src="1.jpg"/>
+      <img width="250" src="1.jpg"/>
     <td>
-      <img width="360" src="2.jpg"/>
+      <img width="250" src="2.jpg"/>
     </td>
     <td> 
-     <img width="360" src="3.jpg"/>
+     <img width="250" src="3.jpg"/>
     </td>
   </table>
   </div>
@@ -93,13 +84,13 @@ https://play.google.com/store/apps/details?id=org.christecclesia.pjdigitalpool&h
   <table align="center" border="0" >
   <tr>
     <td> 
-     <img width="360" src="4.jpg"/>
+     <img width="250" src="4.jpg"/>
     </td>
     <td> 
-     <img width="360" src="5.jpg"/>
+     <img width="250" src="5.jpg"/>
     </td>
     <td> 
-     <img width="360" src="6.jpg"/>
+     <img width="250" src="6.jpg"/>
     </td>
   </tr>
 </table>
@@ -108,7 +99,7 @@ https://play.google.com/store/apps/details?id=org.christecclesia.pjdigitalpool&h
   <table align="center" border="0" >
   <tr>
     <td> 
-     <img width="360" src="7.jpg"/>
+     <img width="250" src="7.jpg"/>
     </td>
   </tr>
 </table>
