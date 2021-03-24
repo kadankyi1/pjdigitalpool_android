@@ -8,16 +8,72 @@
 * Send Testimonies and prayer requests
 
 
-### DOWNLOAD ON GOOGLE PLAYSTORE
-```
-https://play.google.com/store/apps/details?id=org.christecclesia.pjdigitalpool&hl=en_AU
-```
 
 ### DOWNLOAD ON APPLE APP STORE
 ```
 https://apps.apple.com/vg/app/the-glory-hub/id1557614523
 ```
-## Screenshots
+
+### DOWNLOAD ON GOOGLE PLAYSTORE
+```
+https://play.google.com/store/apps/details?id=org.christecclesia.pjdigitalpool&hl=en_AU
+```
+
+## iOs Screenshots
+</br>
+<div align="center">
+   <table align="center" border="0" >
+  <tr>
+    <td>
+      <img width="360" src="8.png"/>
+    <td>
+      <img width="360" src="9.png"/>
+    </td>
+    <td> 
+     <img width="360" src="10.png"/>
+    </td>
+  </table>
+  </div>
+</br>
+<div align="center">
+  <table align="center" border="0" >
+  <tr>
+    <td> 
+     <img width="360" src="11.png"/>
+    </td>
+    <td> 
+     <img width="360" src="12.png"/>
+    </td>
+    <td> 
+     <img width="360" src="13.png"/>
+    </td>
+  </tr>
+</table>
+  </div>
+</br>
+<div align="center">
+  <table align="center" border="0" >
+  <tr>
+    <td> 
+     <img width="360" src="14.png"/>
+    </td>
+    <td> 
+     <img width="360" src="15.png"/>
+    </td>
+  </tr>
+</table>
+  </div>
+<div align="center">
+  <table align="center" border="0" >
+  <tr>
+    <td> 
+     <img width="360" src="7.png"/>
+    </td>
+  </tr>
+</table>
+  </div>
+  
+## Android Screenshots
 </br>
 <div align="center">
    <table align="center" border="0" >
