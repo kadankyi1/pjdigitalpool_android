@@ -8,7 +8,6 @@
 * Send Testimonies and prayer requests
 
 
-
 ### DOWNLOAD ON APPLE APP STORE
 - <a href="https://apps.apple.com/vg/app/the-glory-hub/id1557614523" target="_blank">https://apps.apple.com/vg/app/the-glory-hub/id1557614523</a>
 
