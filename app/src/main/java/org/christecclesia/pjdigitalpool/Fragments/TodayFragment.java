@@ -48,6 +48,8 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
     private LinearLayout mDotlayout;
     private TextView[] mDots;
     private AdBannerSliderAdapter sliderAdapter;
+    private int mInterval = 5000; // 5 seconds by default, can be changed later
+    private Handler mHandler;
 
     private String mParam1;
     private String mParam2;
@@ -175,9 +177,43 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
         }, 1500);
 
 
+        mHandler = new Handler();
+        startRepeatingTask();
         return view;
     }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        stopRepeatingTask();
+    }
+    Runnable mStatusChecker = new Runnable() {
+        @Override
+        public void run() {
+            try {
+                //updateStatus(); //this function can change value of mInterval.
+
+                if(mSlideViewPager.getCurrentItem() == 0){
+                    mSlideViewPager.setCurrentItem(1);
+                } else {
+                    mSlideViewPager.setCurrentItem(0);
+                }
+                addDotsIndicator(0);
+            } finally {
+                // 100% guarantee that this always happens, even if
+                // your update method throws an exception
+                mHandler.postDelayed(mStatusChecker, mInterval);
+            }
+        }
+    };
+
+    void startRepeatingTask() {
+        mStatusChecker.run();
+    }
+
+    void stopRepeatingTask() {
+        mHandler.removeCallbacks(mStatusChecker);
+    }
     public void addDotsIndicator(int position){
 
         mDotlayout.removeAllViews();
@@ -191,7 +227,7 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
         }
 
         if(mDots.length > 0){
-            mDots[position].setTextColor(getResources().getColor(R.color.colorPrimaryDark));
+            mDots[position].setTextColor(getResources().getColor(R.color.colorGrayDeep));
         }
 
     }
