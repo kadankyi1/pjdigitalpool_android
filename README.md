@@ -1,5 +1,5 @@
-# THE GLORY HUB (Android Version)
-**Stream audio and video teachings from the Christ Assembly Worldwide. Read articles that inspire.**
+# VIDEO AND AUDIO STREAMING APP (Android)
+**Stream audio and video teachings from a server.**
 
 ## Features
 * Listen to audio sermons
