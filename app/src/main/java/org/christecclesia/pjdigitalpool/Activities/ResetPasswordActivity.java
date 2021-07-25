@@ -78,7 +78,11 @@ public class ResetPasswordActivity extends AppCompatActivity implements View.OnC
                     && !m_password_edittext.getText().toString().trim().isEmpty()
                     && !m_confirmpassword_edittext.getText().toString().trim().isEmpty()
                     && m_password_edittext.getText().toString().equals(m_confirmpassword_edittext.getText().toString())){
-                call_reset_password_api(m_resetcode_edittext.getText().toString().trim(), m_phone_edittext.getText().toString().trim(), m_password_edittext.getText().toString().trim());
+                if(m_password_edittext.getText().toString().trim().length() < 8 ){
+                    Toast.makeText(getApplicationContext(), "Your password has to be 8 letters or more", Toast.LENGTH_LONG).show();
+                } else {
+                    call_reset_password_api(m_resetcode_edittext.getText().toString().trim(), m_phone_edittext.getText().toString().trim(), m_password_edittext.getText().toString().trim());
+                }
             }
         }
     }

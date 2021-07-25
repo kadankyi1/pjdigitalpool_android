@@ -48,7 +48,7 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
     private LinearLayout mDotlayout;
     private TextView[] mDots;
     private AdBannerSliderAdapter sliderAdapter;
-    private int mInterval = 5000; // 5 seconds by default, can be changed later
+    private int mInterval = 30000; // 5 seconds by default, can be changed later
     private Handler mHandler;
 
     private String mParam1;
@@ -195,10 +195,11 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
 
                 if(mSlideViewPager.getCurrentItem() == 0){
                     mSlideViewPager.setCurrentItem(1);
+                    addDotsIndicator(1);
                 } else {
                     mSlideViewPager.setCurrentItem(0);
+                    addDotsIndicator(0);
                 }
-                addDotsIndicator(0);
             } finally {
                 // 100% guarantee that this always happens, even if
                 // your update method throws an exception

@@ -548,7 +548,7 @@
                 app:layout_constraintEnd_toStartOf="@+id/fragment_today_menu_icon_imageview"
                 app:layout_constraintHorizontal_bias="0.0"
                 android:text="Welcome"
-                android:textStyle="bold|italic"
+                android:textStyle="italic"
                 android:textColor="@color/colorGrayDeep3"
                 android:textSize="20sp"
                 app:layout_constraintStart_toEndOf="@+id/fragment_today_vertical_guideline_1"
