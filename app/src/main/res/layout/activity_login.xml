@@ -128,7 +128,6 @@
                 android:orientation="vertical"
                 app:layout_constraintGuide_percent="0.30" />
 
-
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/loginactivity_textinputlayout_password"
                 android:layout_width="0dp"
@@ -138,7 +137,8 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/loginactivity_textinputlayout_email"
-                app:layout_constraintVertical_bias="0.15">
+                app:layout_constraintVertical_bias="0.15"
+                app:passwordToggleEnabled="true">
 
                 <com.google.android.material.textfield.TextInputEditText
                     android:id="@+id/loginactivity_textinputedittext_password"

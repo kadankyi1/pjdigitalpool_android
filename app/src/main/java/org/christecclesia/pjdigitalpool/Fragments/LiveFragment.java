@@ -47,14 +47,29 @@ public class LiveFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_live, container, false);
         mWebView = (WebView) v.findViewById(R.id.webview);
-        mWebView.loadUrl("https://embed.restream.io/player/index.html?token=f1bc331156c70d770acb6a186ff8b664");
+        //mWebView.loadUrl("https://embed.restream.io/player/index.html?token=f1bc331156c70d770acb6a186ff8b664");
 
-        // Enable Javascript
+
+
+        String frameVideo = "<html><body>Youtube video .. <br> <iframe width=\"400\" height=\"290\" src=\"https://www.youtube.com/embed/live_stream?channel=5qap5aO4i9A\" frameborder=\"0\" allowfullscreen=\"true\"></iframe></body></html>";
+
+        mWebView.setWebViewClient(new WebViewClient(){
+            @Override
+            public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                return false;
+            }
+        });
+        WebSettings webSettings = mWebView.getSettings();
+        webSettings.setJavaScriptEnabled(true);
+        mWebView.loadData(frameVideo, "text/html", "utf-8");
+
+        /*// Enable Javascript
         WebSettings webSettings = mWebView.getSettings();
         webSettings.setJavaScriptEnabled(true);
 
         // Force links and redirects to open in the WebView instead of in a browser
         mWebView.setWebViewClient(new WebViewClient());
+         */
         return v;
     }
 }

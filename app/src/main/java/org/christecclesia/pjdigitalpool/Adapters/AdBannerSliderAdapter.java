@@ -12,6 +12,7 @@ import org.christecclesia.pjdigitalpool.Views.RoundedCornerImageView;
 
 import androidx.annotation.NonNull;
 import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 
 
 /**
@@ -32,7 +33,7 @@ public class AdBannerSliderAdapter extends PagerAdapter {
 
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     @Override
@@ -53,13 +54,22 @@ public class AdBannerSliderAdapter extends PagerAdapter {
             if(context != null && !Util.getSharedPreferenceString(context, Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG_URL).equalsIgnoreCase("")){
                 Util.loadImageView(context, Util.getSharedPreferenceString(context, Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG_URL), m_adbanner_roundedcornerimageview, m_adbanner_progressbar);
             }
-        } else {
+        } else if(position == 1){
             if(context != null && !Util.getSharedPreferenceString(context, Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG2_URL).equalsIgnoreCase("")){
                 Util.loadImageView(context, Util.getSharedPreferenceString(context, Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG2_URL), m_adbanner_roundedcornerimageview, m_adbanner_progressbar);
+            }
+        } else {
+            if(context != null && !Util.getSharedPreferenceString(context, Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG3_URL).equalsIgnoreCase("")){
+                Util.loadImageView(context, Util.getSharedPreferenceString(context, Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG3_URL), m_adbanner_roundedcornerimageview, m_adbanner_progressbar);
             }
         }
         container.addView(view);
         return view;
+    }
+
+    @Override
+    public void destroyItem(View container, int position, Object object) {
+        ((ViewPager) container).removeView((View) object);
     }
 
     @Override

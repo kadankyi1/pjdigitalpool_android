@@ -128,9 +128,11 @@ public class UpdateContent extends Service {
                                         JSONArray notice = response_json_object.getJSONObject("data").getJSONArray("data");
                                         final JSONObject k = notice.getJSONObject(0);
                                         final JSONObject o = notice.getJSONObject(1);
+                                        final JSONObject n = notice.getJSONObject(2);
 
                                         Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG_URL, k.getString("notice_image"));
                                         Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG2_URL, o.getString("notice_image"));
+                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_INFO_BANNER_IMG3_URL, n.getString("notice_image"));
 
                                         JSONArray audio = response_json_object.getJSONObject("audios").getJSONArray("data");
                                         final JSONObject a = audio.getJSONObject(0);
@@ -157,6 +159,17 @@ public class UpdateContent extends Service {
                                         Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_LENGTH, v2.getString("created_at"));
                                         Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_UPLOAD_TIME, v2.getString("created_at"));
                                         Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_VIDEO2_BODY, v2.getString("video_description"));
+
+                                        JSONArray latest_audios = response_json_object.getJSONObject("latest_audios").getJSONArray("data");
+                                        final JSONObject a2 = latest_audios.getJSONObject(0);
+                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO2_TRACK_ID, String.valueOf(a.getInt("audio_id")));
+                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO2_URL, a2.getString("audio_mp3"));
+                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO2_IMG_URL, a2.getString("audio_image"));
+                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO2_TITLE, a2.getString("audio_name"));
+                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO2_BODY, a2.getString("audio_description"));
+                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO2_UPLOAD_TIME, a2.getString("created_at"));
+
+                                        Util.setSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO2_UPLOAD_TIME, a2.getString("created_at"));
 
                                         /******************************************************************************************************
                                          *
