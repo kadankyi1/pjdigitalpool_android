@@ -51,7 +51,7 @@ public class LiveFragment extends Fragment {
 
 
 
-        String frameVideo = "<html><body>Youtube video .. <br> <iframe width=\"400\" height=\"290\" src=\"https://www.youtube.com/embed/live_stream?channel=5qap5aO4i9A\" frameborder=\"0\" allowfullscreen=\"true\"></iframe></body></html>";
+        String frameVideo = "<html><body><iframe width=\"100%\" height=\"100%\" src=\"https://www.youtube.com/embed/live_stream?channel=UC5l0vl8w8E6xUILUs_tymwg\" frameborder=\"0\" allowfullscreen=\"true\"></iframe></body></html>";
 
         mWebView.setWebViewClient(new WebViewClient(){
             @Override
