@@ -1,5 +1,7 @@
 package org.christecclesia.pjdigitalpool.Fragments;
 
+import static org.christecclesia.pjdigitalpool.Inc.Util.deleteAllDataInSharedPreference;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ApplicationInfo;
@@ -17,6 +19,7 @@ import android.widget.TextView;
 
 import org.christecclesia.pjdigitalpool.Activities.ContactActivity;
 import org.christecclesia.pjdigitalpool.Activities.PartnershipActivity;
+import org.christecclesia.pjdigitalpool.Activities.StartActivity;
 import org.christecclesia.pjdigitalpool.Inc.Util;
 import org.christecclesia.pjdigitalpool.R;
 
@@ -107,9 +110,13 @@ public class WitnessFragment extends Fragment implements View.OnClickListener {
         } else if(view.getId() == m_holygen_holder_constraintlayout.getId()){
             startActivity(getOpenFacebookIntent(getActivity().getPackageManager(), "https://www.facebook.com/theHoly.Generation20"));
         } else if(view.getId() == m_impacttrain_holder_constraintlayout.getId()){
-
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://144.202.76.74/uploads/pdfs/hog.pdf"));
             startActivity(browserIntent);
+        } else if(view.getId() == m_logout_textview.getId()){
+            deleteAllDataInSharedPreference(getActivity().getApplicationContext());
+            Intent intent = new Intent(getActivity().getApplicationContext(), StartActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            startActivity(intent);
         }
     }
 
