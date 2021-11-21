@@ -22,7 +22,7 @@ import org.christecclesia.pjdigitalpool.R;
 
 public class WitnessFragment extends Fragment implements View.OnClickListener {
 
-    private TextView m_member_name_textview;
+    private TextView m_member_name_textview, m_logout_textview;
     private ConstraintLayout m_notifications_holder_constraintlayout, m_prayer_requests_holder_constraintlayout,
             m_feedback_holder_constraintlayout, m_testimonies_holder_constraintlayout, m_support_caw_holder_constraintlayout,
             m_christwitness_holder_constraintlayout, m_holygen_holder_constraintlayout, m_impacttrain_holder_constraintlayout;
@@ -66,6 +66,7 @@ public class WitnessFragment extends Fragment implements View.OnClickListener {
         m_christwitness_holder_constraintlayout = view.findViewById(R.id.fragment_christwitness_constraintLayout);
         m_holygen_holder_constraintlayout = view.findViewById(R.id.fragment_holygen_constraintLayout);
         m_impacttrain_holder_constraintlayout = view.findViewById(R.id.fragment_impacttrain_constraintLayout);
+        m_logout_textview = view.findViewById(R.id.fragment_witness_logout_textview);
 
         m_member_name_textview.setText(Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_USER_FIRST_NAME) + " "+ Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_USER_LAST_NAME));
 
@@ -77,6 +78,7 @@ public class WitnessFragment extends Fragment implements View.OnClickListener {
         m_christwitness_holder_constraintlayout.setOnClickListener(this);
         m_holygen_holder_constraintlayout.setOnClickListener(this);
         m_impacttrain_holder_constraintlayout.setOnClickListener(this);
+        m_logout_textview.setOnClickListener(this);
         return view;
     }
 
