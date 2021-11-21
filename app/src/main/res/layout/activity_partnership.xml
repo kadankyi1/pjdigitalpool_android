@@ -148,7 +148,7 @@
                 android:layout_height="30dp"
                 android:background="@drawable/yellow_button_white_text"
                 android:fontFamily="serif-monospace"
-                android:text="Send"
+                android:text="Proceed"
                 android:textColor="@drawable/yello_button_pressed_reaction"
                 android:textSize="15sp"
                 android:textStyle="bold"

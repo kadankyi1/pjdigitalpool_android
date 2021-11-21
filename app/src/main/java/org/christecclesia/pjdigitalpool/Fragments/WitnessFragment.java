@@ -103,8 +103,8 @@ public class WitnessFragment extends Fragment implements View.OnClickListener {
             Intent intent = new Intent(getActivity().getApplicationContext(), ContactActivity.class);
             startActivity(intent);
         } else if(view.getId() == m_support_caw_holder_constraintlayout.getId()){
-            //ntent intent = new Intent(getActivity().getApplicationContext(), PartnershipActivity.class);
-            //startActivity(intent);
+            Intent intent = new Intent(getActivity().getApplicationContext(), PartnershipActivity.class);
+            startActivity(intent);
         } else if(view.getId() == m_christwitness_holder_constraintlayout.getId()){
             startActivity(getOpenFacebookIntent(getActivity().getPackageManager(), "https://www.facebook.com/Christecclesia"));
         } else if(view.getId() == m_holygen_holder_constraintlayout.getId()){
