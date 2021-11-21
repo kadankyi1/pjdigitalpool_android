@@ -7,11 +7,11 @@
     <item
         android:id="@+id/navigation_library"
         android:icon="@drawable/ic_library_icon"
-        android:title="Library" />
+        android:title="Sermons" />
     <item
         android:id="@+id/navigation_read"
         android:icon="@drawable/ic_read_icon"
-        android:title="Read"/>
+        android:title="Library"/>
     <item
         android:id="@+id/navigation_live"
         android:icon="@drawable/ic_live_icon"
