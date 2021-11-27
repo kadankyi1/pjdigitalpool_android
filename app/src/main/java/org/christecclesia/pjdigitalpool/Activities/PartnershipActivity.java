@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -124,6 +125,17 @@ public class PartnershipActivity extends AppCompatActivity {
                                                 bundle.putSerializable("payment", p);
                                                 startActivity(new Intent(PartnershipActivity.this, ipay.gh.com.ipayandroidsdk.PaymentActivity.class).putExtras(bundle));
                                                  */
+                                                Log.e("thetellerManager", "setAmount: " + String.valueOf(Long.parseLong(this_amt)));
+                                                Log.e("thetellerManager", "setEmail: " + Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_EMAIL));
+                                                Log.e("thetellerManager", "setfName: " + Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_FIRST_NAME));
+                                                Log.e("thetellerManager", "setlName: " + Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_LAST_NAME));
+                                                Log.e("thetellerManager", "setMerchant_id: " + merchantId);
+                                                Log.e("thetellerManager", "setNarration: " + this_reason);
+                                                Log.e("thetellerManager", "setApiUser: " + apiUser);
+                                                Log.e("thetellerManager", "setApiKey: " + apiKey);
+                                                Log.e("thetellerManager", "setTxRef: " + this_transaction_id);
+                                                Log.e("thetellerManager", "setTxRef: " + this_transaction_id);
+
                                                 new thetellerManager(PartnershipActivity.this).setAmount(Long.parseLong(this_amt))
                                                         .setEmail(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_EMAIL))
                                                         .setfName(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_FIRST_NAME))
@@ -136,7 +148,7 @@ public class PartnershipActivity extends AppCompatActivity {
                                                         .set3dUrl(Util.LINK_UPDATE_TRANSACTION_STATUS)
                                                         .acceptCardPayments(true)
                                                         .acceptGHMobileMoneyPayments(true)
-                                                        .onStagingEnv(false)
+                                                        .onStagingEnv(true)
                                                         .initialize();
                                             }
                                         });
