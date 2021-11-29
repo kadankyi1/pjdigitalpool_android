@@ -3,6 +3,7 @@ package org.christecclesia.pjdigitalpool.Activities;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import gh.com.payswitch.thetellerandroid.thetellerManager;
+//import ipay.gh.com.ipayandroidsdk.models.Payment;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -68,6 +69,33 @@ public class PartnershipActivity extends AppCompatActivity {
                     if(Integer.valueOf(this_amt) < 1){
                         Toast.makeText(getApplicationContext(), "Please enter a valid amount", Toast.LENGTH_SHORT).show();
                     } else {
+
+                        Log.e("thetellerManager", "setAmount: " + String.valueOf(0.10));
+                        Log.e("thetellerManager", "setEmail: " + Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_EMAIL));
+                        Log.e("thetellerManager", "setfName: " + Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_FIRST_NAME));
+                        Log.e("thetellerManager", "setlName: " + Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_LAST_NAME));
+                        Log.e("thetellerManager", "setMerchant_id: " + "TTM-00004771");
+                        Log.e("thetellerManager", "setNarration: " + this_reason);
+                        Log.e("thetellerManager", "setApiUser: " + "caw5fc4efa195d0c");
+                        Log.e("thetellerManager", "setApiKey: " + "NWEyOGYyNWY1N2M5MzU3ZTAyZDk3MTI4ZmNkYzZlMTM=");
+                        Log.e("thetellerManager", "setTxRef: " + "123456789123");
+
+                        new thetellerManager(PartnershipActivity.this)
+                                .setAmount(0.10)
+                                .setEmail(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_EMAIL))
+                                .setfName(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_FIRST_NAME))
+                                .setlName(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_LAST_NAME))
+                                .setMerchant_id("TTM-00004771")
+                                .setNarration(this_reason)
+                                .setApiUser("caw5fc4efa195d0c")
+                                .setApiKey("NWEyOGYyNWY1N2M5MzU3ZTAyZDk3MTI4ZmNkYzZlMTM=")
+                                .setTxRef("123456789123")
+                                .set3dUrl(Util.LINK_UPDATE_TRANSACTION_STATUS)
+                                .acceptCardPayments(true)
+                                .acceptGHMobileMoneyPayments(true)
+                                .onStagingEnv(true)
+                                .initialize();
+                        /*
                         network_thread = new Thread(new Runnable() {
                             @Override
                             public void run() {
@@ -75,6 +103,7 @@ public class PartnershipActivity extends AppCompatActivity {
                             }
                         });
                         network_thread.start();
+                        */
                     }
                 }
 
@@ -119,12 +148,16 @@ public class PartnershipActivity extends AppCompatActivity {
                                                 /*
                                                 Payment p = new Payment();
                                                 p.setMerchantKey(merchantId);
-                                                            p.setInvoiceId(this_transaction_id);
+                                                p.setInvoiceId(this_transaction_id);
                                                 p.setAmount(Double.parseDouble(this_amt));
                                                 Bundle bundle = new Bundle();
                                                 bundle.putSerializable("payment", p);
                                                 startActivity(new Intent(PartnershipActivity.this, ipay.gh.com.ipayandroidsdk.PaymentActivity.class).putExtras(bundle));
                                                  */
+
+
+
+
                                                 Log.e("thetellerManager", "setAmount: " + String.valueOf(Long.parseLong(this_amt)));
                                                 Log.e("thetellerManager", "setEmail: " + Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_EMAIL));
                                                 Log.e("thetellerManager", "setfName: " + Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_FIRST_NAME));
@@ -134,9 +167,9 @@ public class PartnershipActivity extends AppCompatActivity {
                                                 Log.e("thetellerManager", "setApiUser: " + apiUser);
                                                 Log.e("thetellerManager", "setApiKey: " + apiKey);
                                                 Log.e("thetellerManager", "setTxRef: " + this_transaction_id);
-                                                Log.e("thetellerManager", "setTxRef: " + this_transaction_id);
 
-                                                new thetellerManager(PartnershipActivity.this).setAmount(Long.parseLong(this_amt))
+                                                new thetellerManager(PartnershipActivity.this)
+                                                        .setAmount(0.10)
                                                         .setEmail(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_EMAIL))
                                                         .setfName(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_FIRST_NAME))
                                                         .setlName(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_USER_LAST_NAME))

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="org.christecclesia.pjdigitalpool">
 
     <application
@@ -11,7 +12,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.PartnershipActivity" />
+        <activity android:name=".Activities.PartnershipActivity" tools:replace="android:name" />
         <activity android:name=".Activities.ContactActivity" />
         <activity android:name=".Activities.FavoritesListActivity" />
         <activity
@@ -54,6 +55,8 @@
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
         <activity
+            android:name="ipay.gh.com.ipayandroidsdk.PaymentActivity" />
+        <activity
             android:name=".Activities.StartActivity"
             android:screenOrientation="portrait"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
@@ -63,10 +66,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <!--
-        <activity
-            android:name="ipay.gh.com.ipayandroidsdk.PaymentActivity" />
-        -->
         <service
             android:name=".Services.UpdateContent"
             android:exported="false" />

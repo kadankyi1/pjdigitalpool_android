@@ -107,6 +107,9 @@ dependencies {
     implementation 'com.github.apeatu:theteller-android-sdk:1.0.7'
     //implementation 'com.github.darelabs:ipay-ghana-android-sdk:v0.1'
 
+    // IPAY
+    //implementation 'com.github.darelabs:ipay-ghana-android-sdk:v0.1'
+
     testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
