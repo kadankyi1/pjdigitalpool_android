@@ -395,10 +395,10 @@
 
             <ImageView
                 android:id="@+id/fragment_witness_christwitnessmenuicon_imageview"
-                android:layout_width="35dp"
-                android:layout_height="35dp"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
                 android:layout_marginStart="8dp"
-                android:src="@drawable/ic_witness"
+                android:src="@drawable/hog"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_chainStyle="spread"
                 app:layout_constraintStart_toStartOf="parent"
@@ -408,7 +408,7 @@
                 android:id="@+id/fragment_witness_christwitnessmenutext_textview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Christ Witness"
+                android:text="Heralding The Glorious Church"
                 android:textSize="15sp"
                 android:textColor="@color/colorGrayDeep2"
                 app:layout_constraintBottom_toBottomOf="parent"

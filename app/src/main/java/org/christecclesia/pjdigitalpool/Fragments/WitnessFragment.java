@@ -106,9 +106,11 @@ public class WitnessFragment extends Fragment implements View.OnClickListener {
             Intent intent = new Intent(getActivity().getApplicationContext(), PartnershipActivity.class);
             startActivity(intent);
         } else if(view.getId() == m_christwitness_holder_constraintlayout.getId()){
-            startActivity(getOpenFacebookIntent(getActivity().getPackageManager(), "https://www.facebook.com/Christecclesia"));
+            //startActivity(getOpenFacebookIntent(getActivity().getPackageManager(), "TheGloriousChurchNOTADENOMINATION"));
+            getOpenFacebookIntent2(getActivity().getApplicationContext(), "TheGloriousChurchNOTADENOMINATION");
         } else if(view.getId() == m_holygen_holder_constraintlayout.getId()){
-            startActivity(getOpenFacebookIntent(getActivity().getPackageManager(), "https://www.facebook.com/theHoly.Generation20"));
+            //startActivity(getOpenFacebookIntent(getActivity().getPackageManager(), "https://www.facebook.com/theHoly.Generation20"));
+            getOpenFacebookIntent2(getActivity().getApplicationContext(), "theHoly.Generation20");
         } else if(view.getId() == m_impacttrain_holder_constraintlayout.getId()){
             Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://144.202.76.74/uploads/pdfs/hog.pdf"));
             startActivity(browserIntent);
@@ -146,6 +148,18 @@ public class WitnessFragment extends Fragment implements View.OnClickListener {
         } catch (PackageManager.NameNotFoundException ignored) {
             return new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         }
+    }
+
+    public void getOpenFacebookIntent2(Context context, String page_id) {
+
+        String facebookId = "fb://page/" + page_id;
+        String urlPage = "http://www.facebook.com/" + page_id;
+
+        //try {
+            //startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(facebookId)));
+        //}catch (Exception e){
+            startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse(urlPage)));
+        //}
     }
 
 }
