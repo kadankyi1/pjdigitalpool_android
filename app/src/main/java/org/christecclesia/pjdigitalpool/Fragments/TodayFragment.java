@@ -264,7 +264,7 @@ public class TodayFragment extends Fragment implements View.OnClickListener {
                             && !Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_BODY).isEmpty()
             ){
                 setSharedPreferenceString(getActivity().getApplicationContext(), SHARED_PREF_KEY_IMAGE_ARTICLE_IMG_URL, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_IMG_URL));
-                setSharedPreferenceString(getActivity().getApplicationContext(), SHARED_PREF_KEY_IMAGE_ARTICLE_TAG_TEXT, "BIBLE READING PLAN");
+                setSharedPreferenceString(getActivity().getApplicationContext(), SHARED_PREF_KEY_IMAGE_ARTICLE_TAG_TEXT, "HERALD OF GLORY");
                 setSharedPreferenceString(getActivity().getApplicationContext(), SHARED_PREF_KEY_IMAGE_ARTICLE_UPLOAD_TIME, "Recent");
                 setSharedPreferenceString(getActivity().getApplicationContext(), SHARED_PREF_KEY_IMAGE_ARTICLE_ARTICLE_TITLE, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_TITLE));
                 setSharedPreferenceString(getActivity().getApplicationContext(), SHARED_PREF_KEY_IMAGE_ARTICLE_ARTICLE_BODY, Util.getSharedPreferenceString(getActivity().getApplicationContext(), Util.SHARED_PREF_KEY_TODAY_AUDIO_BODY));
