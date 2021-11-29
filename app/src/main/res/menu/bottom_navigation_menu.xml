@@ -19,5 +19,5 @@
     <item
         android:id="@+id/navigation_witness"
         android:icon="@drawable/ic_witness_icon"
-        android:title="Witness" />
+        android:title="Connect" />
 </menu>

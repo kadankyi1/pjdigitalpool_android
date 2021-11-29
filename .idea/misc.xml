@@ -8,14 +8,18 @@
         <entry key="app/src/main/res/drawable/curved_bottom_right_corners_gray.xml" value="0.30277777777777776" />
         <entry key="app/src/main/res/drawable/ic_library_audio_icon.xml" value="0.30277777777777776" />
         <entry key="app/src/main/res/drawable/rounded_four_corners.xml" value="0.30277777777777776" />
+        <entry key="app/src/main/res/layout/activity_audio_player.xml" value="0.24230072463768115" />
+        <entry key="app/src/main/res/layout/activity_favorites_list.xml" value="0.24230072463768115" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.3098958333333333" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_partnership.xml" value="0.3098958333333333" />
         <entry key="app/src/main/res/layout/activity_reset_password.xml" value="0.29583333333333334" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.29583333333333334" />
         <entry key="app/src/main/res/layout/adbanner_layout.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/fragment_read.xml" value="0.24230072463768115" />
         <entry key="app/src/main/res/layout/fragment_today.xml" value="0.27169446916813383" />
         <entry key="app/src/main/res/layout/fragment_witness.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/layout/list_item_read.xml" value="0.335" />
         <entry key="app/src/main/res/menu/bottom_navigation_menu.xml" value="0.3098958333333333" />
       </map>
     </option>
