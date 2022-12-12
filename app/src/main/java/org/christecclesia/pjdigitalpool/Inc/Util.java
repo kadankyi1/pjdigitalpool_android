@@ -32,7 +32,7 @@ public class Util {
     public static Boolean ALLOW_LOGGING = true;
     public static String LINK_PROTOCOL = "http://";
     //public static String LINK_DOMAIN = "pjdigitalpool.fishpott.com";
-    public static String LINK_DOMAIN = "144.202.76.74";
+    public static String LINK_DOMAIN = "144.202.100.66";
 
     // API LINKS
     //public static String LINK_SIGNUP = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/member/regis";

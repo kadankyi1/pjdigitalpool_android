@@ -282,7 +282,7 @@ public class SignupActivity extends AppCompatActivity implements View.OnClickLis
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            //Util.show_log_in_console("SignupActivity", "error: " + error.toString());
+                            Util.show_log_in_console("SignupActivity", "error: " + error.toString());
 
                             if (error instanceof TimeoutError || error instanceof NoConnectionError) {
                                 Toast.makeText(getApplicationContext(), "Check your internet connection and try again", Toast.LENGTH_LONG).show();
