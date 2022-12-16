@@ -24,16 +24,11 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toTopOf="@+id/activity_videoplayer_h_guideline1">
         <!-- activity_player.xml-->
-        <com.potyvideo.library.AndExoPlayerView
-            android:id="@+id/andExoPlayerView"
+        <com.jarvanmo.exoplayerview.ui.ExoVideoView
+        android:id="@+id/andExoPlayerView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:keepScreenOn="true"
-            app:andexo_aspect_ratio="aspect_match"
-            app:andexo_full_screen="true"
-            app:andexo_play_when_ready="true"
-            app:andexo_show_controller="true"
-            app:andexo_resize_mode="Fit"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"

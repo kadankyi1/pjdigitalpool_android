@@ -30,9 +30,9 @@ import androidx.fragment.app.FragmentTransaction;
 public class Util {
 
     public static Boolean ALLOW_LOGGING = true;
-    public static String LINK_PROTOCOL = "http://";
+    public static String LINK_PROTOCOL = "https://";
     //public static String LINK_DOMAIN = "pjdigitalpool.fishpott.com";
-    public static String LINK_DOMAIN = "144.202.100.66";
+    public static String LINK_DOMAIN = "thegloryhub.fishpott.com";
 
     // API LINKS
     //public static String LINK_SIGNUP = LINK_PROTOCOL + LINK_DOMAIN + "/api/v1/member/regis";

@@ -48,11 +48,12 @@ public class PartnershipActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_partnership);
 
+        /*
         m_second_parent_holder_constraintlayout = findViewById(R.id.second_parent_holder);
-        m_amt_edittext = findViewById(R.id.amt_edittext);
-        m_reason_edittext = findViewById(R.id.message_edittext);
+        //m_amt_edittext = findViewById(R.id.amt_edittext);
+        //m_reason_edittext = findViewById(R.id.message_edittext);
         m_loading_progressbar = findViewById(R.id.contactactivity_contentloading_progressbar);
-        m_proceed_button = findViewById(R.id.proceed_button);
+        //m_proceed_button = findViewById(R.id.proceed_button);
 
         m_proceed_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -95,7 +96,7 @@ public class PartnershipActivity extends AppCompatActivity {
                                 .acceptGHMobileMoneyPayments(true)
                                 .onStagingEnv(true)
                                 .initialize();
-                        /*
+
                         network_thread = new Thread(new Runnable() {
                             @Override
                             public void run() {
@@ -103,13 +104,13 @@ public class PartnershipActivity extends AppCompatActivity {
                             }
                         });
                         network_thread.start();
-                        */
+
                     }
                 }
 
 
             }
-        });
+        });*/
     }
 
 

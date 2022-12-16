@@ -12,54 +12,99 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
-        <activity android:name=".Activities.PartnershipActivity" tools:replace="android:name" />
-        <activity android:name=".Activities.ContactActivity" />
-        <activity android:name=".Activities.FavoritesListActivity" />
+        <activity
+            android:name=".Activities.PartnershipActivity"
+            tools:replace="android:name"
+            android:exported="false"
+            tools:node="merge"
+            />
+        <activity
+            android:name=".Activities.ContactActivity"
+            android:exported="false"
+            tools:node="merge"
+            />
+        <activity
+            android:name=".Activities.FavoritesListActivity"
+            android:exported="false"
+            tools:node="merge"
+            />
         <activity
             android:name=".Activities.VideoPlayerActivity"
-            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode" />
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|screenLayout|smallestScreenSize|uiMode"
+            android:exported="false"
+            tools:node="merge"
+            />
         <activity
             android:name=".Activities.AudioPlayerActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:exported="false"
+            tools:node="merge"
+            />
         <activity
             android:name=".Activities.VideosListActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:exported="false"
+            tools:node="merge"
+            />
         <activity
             android:name=".Activities.AudiosListActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:exported="false"
+            tools:node="merge"
+            />
         <activity
             android:name=".Activities.ImageArticleActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:exported="false"
+            tools:node="merge"
+            />
         <activity
             android:name=".Activities.SettingsActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:exported="false"
+            tools:node="merge"
+            />
         <activity
             android:name=".Activities.MainActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:exported="false"
+            tools:node="merge"
+            />
         <activity
             android:name=".Activities.LoginActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:exported="false"
+            tools:node="merge"
+            />
         <activity
             android:name=".Activities.ResetPasswordActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:exported="false"
+            tools:node="merge"
+            />
         <activity
             android:name=".Activities.SignupActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen" />
-        <activity
-            android:name="ipay.gh.com.ipayandroidsdk.PaymentActivity" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:exported="false"
+            tools:node="merge"
+            />
+        <!--<activity
+            android:name="ipay.gh.com.ipayandroidsdk.PaymentActivity" />-->
         <activity
             android:name=".Activities.StartActivity"
             android:screenOrientation="portrait"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen">
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar.FullScreen"
+            android:exported="true"
+            tools:node="merge">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -68,9 +113,13 @@
         </activity>
         <service
             android:name=".Services.UpdateContent"
-            android:exported="false" />
+            android:exported="false"
+            tools:node="merge" />
 
-        <receiver android:name=".BroadcastReceivers.MyNotificationReceiver">
+        <receiver
+            android:name=".BroadcastReceivers.MyNotificationReceiver"
+            android:exported="false"
+            tools:node="merge">
             <intent-filter>
                 <action android:name="RESUME_ACTION"/>
                 <action android:name="STOP_ACTION"/>

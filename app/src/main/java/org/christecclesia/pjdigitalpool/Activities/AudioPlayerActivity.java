@@ -364,7 +364,7 @@ public class AudioPlayerActivity extends AppCompatActivity implements View.OnCli
         Intent maybeReceive2 = new Intent();
         maybeReceive2.setAction(MyNotificationReceiver.CANCEL_ACTION);
         PendingIntent pendingIntentMaybe2 = PendingIntent.getBroadcast(this, MyNotificationReceiver.REQUEST_CODE_NOTIFICATION, maybeReceive2, PendingIntent.FLAG_UPDATE_CURRENT);
-        notif.addAction(R.drawable.exo_icon_stop, "stop", pendingIntentMaybe2);
+        //notif.addAction(R.drawable.exo_icon_stop, "stop", pendingIntentMaybe2);
 
 
         assert nm != null;

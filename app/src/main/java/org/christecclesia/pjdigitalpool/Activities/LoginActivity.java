@@ -191,7 +191,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                     new Response.ErrorListener() {
                         @Override
                         public void onErrorResponse(VolleyError error) {
-                            //Util.show_log_in_console("SignupActivity", "error: " + error.toString());
+                            Util.show_log_in_console("SignupActivity", "error: " + error.toString());
                             Toast.makeText(getApplicationContext(), "Check your internet connection and try again", Toast.LENGTH_LONG).show();
                             m_loggingin_contentloadingprogressbar.setVisibility(View.INVISIBLE);
                             m_formholder_scrollview.setVisibility(View.VISIBLE);

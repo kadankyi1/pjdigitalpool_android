@@ -6,6 +6,7 @@
     <color name="colorAccentOpp">#000000</color>
     <color name="colorBlackLighter">#3F3F3F</color>
     <color name="colorGray">#CE787676</color>
+    <color name="gray">#CE787676</color>
     <color name="colorGrayLighter2">#9E787676</color>
     <color name="colorGray2">#8C8B8B</color>
     <color name="colorGrayLighter">#D8D8D8</color>

@@ -9,14 +9,16 @@ import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.potyvideo.library.AndExoPlayerView;
+
+import com.jarvanmo.exoplayerview.media.SimpleMediaSource;
+import com.jarvanmo.exoplayerview.ui.ExoVideoView;
 
 import org.christecclesia.pjdigitalpool.Inc.Util;
 import org.christecclesia.pjdigitalpool.R;
 
 public class VideoPlayerActivity extends AppCompatActivity {
 
-    AndExoPlayerView m_videoplayer_andexoplayerview;
+    ExoVideoView m_videoplayer_andexoplayerview;
     TextView m_video_title_textview, m_video_upload_time_textview, m_video_body_textview;
 
     @Override
@@ -34,7 +36,9 @@ public class VideoPlayerActivity extends AppCompatActivity {
         m_video_body_textview.setText(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_BODY));
 
         if(!this.isFinishing() && !Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_VIDEO_URL).equalsIgnoreCase("")){
-            m_videoplayer_andexoplayerview.setSource(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_VIDEO_URL));
+            //m_videoplayer_andexoplayerview.setSource(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_VIDEO_URL));
+            SimpleMediaSource mediaSource = new SimpleMediaSource(Util.getSharedPreferenceString(getApplicationContext(), Util.SHARED_PREF_KEY_VIDEO_PLAYER_VIDEO_URL));//uri also supported
+            m_videoplayer_andexoplayerview.play(mediaSource);
         } else {
             Toast.makeText(getApplicationContext(), "Video Not Found", Toast.LENGTH_LONG).show();
         }
@@ -49,23 +53,34 @@ public class VideoPlayerActivity extends AppCompatActivity {
             }
         });
 
+        m_videoplayer_andexoplayerview.setBackListener((view, isPortrait) -> {
+            if (isPortrait) {
+                VideoPlayerActivity.this.onBackPressed();
+            }
+            return false;
+        });
+
     }
 
     @Override
     protected void onStart() {
         super.onStart();
+        /*
         if (AudioPlayerActivity.mPlayer != null) {
             if (AudioPlayerActivity.mPlayer.isPlaying()) {
                 AudioPlayerActivity.mPlayer.pause();
             }
         }
+        */
     }
 
     @Override
     protected void onPause() {
         super.onPause();
         //if(m_videoplayer_andexoplayerview.isEnabled())
-        m_videoplayer_andexoplayerview.pausePlayer();
+        m_videoplayer_andexoplayerview.pause();
     }
+
+
 
 }

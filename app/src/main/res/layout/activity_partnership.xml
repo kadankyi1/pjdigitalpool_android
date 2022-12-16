@@ -299,6 +299,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
                 android:text="SWIFT/IBAN Code"
+                android:visibility="invisible"
                 android:textColor="@color/gray"
                 android:textSize="13sp"
                 android:textStyle="bold"
@@ -312,12 +313,14 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:text="Account Number"
+                android:visibility="invisible"
                 android:textColor="@color/colorAccentOpp"
                 android:textSize="16sp"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/bank_swiftcode_label_textview"/>
+                app:layout_constraintTop_toBottomOf="@+id/bank_swiftcode_label_textview" />
 
             <!--
             <androidx.constraintlayout.widget.Guideline
