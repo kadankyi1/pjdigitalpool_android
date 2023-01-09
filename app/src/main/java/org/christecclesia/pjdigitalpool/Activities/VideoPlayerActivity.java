@@ -1,5 +1,8 @@
 package org.christecclesia.pjdigitalpool.Activities;
 
+import static com.jarvanmo.exoplayerview.orientation.OnOrientationChangedListener.SENSOR_LANDSCAPE;
+import static com.jarvanmo.exoplayerview.orientation.OnOrientationChangedListener.SENSOR_PORTRAIT;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
@@ -60,6 +63,13 @@ public class VideoPlayerActivity extends AppCompatActivity {
             return false;
         });
 
+        m_videoplayer_andexoplayerview.setOrientationListener(orientation -> {
+            if (orientation == SENSOR_PORTRAIT) {
+                //do something
+            } else if (orientation == SENSOR_LANDSCAPE) {
+                //do something
+            }
+        });
     }
 
     @Override

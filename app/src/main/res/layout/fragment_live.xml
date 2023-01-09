@@ -45,8 +45,8 @@
         android:layout_marginTop="10dp"
         android:background="@color/colorAccentOpp"
         app:layout_constraintEnd_toEndOf="parent"
+        android:clickable="true"
         app:layout_constraintStart_toStartOf="parent"
-        android:clickable="false"
         app:layout_constraintBottom_toBottomOf="parent" />
 
 
@@ -54,7 +54,6 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="55dp"
         android:layout_height="55dp"
-        android:clickable="true"
         android:background="@drawable/rounded_corners_gray"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

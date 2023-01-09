@@ -112,7 +112,7 @@ public class WitnessFragment extends Fragment implements View.OnClickListener {
             //startActivity(getOpenFacebookIntent(getActivity().getPackageManager(), "https://www.facebook.com/theHoly.Generation20"));
             getOpenFacebookIntent2(getActivity().getApplicationContext(), "theHoly.Generation20");
         } else if(view.getId() == m_impacttrain_holder_constraintlayout.getId()){
-            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("http://144.202.76.74/uploads/pdfs/hog.pdf"));
+            Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://thegloryhub.fishpott.com/uploads/pdfs/hog.pdf"));
             startActivity(browserIntent);
         } else if(view.getId() == m_logout_textview.getId()){
             deleteAllDataInSharedPreference(getActivity().getApplicationContext());
